@@ -1,0 +1,52 @@
+# Tomcat
+server:
+  # 端 口
+  port: 8089
+
+# Spring 配置
+spring:
+  # Druid Pool 运行环境
+  profiles:
+    # 运 行 环 境
+    active: druid
+  activiti:
+    # 检 查 流 程 定 义 文 件
+    check-process-definitions: false
+
+# mybatis 配 置
+mybatis:
+  # 配 置 扫 描
+  mapper-locations: classpath*:**/xml/**.xml
+  # 别 名 扫 描
+  type-aliases-package: com.pearadmin
+
+# Pear 插 件 配 置 信 息
+pear:
+  security:
+    # 不 需 要 权 限 拦 截 的 接 口 配 置
+    open-api:
+      - /login/**  # 开放 登录 接口
+      - /system/captcha/** # 开放 验证码生成 接口
+      - /assets/** # 开放 静态资源
+      - /admin/** # 开放 静态资源
+      - /component/** # 开放 静态资源
+      - /favicon.ico # 开放 Logo
+  resource:
+    file_path: D:/home/upload/
+# Page Helper
+pagehelper:
+  # 方 言
+  helper-dialect: mysql
+  params: count=countSql
+  reasonable: true
+  support-methods-arguments: true
+
+# logging 配置
+logging:
+  # 日 志 级 别
+  level:
+    # 日 志 包 配 置
+    com.pearadmin.*: DEBUG
+
+
+

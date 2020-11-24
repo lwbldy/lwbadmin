@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <th:block th:include="include :: header('代码自动生成')"/>
+</head>
+<body class="pear-container">
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table id="file-table" lay-filter="file-table"></table>
+    </div>
+</div>
+</body>
+
+<script type="text/html" id="role-bar">
+    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit">
+        <i class="layui-icon layui-icon-edit"></i>
+    </button>
+</script>
+
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['table', 'form', 'jquery'], function () {
+        let table = layui.table;
+        let form = layui.form;
+        let $ = layui.jquery;
+        let MODULE_PATH = "/system/gen/";
+        let cols = [
+            [
+                {title: '表名称', field: 'tableName'},
+                {title: '数据引擎', field: 'engine'},
+                {title: '备注', field: 'tableComment'},
+                {title: '操作', toolbar: '#role-bar', align: 'center', width: 150}
+            ]
+        ]
+
+        table.on('tool(file-table)', function (obj) {
+            if (obj.event === 'edit') {
+                window.edit(obj);
+            }
+        });
+
+        table.render({
+            elem: '#file-table',
+            url: MODULE_PATH + 'tableList',
+            page: false,
+            cols: cols,
+            method:'post',
+            skin: 'line',
+            height: 'full-148',
+            toolbar: '#role-toolbar',
+            defaultToolbar: [{
+                layEvent: 'refresh',
+                icon: 'layui-icon-refresh',
+            }, 'filter', 'print', 'exports']
+        });
+
+
+        window.edit = function (obj) {
+            admin_show('生成配置', MODULE_PATH+'tableInfo/'+obj.data.tableName);
+        }
+
+        window.refresh = function () {
+            table.reload('file-table');
+        }
+    })
+</script>
+</html>

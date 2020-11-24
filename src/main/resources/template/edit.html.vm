@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('修改')"/>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+
+                <div class="layui-form-item layui-hide">
+                    <label class="layui-form-label">编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" th:value="${${classname}.${pk.attrname}}" name="${pk.attrname}" id="${pk.attrname}"
+                               autocomplete="off" placeholder="请输入id" class="layui-input">
+                    </div>
+                </div>
+
+#foreach($column in $columns)
+#if($column.isFormShow == 'true' || !$column.isFormShow)
+                <div class="layui-form-item">
+                    <label class="layui-form-label">${column.comments}</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="${column.attrname}" name="${column.attrname}" th:value="${${classname}.${column.attrname}}" #if($column.isFormShow == 'NO')lay-verify="required"#end autocomplete="off" placeholder="请输入${column.comments}"
+                               class="layui-input">
+                    </div>
+                </div>
+#end
+#end
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="${classname}-update">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['form', 'jquery','laydate'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#birthday' //指定元素
+        });
+
+        form.on('submit(${classname}-update)', function (data) {
+            $.ajax({
+                url: '/${modelName}/${pathName}/update',
+                data: JSON.stringify(data.field),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'put',
+                success: function (result) {
+                    if (result.success) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.layui.table.reload("${classname}-table");
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+<script>
+</script>
+</body>
+</html>

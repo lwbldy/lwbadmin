@@ -1,0 +1,14 @@
+
+-- 菜单SQL
+INSERT INTO sys_power ( power_id, power_name, power_code, power_type, power_url, open_type, parent_id, icon , enable)
+    VALUES( '${powerIds.get(0)}', '${comments}列表', '${modelName}:${pathName}:main', '1', '/${modelName}/${pathName}/main', '_iframe', '1', '', '1');
+
+-- 按钮SQL
+INSERT INTO sys_power ( power_id, power_name, power_code, power_type, power_url, open_type, parent_id, icon , enable)
+    VALUES( '${powerIds.get(1)}', '增加', '${modelName}:${pathName}:add', '2', '', '', '${powerIds.get(0)}', '', '1');
+
+INSERT INTO sys_power ( power_id, power_name, power_code, power_type, power_url, open_type, parent_id, icon , enable)
+    VALUES( '${powerIds.get(2)}', '修改', '${modelName}:${pathName}:edit', '2', '', '', '${powerIds.get(0)}', '', '1');
+
+INSERT INTO sys_power ( power_id, power_name, power_code, power_type, power_url, open_type, parent_id, icon , enable)
+    VALUES( '${powerIds.get(3)}', '删除', '${modelName}:${pathName}:remove', '2', '', '', '${powerIds.get(0)}', '', '1');
