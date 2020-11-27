@@ -36,21 +36,21 @@
 </body>
 
 <script type="text/html" id="student-toolbar">
-    <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+    <button sec:authorize="hasPermission('/student/student/add','student:student:add')" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
         新增
     </button>
-    <button  class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+    <button sec:authorize="hasPermission('/student/student/remove','student:student:remove')" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
         删除
     </button>
 </script>
 
 <script type="text/html" id="student-bar">
-    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
+    <button sec:authorize="hasPermission('/student/student/edit','student:student:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
 
-    <button  class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
+    <button sec:authorize="hasPermission('/student/student/remove','student:student:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
 

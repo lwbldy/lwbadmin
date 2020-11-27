@@ -1,0 +1,60 @@
+package ${package}.service.impl;
+
+import ${package}.domain.${className};
+import ${package}.mapper.${className}Mapper;
+import ${package}.service.I${className}Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.pearadmin.common.web.domain.request.PageDomain;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+@Service("${classname}Service")
+public class ${className}ServiceImpl implements I${className}Service {
+
+
+
+    @Resource
+    ${className}Mapper ${classname}Mapper;
+
+    @Override
+    public List<${className}> selectList(${className} param) {
+        return ${classname}Mapper.selectList(param);
+    }
+
+    @Override
+    public PageInfo<${className}> page(${className} param, PageDomain pageDomain) {
+        PageHelper.startPage(pageDomain.getPage(),pageDomain.getLimit());
+        List<${className}> ${classname}s = ${classname}Mapper.selectList(param);
+        return new PageInfo<>(${classname}s);
+    }
+
+    @Override
+    public Integer insert(${className} ${classname}) {
+        return ${classname}Mapper.insert(${classname});
+    }
+
+    @Override
+    public ${className} selectById(${pk.attrType} ${pk.attrname}) {
+        return ${classname}Mapper.selectById(${pk.attrname});
+    }
+
+    @Override
+    public Integer updateById(${className} ${classname}) {
+        return ${classname}Mapper.updateById(${classname});
+    }
+
+    @Override
+    public Integer deleteById(${pk.attrType} ${pk.attrname}) {
+        return ${classname}Mapper.deleteById(${pk.attrname});
+    }
+
+    @Override
+    public Integer deleteByIds(Object[] ids) {
+        return ${classname}Mapper.deleteByIds(ids);
+    }
+
+}

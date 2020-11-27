@@ -8,15 +8,15 @@
     <div class="layui-card-body">
         <form class="layui-form" action="">
             <div class="layui-form-item">
-            <label class="layui-form-label">姓名</label>
+#foreach($column in $columns)
+#if($column.isQuery == 'YES')
+            <label class="layui-form-label">${column.comments}</label>
             <div class="layui-input-inline">
-                <input type="text" name="name" placeholder="" class="layui-input">
+                <input type="text" name="${column.attrname}" placeholder="" class="layui-input">
             </div>
-            <label class="layui-form-label">IP</label>
-            <div class="layui-input-inline">
-                <input type="text" name="ip" placeholder="" class="layui-input">
-            </div>
-                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="testTable-query">
+#end
+#end
+                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="${classname}-query">
                     <i class="layui-icon layui-icon-search"></i>
                     查询
                 </button>
@@ -30,27 +30,27 @@
 </div>
 <div class="layui-card">
     <div class="layui-card-body">
-        <table id="testTable-table" lay-filter="testTable-table"></table>
+        <table id="${classname}-table" lay-filter="${classname}-table"></table>
     </div>
 </div>
 </body>
 
-<script type="text/html" id="testTable-toolbar">
-    <button sec:authorize="hasPermission('/test/testtable/add','test:testtable:add')" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+<script type="text/html" id="${classname}-toolbar">
+    <button sec:authorize="hasPermission('/${modelName}/${pathName}/add','${modelName}:${pathName}:add')" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
         新增
     </button>
-    <button sec:authorize="hasPermission('/test/testtable/remove','test:testtable:remove')" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+    <button sec:authorize="hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
         删除
     </button>
 </script>
 
-<script type="text/html" id="testTable-bar">
-    <button sec:authorize="hasPermission('/test/testtable/edit','test:testtable:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
+<script type="text/html" id="${classname}-bar">
+    <button sec:authorize="hasPermission('/${modelName}/${pathName}/edit','${modelName}:${pathName}:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
 
-    <button sec:authorize="hasPermission('/test/testtable/remove','test:testtable:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
+    <button sec:authorize="hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
 
@@ -62,33 +62,33 @@
         let form = layui.form;
         let $ = layui.jquery;
 
-        let MODULE_PATH = "/test/testtable/";
+        let MODULE_PATH = "/${modelName}/${pathName}/";
 
         let cols = [
             [
                 {type: 'checkbox'},
-                {field: 'id', title: ''},
-                {field: 'name', title: '姓名'},
-                {field: 'ip', title: 'IP'},
-                {field: 'addTime', title: '添加时间'},
-                {title: '操作', toolbar: '#testTable-bar', align: 'center', width: 120}
+#foreach($column in $columns)#if($column.isMenuShow == 'true' || !$column.isMenuShow)
+                {field: '${column.attrname}', title: '${column.comments}'},
+#end
+#end
+                {title: '操作', toolbar: '#${classname}-bar', align: 'center', width: 120}
             ]
         ]
 
         table.render({
-            elem: '#testTable-table',
+            elem: '#${classname}-table',
             url: MODULE_PATH + 'data',
             page: true,
             cols: cols,
             skin: 'line',
-            toolbar: '#testTable-toolbar',
+            toolbar: '#${classname}-toolbar',
             defaultToolbar: [{
                 layEvent: 'refresh',
                 icon: 'layui-icon-refresh',
             }, 'filter', 'print', 'exports']
         });
 
-        table.on('tool(testTable-table)', function (obj) {
+        table.on('tool(${classname}-table)', function (obj) {
             if (obj.event === 'remove') {
                 window.remove(obj);
             } else if (obj.event === 'edit') {
@@ -98,7 +98,7 @@
             }
         });
 
-        table.on('toolbar(testTable-table)', function (obj) {
+        table.on('toolbar(${classname}-table)', function (obj) {
             if (obj.event === 'add') {
                 window.add();
             } else if (obj.event === 'refresh') {
@@ -108,8 +108,8 @@
             }
         });
 
-        form.on('submit(testTable-query)', function (data) {
-            table.reload('testTable-table', {where: data.field})
+        form.on('submit(${classname}-query)', function (data) {
+            table.reload('${classname}-table', {where: data.field})
             return false;
         });
 
@@ -179,7 +179,7 @@
                         layer.close(loading);
                         if (result.success) {
                             layer.msg(result.msg, {icon: 1, time: 1000}, function () {
-                                table.reload('testTable-table');
+                                table.reload('${classname}-table');
                             });
                         } else {
                             layer.msg(result.msg, {icon: 2, time: 1000});
@@ -190,7 +190,7 @@
         }
 
         window.refresh = function () {
-            table.reload('testTable-table');
+            table.reload('${classname}-table');
         }
     })
 </script>

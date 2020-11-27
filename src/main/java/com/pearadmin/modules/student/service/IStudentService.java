@@ -6,10 +6,10 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.github.pagehelper.PageInfo;
 
 /**
- * 学生表 service
+ * 学生 service
  * @author lwb
  * @email lwbldy@163.com
- * @date 2020-11-16 16:15:35
+ * @date 2020-11-25 11:30:40
  */
 public interface IStudentService {
 

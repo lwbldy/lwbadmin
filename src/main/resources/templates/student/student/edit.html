@@ -12,43 +12,36 @@
                 <div class="layui-form-item layui-hide">
                     <label class="layui-form-label">编号</label>
                     <div class="layui-input-block">
-                        <input type="text" th:value="id" name="id" id="id"
+                        <input type="text" th:value="${student.id}" name="id" id="id"
                                autocomplete="off" placeholder="请输入id" class="layui-input">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label"></label>
-                    <div class="layui-input-block">
-                        <input type="text" id="id" name="id" th:value="id"  autocomplete="off" placeholder="请输入"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" id="userName" name="userName" th:value="userName"  autocomplete="off" placeholder="请输入用户名"
+                        <input type="text" id="userName" name="userName" th:value="${student.userName}"  autocomplete="off" placeholder="请输入用户名"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">性别</label>
                     <div class="layui-input-block">
-                        <input type="text" id="sex" name="sex" th:value="sex"  autocomplete="off" placeholder="请输入性别"
+                        <input type="text" id="sex" name="sex" th:value="${student.sex}"  autocomplete="off" placeholder="请输入性别"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">年龄</label>
                     <div class="layui-input-block">
-                        <input type="text" id="age" name="age" th:value="age"  autocomplete="off" placeholder="请输入年龄"
+                        <input type="text" id="age" name="age" th:value="${student.age}"  autocomplete="off" placeholder="请输入年龄"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">生日</label>
                     <div class="layui-input-block">
-                        <input type="text" id="birthday" name="birthday" th:value="birthday"  autocomplete="off" placeholder="请输入生日"
+                        <input type="text" id="birthday" name="birthday" th:value="${student.birthday}"  autocomplete="off" placeholder="请输入生日"
                                class="layui-input">
                     </div>
                 </div>

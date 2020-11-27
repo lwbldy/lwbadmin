@@ -50,6 +50,7 @@
         let form = layui.form;
         let $ = layui.jquery;
         var laydate = layui.laydate;
+        // 日期选择
         laydate.render({
             elem: '#birthday' //指定元素
         });

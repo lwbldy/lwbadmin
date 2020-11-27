@@ -28,7 +28,7 @@ public interface StudentMapper {
      * @param id
      * @return
      */
-    Student selectById(@Param("id" ) Integer id);
+    Student selectById(@Param("id") Integer id);
 
 
     /**
@@ -44,7 +44,7 @@ public interface StudentMapper {
      * @param id
      * @return
      */
-    Integer deleteById(@Param("id" ) Integer id);
+    Integer deleteById(@Param("id") Integer id);
 
 
     /**

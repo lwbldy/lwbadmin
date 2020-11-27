@@ -1,18 +1,18 @@
-package com.pearadmin.modules.test.mapper;
+package ${package}.mapper;
 
-import com.pearadmin.modules.test.domain.TestTable;
+import ${package}.domain.${className};
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface TestTableMapper {
+public interface ${className}Mapper {
 
     /**
      * 按条件查询数据
      * @param param
      * @return
      */
-    List<TestTable> selectList(TestTable param);
+    List<${className}> selectList(${className} param);
 
 
     /**
@@ -20,7 +20,7 @@ public interface TestTableMapper {
      * @param param
      * @return 执行结果
      */
-    Integer insert(TestTable param);
+    Integer insert(${className} param);
 
 
     /**
@@ -28,7 +28,7 @@ public interface TestTableMapper {
      * @param id
      * @return
      */
-    TestTable selectById(@Param("id") Integer id);
+    ${className} selectById(@Param("${pk.attrname}") ${pk.attrType} ${pk.attrname});
 
 
     /**
@@ -36,7 +36,7 @@ public interface TestTableMapper {
      * @param param
      * @return
      */
-    Integer updateById(TestTable param);
+    Integer updateById(${className} param);
 
 
     /**
@@ -44,7 +44,7 @@ public interface TestTableMapper {
      * @param id
      * @return
      */
-    Integer deleteById(@Param("id") Integer id);
+    Integer deleteById(@Param("${pk.attrname}") ${pk.attrType} ${pk.attrname});
 
 
     /**

@@ -32,17 +32,16 @@ public class GenUtils {
      */
     public static List<String> getTemplates(){
         List<String> templates = new ArrayList<String>();
-        templates.add("template/Entity.java.vm");
-        templates.add("template/Mapper.java.vm");
-        templates.add("template/Mapper.xml.vm");
-        templates.add("template/Service.java.vm");
-        templates.add("template/ServiceImpl.java.vm");
-        templates.add("template/Controller.java.vm");
-
-        templates.add("template/main.html.vm");
-        templates.add("template/edit.html.vm");
-        templates.add("template/add.html.vm");
-        templates.add("template/menu.sql.vm");
+        templates.add("vm/Entity.java.vm");
+        templates.add("vm/Mapper.java.vm");
+        templates.add("vm/Mapper.xml.vm");
+        templates.add("vm/Service.java.vm");
+        templates.add("vm/ServiceImpl.java.vm");
+        templates.add("vm/Controller.java.vm");
+        templates.add("vm/main.html.vm");
+        templates.add("vm/edit.html.vm");
+        templates.add("vm/add.html.vm");
+        templates.add("vm/menu.sql.vm");
         return templates;
     }
 
@@ -186,6 +185,11 @@ public class GenUtils {
         map.put("author", tableConfVO.getAuthor());
         map.put("modelName", tableConfVO.getModelName());
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
+
+        map.put("powerId1", tableConfVO.getPowerId1());
+        map.put("powerId2", tableConfVO.getPowerId2());
+        map.put("powerId3", tableConfVO.getPowerId3());
+        map.put("powerId4", tableConfVO.getPowerId4());
 
         VelocityContext context = new VelocityContext(map);
 

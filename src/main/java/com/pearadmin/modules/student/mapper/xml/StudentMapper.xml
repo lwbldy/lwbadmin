@@ -14,7 +14,7 @@
         select * from student
         <where>
         <if test="userName!=null and userName!=''">
-            and user_name like "%"#{userName}"%"
+            and user_name like CONCAT('%',#{userName}, '%')
         </if>
     
         <if test="sex!=null and sex!=''">
@@ -52,7 +52,7 @@
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="userName!=null">
-                #{user_name},
+                #{userName},
             </if>
             <if test="sex!=null">
                 #{sex},
@@ -70,18 +70,18 @@
     <update id="updateById" parameterType="Student">
         update student
         <set>
-    <if test="userName!=null and userName!=''">
-        user_name = #{userName},
-    </if>
-    <if test="sex!=null and sex!=''">
-        sex = #{sex},
-    </if>
-    <if test="age!=null and age!=''">
-        age = #{age},
-    </if>
-    <if test="birthday!=null and birthday!=''">
-        birthday = #{birthday},
-    </if>
+            <if test="userName!=null and userName!=''">
+                user_name = #{userName},
+            </if>
+            <if test="sex!=null and sex!=''">
+                sex = #{sex},
+            </if>
+            <if test="age!=null and age!=''">
+                age = #{age},
+            </if>
+            <if test="birthday!=null">
+                birthday = #{birthday},
+            </if>
         </set>
         where id = #{id}
     </update>

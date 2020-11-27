@@ -8,33 +8,23 @@
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
+#foreach($column in $columns)
+#if($column.isFormShow == 'true' || !$column.isFormShow)
                 <div class="layui-form-item">
-                    <label class="layui-form-label">姓名</label>
+                    <label class="layui-form-label">${column.comments}</label>
                     <div class="layui-input-block">
-                        <input type="text" id="name" name="name"  autocomplete="off" placeholder="请输入姓名"
+                        <input type="text" id="${column.attrname}" name="${column.attrname}" #if($column.isFormShow == 'NO')lay-verify="required"#end autocomplete="off" placeholder="请输入${column.comments}"
                                class="layui-input">
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">IP</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="ip" name="ip"  autocomplete="off" placeholder="请输入IP"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">添加时间</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="addTime" name="addTime"  autocomplete="off" placeholder="请输入添加时间"
-                               class="layui-input">
-                    </div>
-                </div>
+#end
+#end
             </div>
         </div>
     </div>
     <div class="bottom">
         <div class="button-container">
-            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="testTable-save">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="${classname}-save">
                 <i class="layui-icon layui-icon-ok"></i>
                 提交
             </button>
@@ -55,9 +45,9 @@
             elem: '#birthday' //指定元素
         });
 
-        form.on('submit(testTable-save)', function (data) {
+        form.on('submit(${classname}-save)', function (data) {
             $.ajax({
-                url: '/test/testtable/save',
+                url: '/${modelName}/${pathName}/save',
                 data: JSON.stringify(data.field),
                 dataType: 'json',
                 contentType: 'application/json',
@@ -66,7 +56,7 @@
                     if (result.success) {
                         layer.msg(result.msg, {icon: 1, time: 1000}, function () {
                             parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-                            parent.layui.table.reload("testTable-table");
+                            parent.layui.table.reload("${classname}-table");
                         });
                     } else {
                         layer.msg(result.msg, {icon: 2, time: 1000});

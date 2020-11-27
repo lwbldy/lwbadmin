@@ -51,12 +51,10 @@ public class SysGeneratorServiceImpl implements SysGeneratorService {
         ZipOutputStream zip = new ZipOutputStream(outputStream);
 
         //生成权限id
-        String[] powerIds = new String[4];
-        table.setPowerIds(powerIds);
-        powerIds[0] = SequenceUtil.makeStringId();
-        powerIds[1] = SequenceUtil.makeStringId();
-        powerIds[2] = SequenceUtil.makeStringId();
-        powerIds[3] = SequenceUtil.makeStringId();
+        table.setPowerId1(SequenceUtil.makeStringId());
+        table.setPowerId2(SequenceUtil.makeStringId());
+        table.setPowerId3(SequenceUtil.makeStringId());
+        table.setPowerId4(SequenceUtil.makeStringId());
 
 
         GenUtils.generatorCode(table,zip);

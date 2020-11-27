@@ -42,10 +42,44 @@ public class TableConfVO {
     @ApiModelProperty(value = "表的列名(不包含主键)")
     private List<ColumnConfVO> columns;
 
-    @ApiModelProperty(value = "菜单中自动生成的id")
-    private String[] powerIds;
+//    private String[] powerIds;
 
+    private String powerId1;
+    private String powerId2;
+    private String powerId3;
+    private String powerId4;
 
+    public String getPowerId1() {
+        return powerId1;
+    }
+
+    public void setPowerId1(String powerId1) {
+        this.powerId1 = powerId1;
+    }
+
+    public String getPowerId2() {
+        return powerId2;
+    }
+
+    public void setPowerId2(String powerId2) {
+        this.powerId2 = powerId2;
+    }
+
+    public String getPowerId3() {
+        return powerId3;
+    }
+
+    public void setPowerId3(String powerId3) {
+        this.powerId3 = powerId3;
+    }
+
+    public String getPowerId4() {
+        return powerId4;
+    }
+
+    public void setPowerId4(String powerId4) {
+        this.powerId4 = powerId4;
+    }
 
     public String getTableName() {
         return tableName;
@@ -143,11 +177,4 @@ public class TableConfVO {
         this.pathName = pathName;
     }
 
-    public String[] getPowerIds() {
-        return powerIds;
-    }
-
-    public void setPowerIds(String[] powerIds) {
-        this.powerIds = powerIds;
-    }
 }
