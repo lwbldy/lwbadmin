@@ -6,6 +6,32 @@
 </head>
 <body class="pear-container">
 <div>
+
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-xs6 layui-col-md3">
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">cpu使用率</div>
+                <div class="">
+                    <div class="layui-row layui-col-space5">
+                        <div id="cpusyl" style="height: 90px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-xs6 layui-col-md3">
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">cpu使用率</div>
+                <div class="">
+                    <div class="layui-row layui-col-space5">
+                        <button lay-event="add" >更新</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <div class="layui-row layui-col-space10">
         <div class="layui-col-xs6 layui-col-md3">
             <div class="layui-card top-panel">
@@ -305,8 +331,24 @@
             regulator: 50
         })
 
-        var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+        var cpusylBt = echarts.init(document.getElementById('cpusyl'), 'walden');
+        var cpu_option = {
+            series: [
+                {
+                    name: 'cpu使用率',
+                    type: 'pie',
+                    radius: ['60%', '70%'],
+                    data: [
+                        {value: 335, name: '使用'},
+                        {value: 310, name: '空闲'}
+                    ]
+                }
+            ]
+        };
 
+        cpusylBt.setOption(cpu_option);
+
+        var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
         var option = {
             tooltip: {
                 trigger: 'axis'
@@ -380,6 +422,7 @@
 
         window.onresize = function () {
             echartsRecords.resize();
+            cpusylBt.resize();
         }
 
     });

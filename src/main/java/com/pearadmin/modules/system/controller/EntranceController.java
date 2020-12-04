@@ -1,7 +1,12 @@
 package com.pearadmin.modules.system.controller;
 
+import com.pearadmin.common.plugins.system.service.SystemInfoService;
+import com.pearadmin.common.plugins.system.vo.SystemInfo;
 import com.pearadmin.common.tools.security.SecurityUtil;
+import com.pearadmin.common.web.domain.response.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.pearadmin.common.plugins.logging.annotation.Logging;
@@ -11,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pearadmin.modules.system.domain.SysUser;
 import org.springframework.ui.Model;
 
+import javax.annotation.Resource;
+
 /**
  * Describe: 入 口 控 制 器
  * Author: 就 眠 仪 式
@@ -19,6 +26,9 @@ import org.springframework.ui.Model;
 @RestController
 @RequestMapping
 public class EntranceController extends BaseController {
+
+    @Autowired
+    SystemInfoService systemInfoService;
 
     /**
      * Describe: 获取登录视图
@@ -54,6 +64,15 @@ public class EntranceController extends BaseController {
     {
         return JumpPage("console/console");
     }
+
+    @PostMapping("console")
+    public Result console()
+    {
+        SystemInfo systemInfo = systemInfoService.getSystemInfo();
+        return success(systemInfo);
+    }
+
+
 
     /**
      * Describe:无权限页面
