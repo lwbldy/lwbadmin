@@ -7,7 +7,7 @@ import lombok.Data;
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  * */
-@Data
+//@Data
 public class PageDomain {
 
     /**
@@ -34,4 +34,27 @@ public class PageDomain {
         return this.page*this.limit;
     }
 
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    @Override
+    public String toString() {
+        return "PageDomain{" +
+                "page=" + page +
+                ", limit=" + limit +
+                '}';
+    }
 }

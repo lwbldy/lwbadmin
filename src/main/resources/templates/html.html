@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <button th:text="#{System.title}">111</button>
+    <button th:text="#{doc.my.name}"></button>
+
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" th:href="@{/html(lang=es_ES)}">中文</a>
+        <a class="dropdown-item" th:href="@{/html(lang=en_US)}">英语</a>
+    </div>
+
+</body>
+</html>

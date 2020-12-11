@@ -42,7 +42,7 @@ public class ${className}Controller extends BaseController {
 
 
     @GetMapping("data")
-    @ApiOperation(value="获取角色列表数据")
+    @ApiOperation(value="获取列表数据")
     @PreAuthorize("hasPermission('/${modelName}/${pathName}/main','${modelName}:${pathName}:main')")
     public ResultTable data(PageDomain pageDomain, ${className} param){
         PageInfo<${className}> pageInfo = ${classname}Service.page(param,pageDomain);

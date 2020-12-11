@@ -17,3 +17,41 @@
     <script th:src="@{/component/myCommon.js}" charset="utf-8"></script>
 </div>
 
+<head th:fragment=html_header(title)>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="author" content="Yingruan">
+    <meta name="keywords" content="卫华口腔,口腔,正畸,种植,牙套,牙齿矫正,牙齿种植,拔智齿,窝沟封闭,涂氟,口腔保健,口腔预防,高端诊所,看牙好,洗牙">
+    <meta name="description" content="卫华口腔,口腔,正畸,种植,牙套,牙齿矫正,牙齿种植,拔智齿,窝沟封闭,涂氟,口腔保健,口腔预防,高端诊所,看牙好,洗牙">
+    <title th:text="${title}">首页 - 卫华口腔</title>
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,user-scalable=0"
+          name="viewport">
+    <script>if (/*@cc_on!@*/false && document.documentMode === 10) document.documentElement.className += ' ie10';</script>
+    <script>if (/*@cc_on!@*/false && document.documentMode === 11) document.documentElement.className += ' ie11';</script>
+
+    <link th:href="@{/static/css/common.css}" rel="stylesheet">
+    <link th:href="@{/static/css/style.css}" rel="stylesheet">
+    <script>
+        var ROOT = "";
+    </script>
+    <script th:src="@{/static/js/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{/static/js/ratio-img.js}"></script>
+    <script th:src="@{/static/js/placeholder.js}"></script>
+    <script th:src="@{/static/js/public.js}"></script>
+    <script th:src="@{/static/js/layer.js}"></script>
+    <script th:src="@{/static/js/laypage.js}"></script>
+    <!--[if lt IE 9]>
+    <script th:src="@{//js/respond.src.js}"></script>
+    <script th:src="@{//js/html5.js}"></script>
+    <script th:src="@{//js/jquery.pseudo.js}"></script>
+    <![endif]-->
+    <!--页面内容部调用-->
+    <!--页面内容部调用-->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/swiper2.css}">
+    <script th:src="@{/static/js/swiper2.js}"></script>
+    <script th:src="@{/static/js/swiper_list2.js}"></script>
+</head>
+

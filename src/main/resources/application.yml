@@ -12,6 +12,8 @@ spring:
   activiti:
     # 检 查 流 程 定 义 文 件
     check-process-definitions: false
+  messages:
+    basename: i18n/message
 
 # mybatis 配 置
 mybatis:
@@ -31,6 +33,9 @@ pear:
       - /admin/** # 开放 静态资源
       - /component/** # 开放 静态资源
       - /favicon.ico # 开放 Logo
+      - /html/**
+      - /static/**
+      - /
   resource:
     file_path: D:/home/upload/
 # Page Helper

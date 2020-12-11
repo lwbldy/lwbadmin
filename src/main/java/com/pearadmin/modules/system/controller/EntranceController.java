@@ -30,6 +30,7 @@ public class EntranceController extends BaseController {
     @Autowired
     SystemInfoService systemInfoService;
 
+
     /**
      * Describe: 获取登录视图
      * Param: ModelAndView

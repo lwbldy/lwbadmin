@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pearadmin.modules.cms.mapper.ClinicMapper">
+
+    <resultMap id="ClinicMap" type="Clinic">
+        <id column="id" property="id"></id>
+        <result column="clinic_name" property="clinicName"></result>
+        <result column="telephone" property="telephone"></result>
+        <result column="address" property="address"></result>
+        <result column="map" property="map"></result>
+        <result column="opening_hours" property="openingHours"></result>
+        <result column="details" property="details"></result>
+        <result column="region" property="region"></result>
+    </resultMap>
+
+    <select id="selectList" resultMap="ClinicMap">
+        select * from clinic
+        <where>
+        </where>
+
+        order by id desc
+
+    </select>
+
+    <!-- 根据 Id 查询角色-->
+    <select id="selectById" parameterType="int" resultMap="ClinicMap">
+        select * from clinic where id = #{id}
+    </select>
+
+
+    <!-- 新增 数据 -->
+    <insert id="insert" parameterType="Clinic">
+        insert into clinic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="clinicName!=null">
+                clinic_name,
+            </if>
+            <if test="telephone!=null">
+                telephone,
+            </if>
+            <if test="address!=null">
+                address,
+            </if>
+            <if test="map!=null">
+                map,
+            </if>
+            <if test="openingHours!=null">
+                opening_hours,
+            </if>
+            <if test="details!=null">
+                details,
+            </if>
+            <if test="region!=null">
+                region,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="clinicName!=null">
+                #{clinicName},
+            </if>
+            <if test="telephone!=null">
+                #{telephone},
+            </if>
+            <if test="address!=null">
+                #{address},
+            </if>
+            <if test="map!=null">
+                #{map},
+            </if>
+            <if test="openingHours!=null">
+                #{openingHours},
+            </if>
+            <if test="details!=null">
+                #{details},
+            </if>
+            <if test="region!=null">
+                #{region},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据 Id 修改角色数据 -->
+    <update id="updateById" parameterType="Clinic">
+        update clinic
+        <set>
+    <if test="clinicName!=null and clinicName!=''">
+        clinic_name = #{clinicName},
+    </if>
+    <if test="telephone!=null and telephone!=''">
+        telephone = #{telephone},
+    </if>
+    <if test="address!=null and address!=''">
+        address = #{address},
+    </if>
+    <if test="map!=null and map!=''">
+        map = #{map},
+    </if>
+    <if test="openingHours!=null and openingHours!=''">
+        opening_hours = #{openingHours},
+    </if>
+    <if test="details!=null and details!=''">
+        details = #{details},
+    </if>
+    <if test="region!=null and region!=''">
+        region = #{region},
+    </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据 Id 删除 -->
+    <delete id="deleteById" parameterType="int">
+        delete from clinic where id = #{id}
+    </delete>
+
+    <!-- 根据 Id 批量删除 -->
+    <delete id="deleteByIds" parameterType="int">
+        delete from clinic where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
