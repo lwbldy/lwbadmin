@@ -4,7 +4,7 @@
 <!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
 <!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
 <!--[if (gt IE 9) | !(IE)]><!-->
-<html xmlns:th="http://www.thymeleaf.org">
+    <html xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
 <head >
     <meta charset="utf-8">
@@ -95,128 +95,17 @@
                     </div>
                     <div class="swiper-container J_getmenu">
                         <ul class="cf swiper-wrapper f-16">
-                            <li class="swiper-slide on swiper-slide-visible swiper-slide-active">
-                                <a href="/dental/dental.html?c1=502" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929b03079389c00c895.png">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929346b460f4dd29b8b.png" style="height: 20px;">
-                                            </i>
-                                            保健预防            </span>
+                            <li th:each="region,regionStat:${regionList}"  class="swiper-slide  swiper-slide-visible" th:classappend="${#strings.trim(param.region) == region.dataValue} ? 'on swiper-slide-active' : ''">
+                                <a th:href="@{/html/clinic(region=${region.dataValue})}" target="_self">
+                                    <span>
+                                        <i>
+                                            <img class="ratio-img" data-ratio="1" onerror="lod(this)" th:src="@{/static/image/1492242929b03079389c00c895.png}">
+                                            <img class="ratio-img" data-ratio="1" onerror="lod(this)" th:src="@{/static/image/1492242929346b460f4dd29b8b.png}" style="height: 20px;">
+                                        </i>
+                                        <label th:text="${region.dataLabel}">保健预防</label>
+                                    </span>
                                 </a>
                             </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=501" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929c19fee5484a95859.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/14922429290ef68e94f66739d5.png">
-                                            </i>
-                                            牙痛            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=500" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929b36d6e532b78125e.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224292914c34f5872df00dd.png">
-                                            </i>
-                                            牙齿损伤            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=501" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929c19fee5484a95859.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/14922429290ef68e94f66739d5.png">
-                                            </i>
-                                            牙痛            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=500" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929b36d6e532b78125e.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224292914c34f5872df00dd.png">
-                                            </i>
-                                            牙齿损伤            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=501" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929c19fee5484a95859.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/14922429290ef68e94f66739d5.png">
-                                            </i>
-                                            牙痛            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=500" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929b36d6e532b78125e.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224292914c34f5872df00dd.png">
-                                            </i>
-                                            牙齿损伤            </span>
-                                </a>
-                            </li>
-
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=501" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929c19fee5484a95859.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/14922429290ef68e94f66739d5.png">
-                                            </i>
-                                            牙痛            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=500" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929b36d6e532b78125e.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224292914c34f5872df00dd.png">
-                                            </i>
-                                            牙齿损伤            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=501" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929c19fee5484a95859.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/14922429290ef68e94f66739d5.png">
-                                            </i>
-                                            牙痛            </span>
-                                </a>
-                            </li>
-
-                            <li class="swiper-slide swiper-slide-visible" style="width: 163.682px; height: 61px;">
-                                <a href="/dental/dental.html?c1=500" target="_self">
-                                        <span>
-                                            <i>
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/1492242929b36d6e532b78125e.png" style="height: 20px;">
-                                                <img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224292914c34f5872df00dd.png">
-                                            </i>
-                                            牙齿损伤            </span>
-                                </a>
-                            </li>
-
                         </ul>
                     </div>
                 </div>
@@ -232,129 +121,31 @@
 
                 <div class="list-box J_getlist">
                     <ul class="cf putong">
-                        <li>
+
+                        <li th:each="clinic,clinciStat:${pageInfo.list}">
                             <div class="list">
                                 <div class="content-box">
                                     <div class="img-box">
-                                        <a href="/content/details_11_527.html" target="_self"><img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;"></a>
+                                        <a href="/content/details_11_527.html" target="_self">
+                                            <img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)"
+                                                 src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;">
+                                        </a>
                                     </div>
 
                                     <div class="content">
-                                        <a href="/content/details_11_527.html" target="_self"><p class="title f-16 c333 f-bold ellipsis">洗牙常见误区（一）</p></a>
-                                        <p class="text f-14 ellipsis-2">
-                                            您也有以下误区吗？                    </p>
+                                        <a href="/content/details_2_8.html">
+                                            <p class="title f-20 c333" th:text="${clinic.clinicName}"></p>
+                                        </a>
+                                        <p class="text c666 f-14">
+                                            <span class="ellipsis-2" th:text="'地址：'+${clinic.address}">地址：北京朝阳区建国门外大街19号国际大厦A座205室</span>
+                                            <span th:text="'电话：'+${clinic.telephone}">电话：010-6500 6473</span>
+                                        </p>
                                         <div class="btn-box">
-                                            <a class="f-14" href="/content/details_11_527.html" target="_self">了解详情 &gt;</a>
+                                            <a class="f-14 c333" href="/content/details_2_8.html">了解详情 &gt;</a>
+                                            <a href="/content/details_2_8.html"><img class="ratio-img" data-ratio="0.8378378378378378" onerror="lod(this)" src="/images/clinic_icon08.png" style="height: 31px;"></a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list">
-                                <div class="content-box">
-                                    <div class="img-box">
-                                        <a href="/content/details_11_527.html" target="_self"><img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;"></a>
                                     </div>
 
-                                    <div class="content">
-                                        <a href="/content/details_11_527.html" target="_self"><p class="title f-16 c333 f-bold ellipsis">洗牙常见误区（一）</p></a>
-                                        <p class="text f-14 ellipsis-2">
-                                            您也有以下误区吗？                    </p>
-                                        <div class="btn-box">
-                                            <a class="f-14" href="/content/details_11_527.html" target="_self">了解详情 &gt;</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list">
-                                <div class="content-box">
-                                    <div class="img-box">
-                                        <a href="/content/details_11_527.html" target="_self"><img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;"></a>
-                                    </div>
-
-                                    <div class="content">
-                                        <a href="/content/details_11_527.html" target="_self"><p class="title f-16 c333 f-bold ellipsis">洗牙常见误区（一）</p></a>
-                                        <p class="text f-14 ellipsis-2">
-                                            您也有以下误区吗？                    </p>
-                                        <div class="btn-box">
-                                            <a class="f-14" href="/content/details_11_527.html" target="_self">了解详情 &gt;</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list">
-                                <div class="content-box">
-                                    <div class="img-box">
-                                        <a href="/content/details_11_527.html" target="_self"><img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;"></a>
-                                    </div>
-
-                                    <div class="content">
-                                        <a href="/content/details_11_527.html" target="_self"><p class="title f-16 c333 f-bold ellipsis">洗牙常见误区（一）</p></a>
-                                        <p class="text f-14 ellipsis-2">
-                                            您也有以下误区吗？                    </p>
-                                        <div class="btn-box">
-                                            <a class="f-14" href="/content/details_11_527.html" target="_self">了解详情 &gt;</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list">
-                                <div class="content-box">
-                                    <div class="img-box">
-                                        <a href="/content/details_11_527.html" target="_self"><img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;"></a>
-                                    </div>
-
-                                    <div class="content">
-                                        <a href="/content/details_11_527.html" target="_self"><p class="title f-16 c333 f-bold ellipsis">洗牙常见误区（一）</p></a>
-                                        <p class="text f-14 ellipsis-2">
-                                            您也有以下误区吗？                    </p>
-                                        <div class="btn-box">
-                                            <a class="f-14" href="/content/details_11_527.html" target="_self">了解详情 &gt;</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list">
-                                <div class="content-box">
-                                    <div class="img-box">
-                                        <a href="/content/details_11_527.html" target="_self"><img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;"></a>
-                                    </div>
-
-                                    <div class="content">
-                                        <a href="/content/details_11_527.html" target="_self"><p class="title f-16 c333 f-bold ellipsis">洗牙常见误区（一）</p></a>
-                                        <p class="text f-14 ellipsis-2">
-                                            您也有以下误区吗？                    </p>
-                                        <div class="btn-box">
-                                            <a class="f-14" href="/content/details_11_527.html" target="_self">了解详情 &gt;</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="list">
-                                <div class="content-box">
-                                    <div class="img-box">
-                                        <a href="/content/details_11_527.html" target="_self"><img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;"></a>
-                                    </div>
-
-                                    <div class="content">
-                                        <a href="/content/details_11_527.html" target="_self"><p class="title f-16 c333 f-bold ellipsis">洗牙常见误区（一）</p></a>
-                                        <p class="text f-14 ellipsis-2">
-                                            您也有以下误区吗？                    </p>
-                                        <div class="btn-box">
-                                            <a class="f-14" href="/content/details_11_527.html" target="_self">了解详情 &gt;</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </li>

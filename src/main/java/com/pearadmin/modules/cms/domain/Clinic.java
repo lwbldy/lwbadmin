@@ -31,6 +31,8 @@ public class Clinic implements Serializable {
     private String details;
         //地区
     private String region;
+    // 主图
+    private String pic;
     
         /**
      * 设置：
@@ -128,4 +130,12 @@ public class Clinic implements Serializable {
     public String getRegion() {
         return region;
     }
+
+    public String getPic() {
+        return pic;
     }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+}

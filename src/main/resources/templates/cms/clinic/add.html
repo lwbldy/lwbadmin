@@ -37,6 +37,17 @@
                                class="layui-input">
                     </div>
                 </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">封面图</label>
+                    <div class="layui-input-block">
+                        <button class="pear-btn pear-btn-primary pear-btn-md" type="button" lay-event="add" id="addFile">
+                            <i class="layui-icon layui-icon-add-1"></i>
+                            上传
+                        </button>
+                    </div>
+                </div>
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">地图信息</label>
                     <div class="layui-input-block">
@@ -57,6 +68,8 @@
                         <textarea type="text" id="details" name="details" placeholder="请输入简介" class="layui-textarea"></textarea>
                     </div>
                 </div>
+
+                <input type="hidden" id="pic" name="pic">
 
             </div>
         </div>
@@ -84,6 +97,16 @@
             elem: '#birthday' //指定元素
         });
 
+        $("#addFile").on('click', function () {
+            layer.open({
+                type: 2,
+                title: '新增',
+                shade: 0.1,
+                area: ['500px', '400px'],
+                content: '/system/file/add'
+            });
+        })
+
         form.on('submit(clinic-save)', function (data) {
             $.ajax({
                 url: '/cms/clinic/save',
@@ -104,7 +127,13 @@
             })
             return false;
         });
+
     })
+
+    function perId( id ){
+        document.getElementById("pic").value=id;
+    }
+
 </script>
 <script>
 </script>

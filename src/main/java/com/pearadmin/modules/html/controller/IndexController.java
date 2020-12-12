@@ -43,9 +43,12 @@ public class IndexController extends BaseController {
         PageInfo<Clinic> pageInfo = clinicService.page(param,pageDomain);
         modelAndView.addObject("pageInfo",pageInfo);
 
+
         SysDictData sysDictData = new SysDictData();
         sysDictData.setTypeCode("region");
         modelAndView.addObject("regionList",sysDictDataService.list(sysDictData));
+
+        modelAndView.addObject("param",param);
 
         modelAndView.setViewName("html/clinic/index");
 

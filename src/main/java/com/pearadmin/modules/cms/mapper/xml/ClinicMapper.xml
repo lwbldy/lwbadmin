@@ -11,15 +11,16 @@
         <result column="opening_hours" property="openingHours"></result>
         <result column="details" property="details"></result>
         <result column="region" property="region"></result>
+        <result column="pic" property="pic"></result>
     </resultMap>
 
     <select id="selectList" resultMap="ClinicMap">
         select * from clinic
         <where>
+            <if test="clinicName!=null">clinic_name=#{clinicName},</if>
+            <if test="region!=null">region=#{region}</if>
         </where>
-
         order by id desc
-
     </select>
 
     <!-- 根据 Id 查询角色-->
@@ -53,6 +54,9 @@
             <if test="region!=null">
                 region,
             </if>
+            <if test="pic!=null">
+                pic,
+            </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="clinicName!=null">
@@ -75,6 +79,9 @@
             </if>
             <if test="region!=null">
                 #{region},
+            </if>
+            <if test="pic!=null">
+                #{pic},
             </if>
         </trim>
     </insert>
@@ -104,6 +111,9 @@
     <if test="region!=null and region!=''">
         region = #{region},
     </if>
+            <if test="pic!=null and pic!=''">
+                pic = #{pic},
+            </if>
         </set>
         where id = #{id}
     </update>
