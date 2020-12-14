@@ -45,6 +45,7 @@
                             <i class="layui-icon layui-icon-add-1"></i>
                             上传
                         </button>
+                        <img id="pic_img" src="/system/file/download/1338309847401103360" width="50px" style="display: none"/>
                     </div>
                 </div>
 
@@ -131,11 +132,12 @@
     })
 
     function perId( id ){
+        document.getElementById("pic_img").src = "/system/file/download/"+id;
+        document.getElementById("pic_img").style.display="inline-block"
         document.getElementById("pic").value=id;
     }
 
 </script>
-<script>
-</script>
+
 </body>
 </html>

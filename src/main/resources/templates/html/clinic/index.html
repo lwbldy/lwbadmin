@@ -127,8 +127,8 @@
                                 <div class="content-box">
                                     <div class="img-box">
                                         <a href="/content/details_11_527.html" target="_self">
-                                            <img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)"
-                                                 src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170415/149224385875165d0fd191105e.jpg" style="height: 302px;">
+                                            <img class="ratio-img" data-ratio="0.7514619883040936"
+                                                 th:src="@{'/system/file/download/'+${clinic.pic}}" style="height: 302px;">
                                         </a>
                                     </div>
 
@@ -166,18 +166,25 @@
 
                 <div class="page-box">
                     <div class="page f-20" id="page5">
-                        <div name="laypage1.3" class="laypage_main laypageskin_default" id="laypage_0">
-                            <span class="laypage_curr">1</span>
-                            <a href="javascript:;" data-page="2"  target="_self">2</a>
-                            <a href="javascript:;" data-page="3" target="_self">3</a>
-                            <a href="javascript:;" data-page="4" target="_self">4</a>
-                            <a href="javascript:;" data-page="5" target="_self">5</a>
-                            <a href="javascript:;" class="laypage_next"  data-page="2" target="_self"> </a>
+                        <div class="laypage_main laypageskin_default">
+
+<!--                            <a href="javascript:;" target="_self">上一页</a>-->
+<!--                            <a href="javascript:;"  target="_self">下一页</a>-->
+                            <a
+                                    th:if="${pageInfo.hasPreviousPage}"
+                                    th:href="@{/html/clinic(page=${pageInfo.prePage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_prev" > </a>
+                            <a
+                                    th:if="${pageInfo.hasNextPage}"
+                                    th:href="@{/html/clinic(page=${pageInfo.nextPage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_next" > </a>
                             <span class="laypage_total"><label>到第</label>
-                                    <input type="number" min="1"onkeyup="this.value=this.value.replace(/\D/, '');" class="laypage_skip">
-                                    <label>页</label>
-                                    <button type="button" class="laypage_btn">确定</button>
-                                </span>
+                                <input type="number"
+                                       min="1"
+                                       id="tz"
+                                       th:value="${pageInfo.pageNum}"
+                                       class="laypage_skip">
+                                <label>页</label>
+                                <button type="button" class="laypage_btn" onclick="tz()">确定</button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -206,6 +213,13 @@
 <script>
     imgratio();
     getMuen();
+
+    function tz(){
+        var val = document.getElementById("tz").value;
+        var url = "/html/clinic?region=[[${param.region}]]&page="+val;
+        window.location.href=url;
+    }
+
 </script>
 
 </body>
