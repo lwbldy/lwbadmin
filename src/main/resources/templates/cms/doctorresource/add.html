@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('新增')"/>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="main-container">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="username" name="username"  autocomplete="off" placeholder="请输入姓名"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">职位</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="job" name="job"  autocomplete="off" placeholder="请输入职位"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学位</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="degree" name="degree"  autocomplete="off" placeholder="请输入学位"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">毕业学校</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="school" name="school"  autocomplete="off" placeholder="请输入毕业学校"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所在诊所</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="clinic" name="clinic"  autocomplete="off" placeholder="请输入所在诊所"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出诊时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="visitTime" name="visitTime"  autocomplete="off" placeholder="请输入出诊时间"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">头像</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="pic" name="pic"  autocomplete="off" placeholder="请输入头像"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">擅长</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="good" name="good"  autocomplete="off" placeholder="请输入擅长"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">年龄</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="age" name="age"  autocomplete="off" placeholder="请输入年龄"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">资历</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="seniority" name="seniority"  autocomplete="off" placeholder="请输入资历"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">医院经历</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="clinicSeniority" name="clinicSeniority"  autocomplete="off" placeholder="请输入医院经历"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">更多</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="outher" name="outher"  autocomplete="off" placeholder="请输入更多"
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="doctorResource-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['form', 'jquery','laydate'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#birthday' //指定元素
+        });
+
+        form.on('submit(doctorResource-save)', function (data) {
+            $.ajax({
+                url: '/cms/doctorresource/save',
+                data: JSON.stringify(data.field),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'post',
+                success: function (result) {
+                    if (result.success) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                            parent.layui.table.reload("doctorResource-table");
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+            return false;
+        });
+    })
+</script>
+<script>
+</script>
+</body>
+</html>

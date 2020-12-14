@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pearadmin.modules.cms.mapper.DoctorResourceMapper">
+
+    <resultMap id="DoctorResourceMap" type="DoctorResource">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="job" property="job"></result>
+        <result column="degree" property="degree"></result>
+        <result column="school" property="school"></result>
+        <result column="clinic" property="clinic"></result>
+        <result column="visit_time" property="visitTime"></result>
+        <result column="pic" property="pic"></result>
+        <result column="good" property="good"></result>
+        <result column="age" property="age"></result>
+        <result column="seniority" property="seniority"></result>
+        <result column="clinic_seniority" property="clinicSeniority"></result>
+        <result column="outher" property="outher"></result>
+        <result column="create_time" property="createTime"></result>
+    </resultMap>
+
+    <select id="selectList" resultMap="DoctorResourceMap">
+        select * from doctor_resource
+        <where>
+        <if test="username!=null and username!=''">
+            and username like CONCAT('%',#{username}, '%')
+        </if>
+    
+        </where>
+
+        order by id desc
+
+    </select>
+
+    <!-- 根据 Id 查询角色-->
+    <select id="selectById" parameterType="int" resultMap="DoctorResourceMap">
+        select * from doctor_resource where id = #{id}
+    </select>
+
+
+    <!-- 新增 数据 -->
+    <insert id="insert" parameterType="DoctorResource">
+        insert into doctor_resource
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username!=null">
+                username,
+            </if>
+            <if test="job!=null">
+                job,
+            </if>
+            <if test="degree!=null">
+                degree,
+            </if>
+            <if test="school!=null">
+                school,
+            </if>
+            <if test="clinic!=null">
+                clinic,
+            </if>
+            <if test="visitTime!=null">
+                visit_time,
+            </if>
+            <if test="pic!=null">
+                pic,
+            </if>
+            <if test="good!=null">
+                good,
+            </if>
+            <if test="age!=null">
+                age,
+            </if>
+            <if test="seniority!=null">
+                seniority,
+            </if>
+            <if test="clinicSeniority!=null">
+                clinic_seniority,
+            </if>
+            <if test="outher!=null">
+                outher,
+            </if>
+            <if test="createTime!=null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="username!=null">
+                #{username},
+            </if>
+            <if test="job!=null">
+                #{job},
+            </if>
+            <if test="degree!=null">
+                #{degree},
+            </if>
+            <if test="school!=null">
+                #{school},
+            </if>
+            <if test="clinic!=null">
+                #{clinic},
+            </if>
+            <if test="visitTime!=null">
+                #{visitTime},
+            </if>
+            <if test="pic!=null">
+                #{pic},
+            </if>
+            <if test="good!=null">
+                #{good},
+            </if>
+            <if test="age!=null">
+                #{age},
+            </if>
+            <if test="seniority!=null">
+                #{seniority},
+            </if>
+            <if test="clinicSeniority!=null">
+                #{clinicSeniority},
+            </if>
+            <if test="outher!=null">
+                #{outher},
+            </if>
+            <if test="createTime!=null">
+                #{createTime},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据 Id 修改角色数据 -->
+    <update id="updateById" parameterType="DoctorResource">
+        update doctor_resource
+        <set>
+    <if test="username!=null and username!=''">
+        username = #{username},
+    </if>
+    <if test="job!=null and job!=''">
+        job = #{job},
+    </if>
+    <if test="degree!=null and degree!=''">
+        degree = #{degree},
+    </if>
+    <if test="school!=null and school!=''">
+        school = #{school},
+    </if>
+    <if test="clinic!=null and clinic!=''">
+        clinic = #{clinic},
+    </if>
+    <if test="visitTime!=null and visitTime!=''">
+        visit_time = #{visitTime},
+    </if>
+    <if test="pic!=null and pic!=''">
+        pic = #{pic},
+    </if>
+    <if test="good!=null and good!=''">
+        good = #{good},
+    </if>
+    <if test="age!=null and age!=''">
+        age = #{age},
+    </if>
+    <if test="seniority!=null and seniority!=''">
+        seniority = #{seniority},
+    </if>
+    <if test="clinicSeniority!=null and clinicSeniority!=''">
+        clinic_seniority = #{clinicSeniority},
+    </if>
+    <if test="outher!=null and outher!=''">
+        outher = #{outher},
+    </if>
+    <if test="createTime!=null and createTime!=''">
+        create_time = #{createTime},
+    </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据 Id 删除 -->
+    <delete id="deleteById" parameterType="int">
+        delete from doctor_resource where id = #{id}
+    </delete>
+
+    <!-- 根据 Id 批量删除 -->
+    <delete id="deleteByIds" parameterType="int">
+        delete from doctor_resource where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
