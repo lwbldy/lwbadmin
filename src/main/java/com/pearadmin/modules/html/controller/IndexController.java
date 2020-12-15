@@ -75,7 +75,7 @@ public class IndexController extends BaseController {
 
         modelAndView.addObject("param",param);
 
-        modelAndView.setViewName("html/clinic/index");
+        modelAndView.setViewName("html/doctor/index");
 
         return modelAndView;
     }

@@ -46,6 +46,9 @@
     <button sec:authorize="hasPermission('/cms/clinic/remove','cms:clinic:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
+<script type="text/html" id="file-img">
+    <img src="/system/file/download/{{d.pic}}"/>
+</script>
 
 
 <th:block th:include="include :: footer"/>
@@ -60,6 +63,7 @@
                 {type: 'checkbox'},
                 {field: 'id', title: ''},
                 {field: 'clinicName', title: '名称'},
+                {field: 'pic', title: '主图',templet: "#file-img"},
                 {field: 'telephone', title: '电话'},
                 {field: 'address', title: '地址'},
                 {field: 'region', title: '地区'},

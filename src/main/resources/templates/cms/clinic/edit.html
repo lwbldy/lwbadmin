@@ -50,6 +50,19 @@
                                class="layui-input">
                     </div>
                 </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">头像</label>
+                    <div class="layui-input-block">
+                        <button class="pear-btn pear-btn-primary pear-btn-md" type="button" lay-event="add" id="addFile">
+                            <i class="layui-icon layui-icon-add-1"></i>
+                            上传
+                        </button>
+                        <img id="pic_img" th:src="'/system/file/download/'+${clinic.pic}" width="50px"/>
+                        <input type="hidden" id="pic" name="pic" th:value="${clinic.pic}">
+                    </div>
+                </div>
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">地图信息</label>
                     <div class="layui-input-block">
@@ -102,6 +115,16 @@
             elem: '#birthday' //指定元素
         });
 
+        $("#addFile").on('click', function () {
+            layer.open({
+                type: 2,
+                title: '新增',
+                shade: 0.1,
+                area: ['500px', '400px'],
+                content: '/system/file/add'
+            });
+        })
+
         form.on('submit(clinic-update)', function (data) {
             $.ajax({
                 url: '/cms/clinic/update',
@@ -123,6 +146,12 @@
             return false;
         });
     })
+
+    function perId( id ){
+        document.getElementById("pic_img").src = "/system/file/download/"+id;
+        document.getElementById("pic_img").style.display="inline-block"
+        document.getElementById("pic").value=id;
+    }
 </script>
 <script>
 </script>

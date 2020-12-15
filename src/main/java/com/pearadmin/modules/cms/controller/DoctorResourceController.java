@@ -2,6 +2,7 @@ package com.pearadmin.modules.cms.controller;
 
 
 import com.pearadmin.modules.cms.domain.DoctorResource;
+import com.pearadmin.modules.cms.service.IClinicService;
 import com.pearadmin.modules.cms.service.IDoctorResourceService;
 
 
@@ -33,6 +34,9 @@ public class DoctorResourceController extends BaseController {
     @Resource
     private IDoctorResourceService doctorResourceService;
 
+    @Resource
+    private IClinicService clinicService;
+
     @GetMapping("main")
     @ApiOperation(value="获取列表视图")
     @PreAuthorize("hasPermission('/cms/doctorresource/main','cms:doctorresource:main')")
@@ -52,8 +56,10 @@ public class DoctorResourceController extends BaseController {
     @GetMapping("add")
     @ApiOperation(value="获取新增视图")
     @PreAuthorize("hasPermission('/cms/doctorresource/add','cms:doctorresource:add')")
-    public ModelAndView add(){
-        return JumpPage(MODULE_PATH + "add");
+    public ModelAndView add(ModelAndView modelAndView){
+        modelAndView.addObject("clinisList",clinicService.selectList(null));
+        modelAndView.setViewName(MODULE_PATH + "add");
+        return modelAndView;
     }
 
 
@@ -79,6 +85,7 @@ public class DoctorResourceController extends BaseController {
     @ApiOperation(value="获取修改视图")
     @PreAuthorize("hasPermission('/cms/doctorresource/edit','cms:doctorresource:edit')")
     public ModelAndView edit(ModelAndView modelAndView,int id){
+        modelAndView.addObject("clinisList",clinicService.selectList(null));
         modelAndView.addObject("doctorResource",doctorResourceService.selectById(id));
         modelAndView.setViewName(MODULE_PATH + "edit");
         return modelAndView;

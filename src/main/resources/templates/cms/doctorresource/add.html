@@ -39,8 +39,9 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">所在诊所</label>
                     <div class="layui-input-block">
-                        <input type="text" id="clinic" name="clinic"  autocomplete="off" placeholder="请输入所在诊所"
-                               class="layui-input">
+                        <select id="clinic" name="clinic" lay-search>
+                            <option th:each="clinic,clinicStat:${clinisList}" th:text="${clinic.clinicName}" th:value="${clinic.id}"></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -53,8 +54,12 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">头像</label>
                     <div class="layui-input-block">
-                        <input type="text" id="pic" name="pic"  autocomplete="off" placeholder="请输入头像"
-                               class="layui-input">
+                        <button class="pear-btn pear-btn-primary pear-btn-md" type="button" lay-event="add" id="addFile">
+                            <i class="layui-icon layui-icon-add-1"></i>
+                            上传
+                        </button>
+                        <img id="pic_img" src="/system/file/download/1338309847401103360" width="50px" style="display: none"/>
+                        <input type="hidden" id="pic" name="pic">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -88,8 +93,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">更多</label>
                     <div class="layui-input-block">
-                        <input type="text" id="outher" name="outher"  autocomplete="off" placeholder="请输入更多"
-                               class="layui-input">
+                        <textarea id="outher" name="outher" placeholder="请输入更多" class="layui-textarea"></textarea>
                     </div>
                 </div>
             </div>
@@ -118,6 +122,16 @@
             elem: '#birthday' //指定元素
         });
 
+        $("#addFile").on('click', function () {
+            layer.open({
+                type: 2,
+                title: '新增',
+                shade: 0.1,
+                area: ['500px', '400px'],
+                content: '/system/file/add'
+            });
+        })
+
         form.on('submit(doctorResource-save)', function (data) {
             $.ajax({
                 url: '/cms/doctorresource/save',
@@ -139,8 +153,13 @@
             return false;
         });
     })
+
+    function perId( id ){
+        document.getElementById("pic_img").src = "/system/file/download/"+id;
+        document.getElementById("pic_img").style.display="inline-block"
+        document.getElementById("pic").value=id;
+    }
 </script>
-<script>
-</script>
+
 </body>
 </html>

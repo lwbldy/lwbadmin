@@ -50,6 +50,10 @@
     </button>
 </script>
 
+<script type="text/html" id="file-img">
+    <img src="/system/file/download/{{d.pic}}"/>
+</script>
+
 
 <th:block th:include="include :: footer"/>
 <script>
@@ -64,12 +68,13 @@
             [
                 {type: 'checkbox'},
                 {field: 'username', title: '姓名'},
+                {field: 'clinicName', title: '所在诊所'},
                 {field: 'job', title: '职位'},
                 {field: 'degree', title: '学位'},
                 {field: 'school', title: '毕业学校'},
                 {field: 'clinic', title: '所在诊所'},
                 {field: 'visitTime', title: '出诊时间'},
-                {field: 'pic', title: '头像'},
+                {field: 'pic', title: '头像',templet: "#file-img"},
                 {field: 'good', title: '擅长'},
                 {field: 'age', title: '年龄'},
                 {field: 'seniority', title: '资历'},
@@ -123,7 +128,7 @@
                 type: 2,
                 title: '新增',
                 shade: 0.1,
-                area: ['500px', '500px'],
+                area: ['700px', '500px'],
                 content: MODULE_PATH + 'add'
             });
         }
