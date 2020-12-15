@@ -66,7 +66,7 @@ public class IndexController extends BaseController {
             pageDomain.setPage(1);
         }
         if(pageDomain.getLimit() == null){
-            pageDomain.setLimit(9);
+            pageDomain.setLimit(5);
         }
 
         PageInfo<DoctorResource> pageInfo = doctorResourceService.page(param,pageDomain);

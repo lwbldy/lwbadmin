@@ -43,6 +43,13 @@ public class DoctorResource implements Serializable {
     private String outher;
         //创建时间
     private LocalDate createTime;
+    //排序
+    private Integer order;
+    // 医院
+    private String clinicName;
+    // 位置
+    private String region;
+
     
         /**
      * 设置：
@@ -212,4 +219,28 @@ public class DoctorResource implements Serializable {
     public LocalDate getCreateTime() {
         return createTime;
     }
+
+    public Integer getOrder() {
+        return order;
     }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    public String getClinicName() {
+        return clinicName;
+    }
+
+    public void setClinicName(String clinicName) {
+        this.clinicName = clinicName;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+}

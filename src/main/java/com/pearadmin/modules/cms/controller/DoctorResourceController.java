@@ -25,8 +25,8 @@ import javax.annotation.Resource;
 public class DoctorResourceController extends BaseController {
 
     /**
-         * Describe: 基础路径
-         * */
+     * Describe: 基础路径
+     * */
     private static String MODULE_PATH = "cms/doctorresource/";
 
 

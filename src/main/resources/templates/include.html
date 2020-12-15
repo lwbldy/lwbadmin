@@ -63,7 +63,7 @@
                 <li th:classappend="${onIndex == 1} ? 'on' : ''"><a href="index.html">首页</a></li>
                 <li th:classappend="${onIndex == 2} ? 'on' : ''"><a href="doctor.html">医疗和技术委员会</a></li>
                 <li th:classappend="${onIndex == 3} ? 'on' : ''"><a href="resources.html">医生资源</a></li>
-                <li th:classappend="${onIndex == 4} ? 'on' : ''"><a href="clinic.html">寻找诊所</a></li>
+                <li th:classappend="${onIndex == 4} ? 'on' : ''"><a th:href="@{//html/clinic}">寻找诊所</a></li>
                 <li th:classappend="${onIndex == 5} ? 'on' : ''"><a href="">牙病科普</a></li>
                 <li th:classappend="${onIndex == 6} ? 'on' : ''"><a href="about.html">关于品牌</a></li>
                 <li th:classappend="${onIndex == 7} ? 'on' : ''"><a href="campaign.html">消费者活动</a></li>
