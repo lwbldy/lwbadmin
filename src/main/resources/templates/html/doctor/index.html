@@ -3,7 +3,7 @@
 <!--[if IE 7]><html class="ie ie7 lt8 lt9 lt10"><![endif]-->
 <!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
 <!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
-<!--[if (gt IE 9) | !(IE)]><!--><html><!--<![endif]-->
+<!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
 <head>
     <th:block th:include="include :: headhtml('寻找诊所')"/>
 </head>
@@ -29,86 +29,63 @@
                 <div class="search-box">
                     <div class="search">
                         <div class="inps-box cf">
-                            <div class="J_getarea">
-                                <div class="inps inps-1">
-                                    <select class="j-select2">
-                                        <option class="f-14">选择地区</option>
-                                    </select>
-                                </div>
-
-                                <div class="inps inps-2">
-                                    <select class="j-select2">
-                                        <option class="f-14">选择诊所</option>
-                                    </select>
-                                </div>
-
-                                <div class="inps inps-3">
-                                    <select class="j-select2">
-                                        <option class="f-14">选择项目</option>
-                                    </select>
-                                </div>
-                            </div>
-
+<!--                            <div class="J_getarea">-->
+<!--                                <div class="inps inps-1">-->
+<!--                                    <select class="j-select2">-->
+<!--                                        <option class="f-14">选择地区</option>-->
+<!--                                        <option class="f-14" th:each="region,regionStat:${regionList}" th:value="${region.dataValue}" th:text="${region.dataLabel}"></option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                                <div class="inps inps-2">-->
+<!--                                    <select class="j-select2">-->
+<!--                                        <option class="f-14">选择诊所</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                                <div class="inps inps-3">-->
+<!--                                    <select class="j-select2">-->
+<!--                                        <option class="f-14">选择项目</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="inps inps-4">
-                                <input type="text" name="keywords" placeholder="请输入医生姓名">
+                                <input type="text" name="username" id="username" placeholder="请输入医生姓名" th:value="${param.username}">
                             </div>
-                            <button type="search" class="f-16 searchBtn">搜索</button>
+                            <button type="search" onclick="search()" class="f-16 searchBtn">搜索</button>
                         </div>
                     </div>
                 </div>
 
+
                 <div class="list-box J_getlist">
                     <ul>
-                        <li>
+                        <li th:each="doctor,doctorStat:${pageInfo.list}">
                             <div class="row cf">
                                 <div class="fl">
                                     <div class="img-box">
-                                        <a href="/content/details_4_1588.html" target="_blank"><img src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20191108/1573204124f2bf8d3c8c85c134.png" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 200px;"></a>
+                                        <a href="/content/details_4_1588.html" target="_blank">
+                                            <img th:src="@{'/html/file/download/'+${doctor.pic}}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 200px;"></a>
                                     </div>
                                 </div>
 
                                 <div class="content-box oh">
                                     <p class="tittle f-24">
-                                        <a href="/content/details_4_1588.html" target="_blank">武俊</a>
-                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon01.png}" data-ratio="1.25" class="ratio-img" onerror="lod(this)" alt="" style="height: 20px;"></i>区域医务委员会主任，技术总监</span>
-                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon02.png}" class="ratio-img" data-ratio="0.79166667" onerror="lod(this)" alt="" style="height: 19px;"></i>学士</span>
-                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon03.png}" class="ratio-img" data-ratio="0.90909091" onerror="lod(this)" alt="" style="height: 20px;"></i>北京大学口腔医学院</span>
+                                        <a href="/content/details_4_1588.html" target="_blank" th:text="${doctor.username}">武俊</a>
+                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon01.png}" data-ratio="1.25" class="ratio-img" onerror="lod(this)" alt="" style="height: 20px;"></i><em th:text="${doctor.job}">主治医师</em></span>
+                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon02.png}" class="ratio-img" data-ratio="0.79166667" onerror="lod(this)" alt="" style="height: 19px;"></i><em th:text="${doctor.degree}">学士</em></span>
+                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon03.png}" class="ratio-img" data-ratio="0.90909091" onerror="lod(this)" alt="" style="height: 20px;"></i><em th:text="${doctor.school}">北京大学口腔医学院</em></span>
                                     </p>
                                     <div class="line"></div>
                                     <!-- 医生点赞-->
-                                    <div class="doctor-pf f-14 c666" style="display:none;">
 
-
-
-
-                                        <dl class="cf">
-                                            <dt class="fl">
-                                                <p>总  评  分：</p>
-                                            </dt>
-                                            <dd class="oh doctor-scorech">
-                                                <span class="doctor-pf-num f-18 zongfen">603</span>
-                                                <span class="line"><i></i></span>
-                                                <a href="javascript:;" class="doctor-pf-btn doctor-pf-btn-1 " data-id="1588" data-fenlei="1">专业<i class="auto-bg"></i></a>
-                                                <a href="javascript:;" class="doctor-pf-btn doctor-pf-btn-2 " data-id="1588" data-fenlei="2">沟通<i class="auto-bg"></i></a>
-                                                <a href="javascript:;" class="doctor-pf-btn doctor-pf-btn-3 " data-id="1588" data-fenlei="3">服务<i class="auto-bg"></i></a>
-                                                <span class="doctor-pf-txt">【点击图标给医生评价】</span>
-                                            </dd>
-                                        </dl>
-                                    </div>
                                     <div class="text f-14">
-                                        <p><span>所在诊所：<em>国际大厦诊所-总部,翠微诊所,凯德诊所</em></span><span class="cf bk"><i class="fl">出诊时间：</i><em class="bk oh">
-
-
-                              全天
-                    </em></span></p>
-                                        <p><span>擅长：<em>种植义齿、根管治疗、复杂病例治疗设计。</em></span></p>
+                                        <p>
+                                            <span>所在诊所：<em th:text="${doctor.clinicName}"></em></span>
+                                            <span class="cf bk"><i class="fl">出诊时间：</i><em class="bk oh" th:text="${doctor.visitTime}">全天</em></span>
+                                        </p>
+                                        <p><span>擅长：<em th:text="${doctor.good}">种植义齿、根管治疗、复杂病例治疗设计。</em></span></p>
                                         <p><span>&nbsp;</span></p>
                                         <a href="/content/details_4_1588.html" target="_blank" class="btn-01 f-14">了解详情 &gt;</a>
-
-
                                         <a target="_blank" class="btn-02 f-14" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&amp;f=10072488&amp;g=10069735" style="">在线预约</a>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -118,6 +95,23 @@
 
                 <div class="page-box">
                     <div class="page f-20" id="page5">
+                        <div class="laypage_main laypageskin_default">
+                            <a
+                                    th:if="${!pageInfo.isFirstPage}"
+                                    th:href="@{/html/doctor(page=${pageInfo.prePage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_prev" > </a>
+                            <a
+                                    th:if="${!pageInfo.isLastPage}"
+                                    th:href="@{/html/doctor(page=${pageInfo.nextPage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_next" > </a>
+                            <span class="laypage_total"><label>到第</label>
+                                <input type="number"
+                                       min="1"
+                                       id="tz"
+                                       th:value="${pageInfo.pageNum}"
+                                       class="laypage_skip">
+                                <label>页</label>
+                                <button type="button" class="laypage_btn" onclick="tz()">确定</button>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -126,16 +120,7 @@
 
     </section>
     <footer class="footer">
-        <div class="wrap cf">
-            <div class="fl">
-                <div class="a"><a href="logon-httpsmail.arrail-dental.co.html" target="_blank">企业邮箱</a><i></i><a href="about.html">品牌介绍</a><i></i><a href="contact.html">联系瑞尔</a></div>
-                <p><span>北京瑞尔圣彬医疗科技有限公司  版权所有</span>   <span>京ICP备17024434号-3</span>  <span>京卫计网审【2014】第0214号</span></p>
-            </div>
-            <div class="oh">
-                <a href="javascript:;" class="a-wx t-weixin-bon" data-img="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170420/1492666791a5cb5de1212fc8c6.png"></a>
-                <a href="javascript:;" target="_blank" class="a-wb"></a>
-            </div>
-        </div>
+        <th:block th:include="include :: footerhtml"/>
     </footer>
 </div>
 
@@ -145,11 +130,20 @@
             $(this).select2();
         });
     });
+
+    function tz(){
+        var val = document.getElementById("tz").value;
+        var url = "/html/doctor?username=[[${param.username}]]&page="+val;
+        window.location.href=url;
+    }
+
+    function search(){
+        var username = document.getElementById("username").value;
+        var url = "/html/doctor?username="+username;
+        window.location.href=url;
+    }
+
 </script>
-<script>
 
-
-
-</script>
 </body>
 </html>
