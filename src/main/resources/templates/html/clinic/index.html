@@ -42,7 +42,7 @@
                                             <img class="ratio-img" data-ratio="1" onerror="lod(this)" th:src="@{/static/image/1492242929b03079389c00c895.png}">
                                             <img class="ratio-img" data-ratio="1" onerror="lod(this)" th:src="@{/static/image/1492242929346b460f4dd29b8b.png}" style="height: 20px;">
                                         </i>
-                                        <label th:text="${region.dataLabel}">保健预防</label>
+                                        <label th:text="${region.dataLabel}"></label>
                                     </span>
                                 </a>
                             </li>
@@ -68,7 +68,7 @@
                                     <div class="img-box">
                                         <a href="/content/details_11_527.html" target="_self">
                                             <img class="ratio-img" data-ratio="0.7514619883040936"
-                                                 th:src="@{'/system/file/download/'+${clinic.pic}}" style="height: 302px;">
+                                                 th:src="@{'/html/file/download/'+${clinic.pic}}" style="height: 302px;">
                                         </a>
                                     </div>
 
@@ -92,24 +92,21 @@
                     </ul>
                 </div>
 
-                <div class="details-box yb-video">
-                    <div class="video-box items">
+<!--                <div class="details-box yb-video">-->
+<!--                    <div class="video-box items">-->
 
-                        <div class="list-box">
-                            <ul class="cf shipin">
+<!--                        <div class="list-box">-->
+<!--                            <ul class="cf shipin">-->
 
-                            </ul>
+<!--                            </ul>-->
 
-                        </div>
-                    </div>
-                </div>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <div class="page-box">
                     <div class="page f-20" id="page5">
                         <div class="laypage_main laypageskin_default">
-
-<!--                            <a href="javascript:;" target="_self">上一页</a>-->
-<!--                            <a href="javascript:;"  target="_self">下一页</a>-->
                             <a
                                     th:if="${!pageInfo.isFirstPage}"
                                     th:href="@{/html/clinic(page=${pageInfo.prePage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_prev" > </a>
