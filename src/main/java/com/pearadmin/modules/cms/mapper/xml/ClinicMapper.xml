@@ -17,8 +17,8 @@
     <select id="selectList" resultMap="ClinicMap">
         select * from clinic
         <where>
-            <if test="clinicName!=null">clinic_name=#{clinicName},</if>
-            <if test="region!=null">region=#{region}</if>
+            <if test="clinicName!=null and clinicName!=''">clinic_name=#{clinicName},</if>
+            <if test="region!=null and region!=''">region=#{region}</if>
         </where>
         order by id desc
     </select>
