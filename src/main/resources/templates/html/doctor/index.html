@@ -6,11 +6,11 @@
 <!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
 <head>
     <th:block th:include="include :: headhtml('寻找诊所')"/>
-</head>
 
-<script th:src="@{/static/js/select2.full.js}"></script>
-<link th:href="@{/static/css/select2.min.css}" rel="stylesheet">
-<script th:src="@{/static/js/jquery-validate.js}"></script>
+    <script th:src="@{/static/js/select2.full.js}"></script>
+    <link th:href="@{/static/css/select2.min.css}" rel="stylesheet">
+    <script th:src="@{/static/js/jquery-validate.js}"></script>
+</head>
 
 <body class="search-body">
 <div class="body-box resources-box">
@@ -29,24 +29,6 @@
                 <div class="search-box">
                     <div class="search">
                         <div class="inps-box cf">
-<!--                            <div class="J_getarea">-->
-<!--                                <div class="inps inps-1">-->
-<!--                                    <select class="j-select2">-->
-<!--                                        <option class="f-14">选择地区</option>-->
-<!--                                        <option class="f-14" th:each="region,regionStat:${regionList}" th:value="${region.dataValue}" th:text="${region.dataLabel}"></option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                                <div class="inps inps-2">-->
-<!--                                    <select class="j-select2">-->
-<!--                                        <option class="f-14">选择诊所</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                                <div class="inps inps-3">-->
-<!--                                    <select class="j-select2">-->
-<!--                                        <option class="f-14">选择项目</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
                             <div class="inps inps-4">
                                 <input type="text" name="username" id="username" placeholder="请输入医生姓名" th:value="${param.username}">
                             </div>

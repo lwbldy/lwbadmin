@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 7]><html class="ie ie7 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
+<!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
+<head>
+    <th:block th:include="include :: headhtml('医生资源')"/>
+</head>
+<body class="search-body">
+<div class="body-box resources-box">
+
+    <header class="header">
+        <th:block th:include="include :: headerhtml(3)"/>
+    </header>
+
+    <section class="main-box">
+        <div class="wrap">
+            <div class="postion f-12">您现在的位置：<a href="index.html">首页</a> >
+                <a href="javascript:;">医生资源</a></div>
+            <a id="here"></a>
+        </div>
+
+        <div class="main">
+            <p class="tittle f-24">
+                孙理
+                <span class="f-14"><i><img th:src="@{/staitc/image/ziyuan_icon01.png}" data-ratio="1.25" class="ratio-img" onerror="lod(this)" alt="" style="height: 20px;"></i>
+                    <em class="ellipsis">区域数字化项目总监</em>
+                </span>
+                <span class="f-14"><i><img th:src="@{/staitc/image/ziyuan_icon02.png}" class="ratio-img" data-ratio="0.79166667" onerror="lod(this)" alt="" style="height: 19px;"></i>
+                    <em class="ellipsis">学士</em>
+                </span>
+                <span class="f-14"><i><img th:src="@{/staitc/image/ziyuan_icon03.png}" class="ratio-img" data-ratio="0.90909091" onerror="lod(this)" alt="" style="height: 20px;"></i>
+                    <em class="ellipsis">首都医科大学口腔医学院</em>
+                </span>
+            </p>
+
+        </div>
+
+    </section>
+</div>
+</body>
+</html>

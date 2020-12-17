@@ -87,11 +87,18 @@ public class IndexController extends BaseController {
 
 
         modelAndView.addObject("param",param);
-
         modelAndView.setViewName("html/doctor/index");
-
         return modelAndView;
     }
+
+
+    @GetMapping("html/doctor/detils")
+    public ModelAndView doctorDetils(int id,ModelAndView modelAndView){
+        modelAndView.addObject("modelAndView",doctorResourceService.selectById(id));
+        modelAndView.setViewName("html/doctor/detils");
+        return modelAndView;
+    }
+
 
     @Resource
     private IFileService fileService;
