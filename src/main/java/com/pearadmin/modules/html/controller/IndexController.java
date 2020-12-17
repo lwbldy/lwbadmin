@@ -1,6 +1,7 @@
 package com.pearadmin.modules.html.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.pearadmin.common.plugins.resource.service.IFileService;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.cms.domain.Clinic;
@@ -11,6 +12,7 @@ import com.pearadmin.modules.system.domain.SysDictData;
 import com.pearadmin.modules.system.service.ISysDictDataService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,6 +61,13 @@ public class IndexController extends BaseController {
         return modelAndView;
     }
 
+    /**
+     * 获取医生资源
+     * @param modelAndView
+     * @param pageDomain
+     * @param param
+     * @return
+     */
     @GetMapping("html/doctor")
     public ModelAndView doctor(ModelAndView modelAndView, PageDomain pageDomain, DoctorResource param){
 
@@ -72,6 +81,10 @@ public class IndexController extends BaseController {
         PageInfo<DoctorResource> pageInfo = doctorResourceService.page(param,pageDomain);
         modelAndView.addObject("pageInfo",pageInfo);
 
+//        SysDictData sysDictData = new SysDictData();
+//        sysDictData.setTypeCode("region");
+//        modelAndView.addObject("regionList",sysDictDataService.list(sysDictData));
+
 
         modelAndView.addObject("param",param);
 
@@ -79,5 +92,14 @@ public class IndexController extends BaseController {
 
         return modelAndView;
     }
+
+    @Resource
+    private IFileService fileService;
+
+    @GetMapping("/file/download/{id}")
+    public void download(@PathVariable("id") String id){
+        fileService.download(id);
+    }
+
 
 }
