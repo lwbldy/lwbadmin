@@ -19,7 +19,7 @@ public class ${className} implements Serializable {
     private static final long serialVersionUID = 1L;
 
     #foreach ($column in $columns)
-    //$column.comments
+//$column.comments
     private $column.attrType $column.attrname;
     #end
 
@@ -37,4 +37,6 @@ public class ${className} implements Serializable {
         return $column.attrname;
     }
     #end
+
+
 }

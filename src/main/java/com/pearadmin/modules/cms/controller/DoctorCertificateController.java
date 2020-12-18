@@ -2,10 +2,7 @@ package com.pearadmin.modules.cms.controller;
 
 
 import com.pearadmin.modules.cms.domain.DoctorCertificate;
-import com.pearadmin.modules.cms.domain.DoctorResource;
-import com.pearadmin.modules.cms.service.IClinicService;
 import com.pearadmin.modules.cms.service.IDoctorCertificateService;
-import com.pearadmin.modules.cms.service.IDoctorResourceService;
 
 
 import com.github.pagehelper.PageInfo;
@@ -20,50 +17,45 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
-import java.util.List;
 
 
 @RestController
-@Api(tags = "医生")
-@RequestMapping("/cms/doctorresource")
-public class DoctorResourceController extends BaseController {
+@Api(tags = "医生证书")
+@RequestMapping("/cms/doctorcertificate")
+public class DoctorCertificateController extends BaseController {
 
     /**
      * Describe: 基础路径
      * */
-    private static String MODULE_PATH = "cms/doctorresource/";
+    private static String MODULE_PATH = "cms/doctorcertificate/";
 
 
     @Resource
-    private IDoctorResourceService doctorResourceService;
-
-    @Resource
-    private IDoctorCertificateService iDoctorCertificateService;
-
-    @Resource
-    private IClinicService clinicService;
+    private IDoctorCertificateService doctorCertificateService;
 
     @GetMapping("main")
     @ApiOperation(value="获取列表视图")
-    @PreAuthorize("hasPermission('/cms/doctorresource/main','cms:doctorresource:main')")
-    public ModelAndView main( ){
-        return JumpPage(MODULE_PATH + "main");
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/main','cms:doctorCertificate:main')")
+    public ModelAndView main(int id,ModelAndView modelAndView){
+        modelAndView.addObject("id",id);
+        modelAndView.setViewName(MODULE_PATH + "main");
+        return modelAndView;
     }
 
 
     @GetMapping("data")
     @ApiOperation(value="获取角色列表数据")
-    @PreAuthorize("hasPermission('/cms/doctorresource/main','cms:doctorresource:main')")
-    public ResultTable data(PageDomain pageDomain, DoctorResource param){
-        PageInfo<DoctorResource> pageInfo = doctorResourceService.page(param,pageDomain);
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/main','cms:doctorcertificate:main')")
+    public ResultTable data(PageDomain pageDomain, DoctorCertificate param){
+        PageInfo<DoctorCertificate> pageInfo = doctorCertificateService.page(param,pageDomain);
         return pageTable(pageInfo.getList(),pageInfo.getTotal());
     }
 
     @GetMapping("add")
     @ApiOperation(value="获取新增视图")
-    @PreAuthorize("hasPermission('/cms/doctorresource/add','cms:doctorresource:add')")
-    public ModelAndView add(ModelAndView modelAndView){
-        modelAndView.addObject("clinisList",clinicService.selectList(null));
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/add','cms:doctorcertificate:add')")
+    public ModelAndView add(int id,ModelAndView modelAndView){
+        modelAndView.addObject("id",id);
         modelAndView.setViewName(MODULE_PATH + "add");
         return modelAndView;
     }
@@ -76,9 +68,9 @@ public class DoctorResourceController extends BaseController {
      * */
     @PostMapping("save")
     @ApiOperation(value="保存数据")
-    @PreAuthorize("hasPermission('/cms/doctorresource/add','cms:doctorresource:add')")
-    public Result save(@RequestBody DoctorResource doctorResource){
-        int result = doctorResourceService.insert(doctorResource);
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/add','cms:doctorcertificate:add')")
+    public Result save(@RequestBody DoctorCertificate doctorCertificate){
+        int result = doctorCertificateService.insert(doctorCertificate);
         return decide(result);
     }
 
@@ -89,10 +81,9 @@ public class DoctorResourceController extends BaseController {
      * */
     @GetMapping("edit")
     @ApiOperation(value="获取修改视图")
-    @PreAuthorize("hasPermission('/cms/doctorresource/edit','cms:doctorresource:edit')")
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/edit','cms:doctorcertificate:edit')")
     public ModelAndView edit(ModelAndView modelAndView,int id){
-        modelAndView.addObject("clinisList",clinicService.selectList(null));
-        modelAndView.addObject("doctorResource",doctorResourceService.selectById(id));
+        modelAndView.addObject("doctorCertificate",doctorCertificateService.selectById(id));
         modelAndView.setViewName(MODULE_PATH + "edit");
         return modelAndView;
     }
@@ -104,9 +95,9 @@ public class DoctorResourceController extends BaseController {
      * */
     @PutMapping("update")
     @ApiOperation(value="修改数据")
-    @PreAuthorize("hasPermission('/cms/doctorresource/edit','cms:doctorresource:edit')")
-    public Result update(@RequestBody DoctorResource doctorResource){
-        int result = doctorResourceService.updateById(doctorResource);
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/edit','cms:doctorcertificate:edit')")
+    public Result update(@RequestBody DoctorCertificate doctorCertificate){
+        int result = doctorCertificateService.updateById(doctorCertificate);
         return decide(result);
     }
 
@@ -117,9 +108,9 @@ public class DoctorResourceController extends BaseController {
      * */
     @DeleteMapping("remove/{id}")
     @ApiOperation(value="删除数据")
-    @PreAuthorize("hasPermission('/cms/doctorresource/remove','cms:doctorresource:remove')")
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/remove','cms:doctorcertificate:remove')")
     public Result remove(@PathVariable int id){
-        int result  = doctorResourceService.deleteById(id);
+        int result  = doctorCertificateService.deleteById(id);
         return decide(result);
     }
 
@@ -130,9 +121,9 @@ public class DoctorResourceController extends BaseController {
      * */
     @DeleteMapping("batchRemove/{ids}")
     @ApiOperation(value="批量删除数据")
-    @PreAuthorize("hasPermission('/cms/doctorresource/remove','cms:doctorresource:remove')")
+    //@PreAuthorize("hasPermission('/cms/doctorcertificate/remove','cms:doctorcertificate:remove')")
     public Result batchRemove(@PathVariable String ids){
-        int result = doctorResourceService.deleteByIds(StringUtils.StringToIntArr(ids.split(",")).toArray());
+        int result = doctorCertificateService.deleteByIds(StringUtils.StringToIntArr(ids.split(",")).toArray());
         return decide(1);
     }
 

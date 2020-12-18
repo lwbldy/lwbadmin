@@ -25,8 +25,8 @@ import javax.annotation.Resource;
 public class ${className}Controller extends BaseController {
 
     /**
-         * Describe: 基础路径
-         * */
+     * Describe: 基础路径
+     * */
     private static String MODULE_PATH = "${modelName}/${pathName}/";
 
 
