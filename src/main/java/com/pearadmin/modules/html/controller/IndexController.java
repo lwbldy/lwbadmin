@@ -94,7 +94,7 @@ public class IndexController extends BaseController {
 
     @GetMapping("html/doctor/detils")
     public ModelAndView doctorDetils(int id,ModelAndView modelAndView){
-        modelAndView.addObject("modelAndView",doctorResourceService.selectById(id));
+        modelAndView.addObject("doctor",doctorResourceService.selectById(id));
         modelAndView.setViewName("html/doctor/detils");
         return modelAndView;
     }
@@ -103,7 +103,7 @@ public class IndexController extends BaseController {
     @Resource
     private IFileService fileService;
 
-    @GetMapping("/file/download/{id}")
+    @GetMapping("html/file/download/{id}")
     public void download(@PathVariable("id") String id){
         fileService.download(id);
     }
