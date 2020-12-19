@@ -4,53 +4,35 @@
     <th:block th:include="include :: header('列表')"/>
 </head>
 <body class="pear-container">
+
+
 <div class="layui-card">
     <div class="layui-card-body">
-        <form class="layui-form" action="">
-            <div class="layui-form-item">
-#foreach($column in $columns)
-#if($column.isQuery == 'YES')
-            <label class="layui-form-label">${column.comments}</label>
-            <div class="layui-input-inline">
-                <input type="text" name="${column.attrname}" placeholder="" class="layui-input">
-            </div>
-#end
-#end
-                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="${classname}-query">
-                    <i class="layui-icon layui-icon-search"></i>
-                    查询
-                </button>
-                <button type="reset" class="pear-btn pear-btn-md">
-                    <i class="layui-icon layui-icon-refresh"></i>
-                    重置
-                </button>
-            </div>
-        </form>
+        <table id="doctorCertificate-table" lay-filter="doctorCertificate-table"></table>
     </div>
 </div>
-<div class="layui-card">
-    <div class="layui-card-body">
-        <table id="${classname}-table" lay-filter="${classname}-table"></table>
-    </div>
-</div>
+
 </body>
 
-<script type="text/html" id="${classname}-toolbar">
-    <button sec:authorize="hasPermission('/${modelName}/${pathName}/add','${modelName}:${pathName}:add')" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+<script type="text/html" id="doctorCertificate-toolbar">
+    <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
         新增
     </button>
-    <button sec:authorize="hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+    <button  class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
         删除
     </button>
 </script>
 
-<script type="text/html" id="${classname}-bar">
-    <button sec:authorize="hasPermission('/${modelName}/${pathName}/edit','${modelName}:${pathName}:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
-    </button>
+<script type="text/html" id="file-img">
+    <img src="/system/file/download/{{d.picId}}"/>
+</script>
 
-    <button sec:authorize="hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
+<script type="text/html" id="doctorCertificate-bar">
+    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
+    </button>
+    <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
 
@@ -61,34 +43,31 @@
         let table = layui.table;
         let form = layui.form;
         let $ = layui.jquery;
-
-        let MODULE_PATH = "/${modelName}/${pathName}/";
-
+        let MODULE_PATH = "/cms/doctorcertificate/";
         let cols = [
             [
-                {type: 'checkbox'},
-#foreach($column in $columns)#if($column.isMenuShow == 'true' || !$column.isMenuShow)
-                {field: '${column.attrname}', title: '${column.comments}'},
-#end
-#end
-                {title: '操作', toolbar: '#${classname}-bar', align: 'center', width: 120}
+                {field: 'picId', title: '图片编号', templet: "#file-img"},
+                {title: '操作', toolbar: '#doctorCertificate-bar', align: 'center', width: 120}
             ]
         ]
 
         table.render({
-            elem: '#${classname}-table',
+            elem: '#doctorCertificate-table',
             url: MODULE_PATH + 'data',
             page: true,
             cols: cols,
             skin: 'line',
-            toolbar: '#${classname}-toolbar',
+            toolbar: '#doctorCertificate-toolbar',
+            where:{
+                doctorId:[[${id}]]
+            },
             defaultToolbar: [{
                 layEvent: 'refresh',
                 icon: 'layui-icon-refresh',
             }, 'filter', 'print', 'exports']
         });
 
-        table.on('tool(${classname}-table)', function (obj) {
+        table.on('tool(doctorCertificate-table)', function (obj) {
             if (obj.event === 'remove') {
                 window.remove(obj);
             } else if (obj.event === 'edit') {
@@ -98,7 +77,7 @@
             }
         });
 
-        table.on('toolbar(${classname}-table)', function (obj) {
+        table.on('toolbar(doctorCertificate-table)', function (obj) {
             if (obj.event === 'add') {
                 window.add();
             } else if (obj.event === 'refresh') {
@@ -108,8 +87,8 @@
             }
         });
 
-        form.on('submit(${classname}-query)', function (data) {
-            table.reload('${classname}-table', {where: data.field})
+        form.on('submit(doctorCertificate-query)', function (data) {
+            table.reload('doctorCertificate-table', {where: data.field})
             return false;
         });
 
@@ -119,18 +98,17 @@
                 type: 2,
                 title: '新增',
                 shade: 0.1,
-                area: ['700px', '500px'],
-                content: MODULE_PATH + 'add'
+                area: ['650px', '500px'],
+                content:MODULE_PATH + 'add?id=[[${id}]]'
             });
         }
-
 
         window.edit = function (obj) {
             layer.open({
                 type: 2,
                 title: '修改',
                 shade: 0.1,
-                area: ['700px', '500px'],
+                area: ['650px', '500px'],
                 content: MODULE_PATH + 'edit?id=' + obj.data['id']
             });
         }
@@ -179,7 +157,7 @@
                         layer.close(loading);
                         if (result.success) {
                             layer.msg(result.msg, {icon: 1, time: 1000}, function () {
-                                table.reload('${classname}-table');
+                                table.reload('doctorCertificate-table');
                             });
                         } else {
                             layer.msg(result.msg, {icon: 2, time: 1000});
@@ -190,8 +168,13 @@
         }
 
         window.refresh = function () {
-            table.reload('${classname}-table');
+            table.reload('doctorCertificate-table');
         }
     })
+
+    function perId( id ){
+        console.log(id);
+    }
+
 </script>
 </html>

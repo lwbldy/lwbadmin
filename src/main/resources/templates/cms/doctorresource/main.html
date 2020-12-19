@@ -45,7 +45,8 @@
 <script type="text/html" id="doctorResource-bar">
     <button sec:authorize="hasPermission('/cms/doctorresource/edit','cms:doctorresource:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
-
+    <button sec:authorize="hasPermission('/cms/doctorresource/edit','cms:doctorresource:edit')" class="pear-btn pear-btn-warming pear-btn-sm" lay-event="power"><i class="layui-icon layui-icon-vercode"></i>
+    </button>
     <button sec:authorize="hasPermission('/cms/doctorresource/remove','cms:doctorresource:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
 </script>
@@ -80,7 +81,7 @@
                 {field: 'seniority', title: '资历'},
                 {field: 'clinicSeniority', title: '医院经历'},
                 {field: 'outher', title: '更多'},
-                {title: '操作', toolbar: '#doctorResource-bar', align: 'center', width: 120}
+                {title: '操作', toolbar: '#doctorResource-bar', align: 'center', width: 150}
             ]
         ]
 
@@ -141,6 +142,16 @@
                 shade: 0.1,
                 area: ['500px', '500px'],
                 content: MODULE_PATH + 'edit?id=' + obj.data['id']
+            });
+        }
+
+        window.power = function (obj) {
+            layer.open({
+                type: 2,
+                title: '证书列表',
+                shade: 0.1,
+                area: ['700px', '600px'],
+                content: '/cms/doctorcertificate/main?id=' + obj.data['id']
             });
         }
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pearadmin.modules.cms.mapper.DoctorCertificateMapper">
+
+    <resultMap id="DoctorCertificateMap" type="DoctorCertificate">
+        <id column="id" property="id"></id>
+        <result column="doctor_id" property="doctorId"></result>
+        <result column="pic_id" property="picId"></result>
+    </resultMap>
+
+    <select id="selectList" resultMap="DoctorCertificateMap">
+        select * from doctor_certificate
+        <where>
+        <if test="doctorId!=null and doctorId!=''">
+            and doctor_id = #{doctorId}
+        </if>
+        </where>
+        order by id desc
+    </select>
+
+    <!-- 根据 Id 查询角色-->
+    <select id="selectById" parameterType="int" resultMap="DoctorCertificateMap">
+        select * from doctor_certificate where id = #{id}
+    </select>
+
+
+    <!-- 新增 数据 -->
+    <insert id="insert" parameterType="DoctorCertificate">
+        insert into doctor_certificate
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="doctorId!=null">
+                doctor_id,
+            </if>
+            <if test="picId!=null">
+                pic_id,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="doctorId!=null">
+                #{doctorId},
+            </if>
+            <if test="picId!=null">
+                #{picId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据 Id 修改角色数据 -->
+    <update id="updateById" parameterType="DoctorCertificate">
+        update doctor_certificate
+        <set>
+    <if test="doctorId!=null and doctorId!=''">
+        doctor_id = #{doctorId},
+    </if>
+    <if test="picId!=null and picId!=''">
+        pic_id = #{picId},
+    </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据 Id 删除 -->
+    <delete id="deleteById" parameterType="int">
+        delete from doctor_certificate where id = #{id}
+    </delete>
+
+    <!-- 根据 Id 批量删除 -->
+    <delete id="deleteByIds" parameterType="int">
+        delete from doctor_certificate where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
