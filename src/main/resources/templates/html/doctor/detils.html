@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="ie ie6 lt8 lt9 lt10"><![endif]-->
 <!--[if IE 7]><html class="ie ie7 lt8 lt9 lt10"><![endif]-->
@@ -6,10 +5,10 @@
 <!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
 <!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
 <head>
-    <th:block th:include="include :: headhtml('寻找诊所')"/>
+    <th:block th:include="include :: headhtml('医生资源')"/>
 </head>
-<body>
-<div class="body-box details-box ddeta-box">
+<body class="search-body">
+<div class="body-box resources-box">
 
     <header class="header">
         <th:block th:include="include :: headerhtml(3)"/>
@@ -17,233 +16,28 @@
 
     <section class="main-box">
         <div class="wrap">
-            <div class="postion f-12">您现在的位置：<a href="/index.html">首页</a> >
-                <a href="/resources/resources.html">医生资源</a> >
-                <a href="javascript:;">正文</a>
-            </div>
+            <div class="postion f-12">您现在的位置：<a href="index.html">首页</a> >
+                <a href="javascript:;">医生资源</a></div>
+            <a id="here"></a>
+        </div>
 
-            <div class="main">
-                <p class="tittle f-24">
-                    <label th:text="${doctor.username}">武俊</label>
-                    <span class="f-14"><i><img th:src="@{/static/image/ziyuan_icon01.png}" data-ratio="1.25" class="ratio-img" onerror="lod(this)" alt=""></i><em class="ellipsis" th:text="${doctor.job}">区域医务委员会主任，技术总监</em></span>
-                    <span class="f-14"><i><img th:src="@{/static/image/ziyuan_icon02.png}" class="ratio-img" data-ratio="0.79166667" onerror="lod(this)" alt=""></i><em class="ellipsis" th:text="${doctor.degree}">学士</em></span>
-                    <span class="f-14"><i><img th:src="@{/static/image/ziyuan_icon03.png}" class="ratio-img" data-ratio="0.90909091" onerror="lod(this)" alt=""></i><em class="ellipsis" th:text="${doctor.school}">北京大学口腔医学院</em></span>
-                </p>
+        <div class="main">
+            <p class="tittle f-24">
+                孙理
+                <span class="f-14"><i><img th:src="@{/staitc/image/ziyuan_icon01.png}" data-ratio="1.25" class="ratio-img" onerror="lod(this)" alt="" style="height: 20px;"></i>
+                    <em class="ellipsis">区域数字化项目总监</em>
+                </span>
+                <span class="f-14"><i><img th:src="@{/staitc/image/ziyuan_icon02.png}" class="ratio-img" data-ratio="0.79166667" onerror="lod(this)" alt="" style="height: 19px;"></i>
+                    <em class="ellipsis">学士</em>
+                </span>
+                <span class="f-14"><i><img th:src="@{/staitc/image/ziyuan_icon03.png}" class="ratio-img" data-ratio="0.90909091" onerror="lod(this)" alt="" style="height: 20px;"></i>
+                    <em class="ellipsis">首都医科大学口腔医学院</em>
+                </span>
+            </p>
 
-                <div class="top-box">
-                    <div class="content cf">
-                        <div class="fl">
-                            <div class="img-box">
-                                <img th:src="@{'/html/file/download/'+${doctor.pic}}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="">
-                            </div>
-                        </div>
-
-                        <div class="text-box oh">
-                            <div class="text f-14">
-                                <p><span>所在诊所：<em th:text="${doctor.clinicName}">总部</em></span><span class="bk cf"><i class="fl">出诊时间：</i><em class="bk oh" th:text="${doctor.visitTime}">全天</em></span></p>
-                                <p class="cf"><span class="fl">擅长：</span><em class="oh" th:text="${doctor.good}">种植义齿、根管治疗、复杂病例治疗设计。</em></p>
-                            </div>
-                            <div class="line"></div>
-                            <div class="text f-14">
-
-                                <p>
-                                <p class="cf"><span class="fl">医院经历：</span>
-                                <em class="oh" th:text="${doctor.clinicSeniority}" style="white-space: pre-wrap"></em></p>
-                                <p class="cf"><span class="fl">了解更多：</span>
-                                    <em class="oh ellipsis-2 h-em" style="height: auto;white-space: pre-wrap;" th:utext="${doctor.outher}">
-                                    </em></p>
-                            </div>
-                            <a target="_blank" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&f=10072488&g=10069735" class="btn-01 f-36">预约</a>
-
-                        </div>
-
-                        <div class="btn-list">
-                            <ul class="cf f-14">
-                                <li>
-                                    <div class="btn-box">
-                                        <!--微博的变化-->
-                                        <a class="btn-02" href="http://weibo.com/arrail" target="_blank">微博</a>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="btn-box">
-                                        <!--微信的变化-->
-                                        <a class="btn-03 t-weixin-bon" data-img="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170420/1492666791a5cb5de1212fc8c6.png" href="javascript:;">微信</a>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="btn-box">
-
-                                        <!--在线预约的变化-->
-                                        <a class="btn-04" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&f=10072488&g=10069735" target="_blank">咨询</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!--结束-->
-                <div class="htmlall">
-                    <div class="line-box"></div>
-                    <div class="items zs-box min-scorll-x">
-                        <div class="title">
-                            <p class="f-24 c333">荣誉证书</p>
-                            <p class="f-14 more"><a href="javascript:;" class="morelistBtn rongyu" data-id="2">更多 ></a></p>
-                            <script>
-                                if (3 <= 4) {
-                                    $('.rongyu').hide();
-                                }
-                            </script>
-                        </div>
-                        <div class="list-box cf demo-gallery">
-                            <a data-med="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/1493900817f79f2842cc145a6b.jpg" href="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/1493900817f79f2842cc145a6b.jpg" class="demo-img">
-                                <div class="list">
-                                    <div class="img-box demo-size">
-                                        <img class="ratio-img" data-ratio="0.75" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/1493900817f79f2842cc145a6b.jpg" alt="">
-                                    </div>
-                                    <p class="f-16 c333 ellipsis">美国宾夕法尼亚大口腔医学院访问学者</p>
-                                </div>
-                            </a><a data-med="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/14939007926ffc9fbb5f66ff0f.jpg" href="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/14939007926ffc9fbb5f66ff0f.jpg" class="demo-img">
-                            <div class="list">
-                                <div class="img-box demo-size">
-                                    <img class="ratio-img" data-ratio="0.75" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/14939007926ffc9fbb5f66ff0f.jpg" alt="">
-                                </div>
-                                <p class="f-16 c333 ellipsis">种植培训证书</p>
-                            </div>
-                        </a><a data-med="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/1493900770fcf9cfc6a7aa8143.jpg" href="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/1493900770fcf9cfc6a7aa8143.jpg" class="demo-img">
-                            <div class="list">
-                                <div class="img-box demo-size">
-                                    <img class="ratio-img" data-ratio="0.75" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170504/1493900770fcf9cfc6a7aa8143.jpg" alt="">
-                                </div>
-                                <p class="f-16 c333 ellipsis">种植培训证书</p>
-                            </div>
-                        </a>
-                        </div>
-                    </div>
-                    <div class="line-box"></div>
-                    <div class="video-box items min-scorll-x">
-                        <div class="title">
-                            <p class="f-24 c333">相关视频</p>
-                            <p class="f-14 more"><a href="javascript:;" class="morelistBtn" data-id="3">更多 ></a></p>
-                        </div>
-                        <div class="list-box">
-                            <ul class="cf">
-                                <li>
-                                    <a href="/content/details_19_2528.html" class="js-video-list" data-title="【资深医生研讨会】根管预备：理论指导下的实践">
-                                        <div class="list">
-                                            <div class="img-box">
-                                                <img class="ratio-img" data-ratio="0.75" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170629/1498700143c67d8171258998a5.jpg" alt="">
-                                                <div class="img-bg"></div>
-                                                <div class="play"></div>
-                                            </div>
-                                            <p class="f-16 c333 ellipsis">【资深医生研讨会】根管预备：理论指导下的实践</p>
-                                        </div></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="htmllist" style="display: none;">
-                    <div class="items-box">
-                        <div class="items-title">
-                            <ul class="cf f-16">
-                                <li><a style="display: block;" href="javascript:;" class="htmllistBtn">
-                                    <div class="list">
-                                        <div class="text">
-                                            全部信息                                                    </div>
-                                        <div class="icon">
-                                            <div class="line"></div>
-                                            <div class="sj"></div>
-                                        </div>
-                                    </div></a>
-                                </li>
-
-
-                                <li class="show_2"><a style="display: block;" href="javascript:;" class="morelistBtn" data-id="2">
-                                    <div class="list">
-                                        <div class="text">
-                                            获奖荣誉
-                                        </div>
-                                        <div class="icon">
-                                            <div class="line"></div>
-                                            <div class="sj"></div>
-                                        </div>
-                                    </div></a>
-                                </li>
-
-
-                                <li class="show_1"><a style="display: block;" href="javascript:;" class="morelistBtn" data-id="1">
-                                    <div class="list">
-                                        <div class="text">
-                                            文章
-                                        </div>
-
-                                        <div class="icon">
-                                            <div class="line"></div>
-                                            <div class="sj"></div>
-                                        </div>
-                                    </div></a>
-                                </li>
-                                <li class="show_3"><a style="display: block;" href="javascript:;" class="morelistBtn" data-id="3">
-                                    <div class="list">
-                                        <div class="text">
-                                            相关视频
-                                        </div>
-                                        <div class="icon">
-                                            <div class="line"></div>
-                                            <div class="sj"></div>
-                                        </div>
-                                    </div></a>
-                                </li>
-                                <li class="show_4"><a style="display: block;" href="javascript:;" class="morelistBtn" data-id="4">
-                                    <div class="list">
-                                        <div class="text">
-                                            沙龙活动
-                                        </div>
-                                        <div class="icon">
-                                            <div class="line"></div>
-                                            <div class="sj"></div>
-                                        </div>
-                                    </div></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="htmllistcont">
-
-                        </div>
-
-                        <div class="page-box">
-                            <div class="page f-20" id="page5">
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
         </div>
 
     </section>
-    <footer class="footer">
-        <div class="wrap cf">
-            <div class="fl">
-                <div class="a"><a href="https://mail.arrail-dental.com/owa/auth/logon.aspx?url=https://mail.arrail-dental.com/owa/&reason=0" target="_blank">企业邮箱</a><i></i><a href="/dentistry/about.html">品牌介绍</a><i></i><a href="/other/contact.html">联系瑞尔</a></div>
-                <p><span>北京瑞尔圣彬医疗科技有限公司  版权所有</span>   <span>京ICP备17024434号-3</span>  <span>京卫计网审【2014】第0214号</span></p>
-            </div>
-            <div class="oh">
-                <a href="javascript:;" class="a-wx t-weixin-bon" data-img="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170420/1492666791a5cb5de1212fc8c6.png"></a>
-                <a href="http://weibo.com/arrail" target="_blank" class="a-wb"></a>
-            </div>
-        </div>
-    </footer>
-
 </div>
-
 </body>
 </html>
