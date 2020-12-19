@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 7]><html class="ie ie7 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
+<!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
+<head>
+
+    <th:block th:include="include :: headhtml('寻找诊所')"/>
+
+    <!--页面内容部调用-->
+    <script th:src="@{/static/js/select2.full.js}"></script>
+    <link th:href="@{/static/css/select2.min.css}" rel="stylesheet">
+    <script th:src="@{/static/js/jquery-validate.js}"></script>
+</head>
+<body class="search-body">
+<div class="body-box resources-box doctor-box">
+    <header class="header">
+        <th:block th:include="include :: headerhtml(2)"/>
+    </header>
+
+    <section class="main-box">
+        <div class="wrap">
+            <div class="postion f-12">您现在的位置：<a href="/index.html">首页</a> >
+                <a href="javascript:;">医疗和技术委员会</a></div>
+            <a id="here"></a>
+
+            <div class="main">
+
+                <div class="search-box">
+                    <div class="search">
+                        <div class="inps-box cf">
+                            <div class="inps inps-4">
+                                <input type="text" name="username" id="username" placeholder="请输入医生姓名" th:value="${param.username}">
+                            </div>
+                            <button type="search" onclick="search()" class="f-16 searchBtn">搜索</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-box J_getlist">
+                    <ul>
+                        <li th:each="doctor,doctorStat:${pageInfo.list}">
+                            <div class="row cf">
+                                <div class="fl left">
+                                    <div class="img-box">
+                                        <a th:href="@{/html/doctor/detils(id=${doctor.id})}" target="_self">
+                                            <img th:src="@{'/html/file/download/'+${doctor.pic}}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 283px;">
+                                            <p class="f-24" th:text="${doctor.username}"></p>
+                                        </a>
+                                    </div>
+                                    <p class="tittle">
+                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon01.png}" data-ratio="1" class="ratio-img" onerror="lod(this)" alt="" style="height: 31px;"></i><em th:text="${doctor.job}">主治医师</em></span>
+                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon02.png}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 31px;"></i><em th:text="${doctor.degree}">学士</em></span>
+                                        <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon03.png}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 31px;"></i><em th:text="${doctor.school}">北京大学口腔医学院</em></span>
+                                    </p>
+                                </div>
+
+                                <div class="content-box oh">
+                                    <div class="text f-14">
+                                        <p><span>所在诊所：<em th:text="${doctor.clinicName}"></em></span><span class="cf bk">
+                                            <i class="fl">出诊时间：</i><em class="bk oh" th:text="${doctor.visitTime}">全天</em></span>
+                                        </p>
+                                        <p><span>擅长：<em th:text="${doctor.good}"></em></span></p>
+                                        <p><span>&nbsp;</span></p>
+                                        <a th:href="@{/html/doctor/detils(id=${doctor.id})}" target="_self" class="btn-01 f-14">了解详情 &gt;</a>
+                                        <a target="_self" class="btn-02 f-14" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&amp;f=10072488&amp;g=10069735" style="">在线预约</a>
+                                    </div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="doctor-honor oh demo-gallery" data-pswp-uid="1">
+                                    <div class="t f-16">荣誉证书：</div>
+                                    <dl class="cf">
+                                        <dd th:each="certificate,certificateStat:${doctor.doctorCertificateList}">
+                                            <div class="w">
+                                                <div class="img">
+                                                    <a href="#" class="demo-img" data-size="444x333" data-med-size="444x333" target="_self">
+                                                        <div class="img-b demo-size">
+                                                            <img th:src="@{'/html/file/download/'+${certificate.picId}}" data-ratio="0.75" class="ratio-img" onerror="lod(this)" style="height: 172px;">
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <p class="ellipsis"><a href="javascript:;" target="_self" th:text="${certificate.title}"></a></p>
+                                            </div>
+                                        </dd>
+
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="page-box">
+                    <div class="page f-20" id="page5">
+                        <div class="laypage_main laypageskin_default">
+                            <a
+                                    th:if="${!pageInfo.isFirstPage}"
+                                    th:href="@{/html/committee(page=${pageInfo.prePage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_prev" > </a>
+                            <a
+                                    th:if="${!pageInfo.isLastPage}"
+                                    th:href="@{/html/committee(page=${pageInfo.nextPage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_next" > </a>
+                            <span class="laypage_total"><label>到第</label>
+                                <input type="number"
+                                       min="1"
+                                       id="tz"
+                                       th:value="${pageInfo.pageNum}"
+                                       class="laypage_skip">
+                                <label>页</label>
+                                <button type="button" class="laypage_btn" onclick="tz()">确定</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <footer class="footer">
+        <th:block th:include="include :: footerhtml"/>
+    </footer>
+
+</div>
+<script>
+    $(function(){
+        $(".j-select2").each(function(){
+            $(this).select2();
+        });
+    });
+
+    function tz(){
+        var val = document.getElementById("tz").value;
+        var url = "/html/committee?username=[[${param.username}]]&page="+val;
+        window.location.href=url;
+    }
+
+    function search(){
+        var username = document.getElementById("username").value;
+        var url = "/html/committee?username="+username;
+        window.location.href=url;
+    }
+
+</script>
+
+</body>
+</html>

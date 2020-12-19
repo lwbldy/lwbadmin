@@ -2,7 +2,7 @@ package com.pearadmin.modules.cms.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
+import java.util.List;
 
 
 /**
@@ -49,6 +49,9 @@ public class DoctorResource implements Serializable {
     private String clinicName;
     // 位置
     private String region;
+
+    //医生证书
+    private List<DoctorCertificate> doctorCertificateList;
 
     
         /**
@@ -242,5 +245,13 @@ public class DoctorResource implements Serializable {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public List<DoctorCertificate> getDoctorCertificateList() {
+        return doctorCertificateList;
+    }
+
+    public void setDoctorCertificateList(List<DoctorCertificate> doctorCertificateList) {
+        this.doctorCertificateList = doctorCertificateList;
     }
 }

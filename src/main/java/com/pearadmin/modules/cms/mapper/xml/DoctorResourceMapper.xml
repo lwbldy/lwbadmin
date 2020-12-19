@@ -20,8 +20,54 @@
         <result column="order" property="order"></result>
         <result column="clinic_name" property="clinicName"></result>
         <result column="region" property="region"></result>
-
     </resultMap>
+
+
+    <resultMap id="DoctorResourceMap2" type="DoctorResource">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="job" property="job"></result>
+        <result column="degree" property="degree"></result>
+        <result column="school" property="school"></result>
+        <result column="clinic" property="clinic"></result>
+        <result column="visit_time" property="visitTime"></result>
+        <result column="pic" property="pic"></result>
+        <result column="good" property="good"></result>
+        <result column="age" property="age"></result>
+        <result column="seniority" property="seniority"></result>
+        <result column="clinic_seniority" property="clinicSeniority"></result>
+        <result column="outher" property="outher"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="order" property="order"></result>
+        <result column="clinic_name" property="clinicName"></result>
+        <result column="region" property="region"></result>
+        <collection property="doctorCertificateList"
+                    javaType="ArrayList"
+                    ofType="com.pearadmin.modules.cms.domain.DoctorCertificate"
+                    select="getDoctorCertificate" column="id"/>
+    </resultMap>
+
+    <select id="getDoctorCertificate" resultType="com.pearadmin.modules.cms.domain.DoctorCertificate">
+        SELECT * FROM `doctor_certificate` WHERE doctor_id = #{id}
+    </select>
+
+    <select id="selectList2" resultMap="DoctorResourceMap2">
+        SELECT p2.clinic_name,p2.region,p1.* FROM doctor_resource p1
+        LEFT JOIN clinic p2 ON p1.clinic=p2.id
+        <where>
+            <if test="username!=null and username!=''">
+                and p1.username like CONCAT('%',#{username}, '%')
+            </if>
+            <if test="clinic!=null and clinic!=''">
+                and p2.clinic=#{clinic}
+            </if>
+            <if test="region!=null and region!=''">
+                and p2.region=#{region}
+            </if>
+        </where>
+        order by `order` desc,id desc
+    </select>
+
 
     <select id="selectList" resultMap="DoctorResourceMap">
         SELECT p2.clinic_name,p2.region,p1.* FROM doctor_resource p1

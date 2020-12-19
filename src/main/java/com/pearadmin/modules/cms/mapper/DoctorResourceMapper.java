@@ -14,6 +14,13 @@ public interface DoctorResourceMapper {
      */
     List<DoctorResource> selectList(DoctorResource param);
 
+    /**
+     * 按条件查询数据
+     * @param param
+     * @return
+     */
+    List<DoctorResource> selectList2(DoctorResource param);
+
 
     /**
      * 添加数据

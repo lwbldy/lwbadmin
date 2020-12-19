@@ -1,5 +1,6 @@
 package com.pearadmin.modules.html.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.plugins.resource.service.IFileService;
 import com.pearadmin.common.web.base.BaseController;
@@ -12,6 +13,7 @@ import com.pearadmin.modules.cms.service.IDoctorCertificateService;
 import com.pearadmin.modules.cms.service.IDoctorResourceService;
 import com.pearadmin.modules.system.domain.SysDictData;
 import com.pearadmin.modules.system.service.ISysDictDataService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -110,6 +112,25 @@ public class IndexController extends BaseController {
         return modelAndView;
     }
 
+    @GetMapping("html/committee")
+    public ModelAndView committee(ModelAndView modelAndView, PageDomain pageDomain, DoctorResource param){
+        if(pageDomain.getLimit() == null){
+            pageDomain.setLimit(5);
+        }
+
+        if(pageDomain.getPage() == null){
+            pageDomain.setPage(1);
+        }
+
+        PageInfo<DoctorResource> pageInfo = doctorResourceService.page2(param,pageDomain);
+        modelAndView.addObject("pageInfo",pageInfo);
+
+        System.out.println(JSON.toJSONString(pageInfo));
+
+        modelAndView.addObject("param",param);
+        modelAndView.setViewName("html/committee/index");
+        return modelAndView;
+    }
 
     @Resource
     private IFileService fileService;

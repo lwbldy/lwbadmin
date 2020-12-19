@@ -26,9 +26,21 @@ public class DoctorResourceServiceImpl implements IDoctorResourceService {
     }
 
     @Override
+    public List<DoctorResource> selectList2(DoctorResource param) {
+        return doctorResourceMapper.selectList2(param);
+    }
+
+    @Override
     public PageInfo<DoctorResource> page(DoctorResource param, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(),pageDomain.getLimit());
         List<DoctorResource> doctorResources = doctorResourceMapper.selectList(param);
+        return new PageInfo<>(doctorResources);
+    }
+
+    @Override
+    public PageInfo<DoctorResource> page2(DoctorResource param, PageDomain pageDomain) {
+        PageHelper.startPage(pageDomain.getPage(),pageDomain.getLimit());
+        List<DoctorResource> doctorResources = doctorResourceMapper.selectList2(param);
         return new PageInfo<>(doctorResources);
     }
 

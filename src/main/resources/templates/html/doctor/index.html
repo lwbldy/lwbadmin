@@ -44,14 +44,14 @@
                             <div class="row cf">
                                 <div class="fl">
                                     <div class="img-box">
-                                        <a href="/content/details_4_1588.html" target="_blank">
+                                        <a th:href="@{/html/doctor/detils(id=${doctor.id})}" target="_blank">
                                             <img th:src="@{'/html/file/download/'+${doctor.pic}}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 200px;"></a>
                                     </div>
                                 </div>
 
                                 <div class="content-box oh">
                                     <p class="tittle f-24">
-                                        <a href="/content/details_4_1588.html" target="_blank" th:text="${doctor.username}">武俊</a>
+                                        <a th:href="@{/html/doctor/detils(id=${doctor.id})}" target="_blank" th:text="${doctor.username}"></a>
                                         <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon01.png}" data-ratio="1.25" class="ratio-img" onerror="lod(this)" alt="" style="height: 20px;"></i><em th:text="${doctor.job}">主治医师</em></span>
                                         <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon02.png}" class="ratio-img" data-ratio="0.79166667" onerror="lod(this)" alt="" style="height: 19px;"></i><em th:text="${doctor.degree}">学士</em></span>
                                         <span class="f-14 ellipsis"><i><img th:src="@{/static/image/ziyuan_icon03.png}" class="ratio-img" data-ratio="0.90909091" onerror="lod(this)" alt="" style="height: 20px;"></i><em th:text="${doctor.school}">北京大学口腔医学院</em></span>
@@ -66,7 +66,7 @@
                                         </p>
                                         <p><span>擅长：<em th:text="${doctor.good}">种植义齿、根管治疗、复杂病例治疗设计。</em></span></p>
                                         <p><span>&nbsp;</span></p>
-                                        <a href="/content/details_4_1588.html" target="_blank" class="btn-01 f-14">了解详情 &gt;</a>
+                                        <a th:href="@{/html/doctor/detils(id=${doctor.id})}" target="_blank" class="btn-01 f-14">了解详情 &gt;</a>
                                         <a target="_blank" class="btn-02 f-14" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&amp;f=10072488&amp;g=10069735" style="">在线预约</a>
                                     </div>
                                 </div>

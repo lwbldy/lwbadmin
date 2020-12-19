@@ -20,6 +20,12 @@ public interface IDoctorResourceService {
      */
     List<DoctorResource> selectList(DoctorResource doctorResource);
 
+    /**
+     * 按条件查询数据
+     * @param doctorResource
+     * @return
+     */
+    List<DoctorResource> selectList2(DoctorResource doctorResource);
 
     /**
      * 分页查询
@@ -28,6 +34,14 @@ public interface IDoctorResourceService {
      * @return
      */
     PageInfo<DoctorResource> page(DoctorResource doctorResource, PageDomain pageDomain);
+
+    /**
+     * 分页查询
+     * @param doctorResource
+     * @param pageDomain
+     * @return
+     */
+    PageInfo<DoctorResource> page2(DoctorResource doctorResource, PageDomain pageDomain);
 
     /**
      * 添加数据
