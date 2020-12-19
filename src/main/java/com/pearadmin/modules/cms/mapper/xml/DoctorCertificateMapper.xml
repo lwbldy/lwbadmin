@@ -6,6 +6,7 @@
         <id column="id" property="id"></id>
         <result column="doctor_id" property="doctorId"></result>
         <result column="pic_id" property="picId"></result>
+        <result column="title" property="title"></result>
     </resultMap>
 
     <select id="selectList" resultMap="DoctorCertificateMap">
@@ -34,6 +35,9 @@
             <if test="picId!=null">
                 pic_id,
             </if>
+            <if test="title!=null">
+                title,
+            </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="doctorId!=null">
@@ -42,6 +46,9 @@
             <if test="picId!=null">
                 #{picId},
             </if>
+            <if test="title!=null">
+                #{title},
+            </if>
         </trim>
     </insert>
 
@@ -49,12 +56,15 @@
     <update id="updateById" parameterType="DoctorCertificate">
         update doctor_certificate
         <set>
-    <if test="doctorId!=null and doctorId!=''">
-        doctor_id = #{doctorId},
-    </if>
-    <if test="picId!=null and picId!=''">
-        pic_id = #{picId},
-    </if>
+            <if test="doctorId!=null and doctorId!=''">
+                doctor_id = #{doctorId},
+            </if>
+            <if test="picId!=null and picId!=''">
+                pic_id = #{picId},
+            </if>
+            <if test="title!=null and title!=''">
+                title = #{title},
+            </if>
         </set>
         where id = #{id}
     </update>

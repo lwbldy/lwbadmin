@@ -21,6 +21,8 @@ public class DoctorCertificate implements Serializable {
     private Integer doctorId;
         //图片编号
     private String picId;
+    //证书标题
+    private String title;
     
         /**
      * 设置：
@@ -58,4 +60,12 @@ public class DoctorCertificate implements Serializable {
     public String getPicId() {
         return picId;
     }
+
+    public String getTitle() {
+        return title;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}

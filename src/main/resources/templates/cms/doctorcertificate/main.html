@@ -26,7 +26,7 @@
 </script>
 
 <script type="text/html" id="file-img">
-    <img src="/system/file/download/{{d.picId}}"/>
+    <img src="/system/file/download/{{d.picId}}" style="width: 300px"/>
 </script>
 
 <script type="text/html" id="doctorCertificate-bar">
@@ -46,7 +46,8 @@
         let MODULE_PATH = "/cms/doctorcertificate/";
         let cols = [
             [
-                {field: 'picId', title: '图片编号', templet: "#file-img"},
+                {field: 'picId', title: '证书图片', templet: "#file-img"},
+                {field: 'title', title: '证书标题'},
                 {title: '操作', toolbar: '#doctorCertificate-bar', align: 'center', width: 120}
             ]
         ]
@@ -92,13 +93,12 @@
             return false;
         });
 
-
         window.add = function () {
             layer.open({
                 type: 2,
                 title: '新增',
                 shade: 0.1,
-                area: ['650px', '500px'],
+                area: ['650px', '45px'],
                 content:MODULE_PATH + 'add?id=[[${id}]]'
             });
         }
@@ -108,7 +108,7 @@
                 type: 2,
                 title: '修改',
                 shade: 0.1,
-                area: ['650px', '500px'],
+                area: ['650px', '450px'],
                 content: MODULE_PATH + 'edit?id=' + obj.data['id']
             });
         }

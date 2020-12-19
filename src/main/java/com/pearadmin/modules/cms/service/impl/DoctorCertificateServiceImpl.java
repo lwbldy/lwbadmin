@@ -15,8 +15,6 @@ import java.util.List;
 @Service("doctorCertificateService")
 public class DoctorCertificateServiceImpl implements IDoctorCertificateService {
 
-
-
     @Resource
     DoctorCertificateMapper doctorCertificateMapper;
 

@@ -58,14 +58,17 @@
 
 <sss th:fragment="headerhtml(onIndex)" class="header" >
     <div class="wrap cf">
-        <a class="logo" href="index.html"><img src="static/picture/index_logo.png"></a>
+        <a class="logo" th:href="@{/}">
+            <img th:src="@{/static/image/logo.jpg}" style="width: auto;margin-top: -17px">
+            <span style="color: white;font-size: 30px;">卫华口腔</span>
+        </a>
         <div class="oh menu f-16">
             <ul class="cf topmenuclass">
                 <li class="first"><a href="index.html">中文</a> <i>/</i> <a href="javascript:;">English</a></li>
                 <li th:classappend="${onIndex == 1} ? 'on' : ''"><a href="index.html">首页</a></li>
                 <li th:classappend="${onIndex == 2} ? 'on' : ''"><a href="doctor.html">医疗和技术委员会</a></li>
-                <li th:classappend="${onIndex == 3} ? 'on' : ''"><a href="resources.html">医生资源</a></li>
-                <li th:classappend="${onIndex == 4} ? 'on' : ''"><a th:href="@{//html/clinic}">寻找诊所</a></li>
+                <li th:classappend="${onIndex == 3} ? 'on' : ''"><a th:href="@{/html/doctor}">医生资源</a></li>
+                <li th:classappend="${onIndex == 4} ? 'on' : ''"><a th:href="@{/html/clinic}">寻找诊所</a></li>
                 <li th:classappend="${onIndex == 5} ? 'on' : ''"><a href="">牙病科普</a></li>
                 <li th:classappend="${onIndex == 6} ? 'on' : ''"><a href="about.html">关于品牌</a></li>
                 <li th:classappend="${onIndex == 7} ? 'on' : ''"><a href="campaign.html">消费者活动</a></li>
@@ -73,7 +76,7 @@
         </div>
         <div class="lang f-12" style="display:block;"><a href="index.html" class="on">中文</a> <i>/</i> <a
                 href="index2.html">English</a></div>
-        <a href="index1.html" class="member"><img src="static/picture/hy.png"></a>
+        <a href="index1.html" class="member"><img th:src="@{/static/image/hy.png}"></a>
 
         <div class="menu-bon">
             <button class="menu_h"><span>Menu</span></button>
@@ -82,10 +85,10 @@
 
     </div>
     <div class="icon-btn f-12">
-        <a href="javascript:;" style="background-image: url(static/image/icon_kefu.png);">预约</a>
-        <a href="message.html" style="background-image: url(static/image/icon_emill.png);">留言</a>
+        <a href="javascript:;" style="background-image: url(/static/image/icon_kefu.png);">预约</a>
+        <a href="message.html" style="background-image: url(/static/image/icon_emill.png);">留言</a>
         <a href="javascript:;" target="_black"
-           style="background-image: url(static/image/icon_jituan.png);">瑞尔集团</a>
+           style="background-image: url(/static/image/icon_jituan.png);">卫华口腔</a>
     </div>
 </sss>
 

@@ -52,7 +52,7 @@
 </script>
 
 <script type="text/html" id="file-img">
-    <img src="/system/file/download/{{d.pic}}"/>
+    <img src="/system/file/download/{{d.pic}}" style="width: 300px"/>
 </script>
 
 
@@ -140,7 +140,7 @@
                 type: 2,
                 title: '修改',
                 shade: 0.1,
-                area: ['500px', '500px'],
+                area: ['700px', '500px'],
                 content: MODULE_PATH + 'edit?id=' + obj.data['id']
             });
         }
@@ -150,7 +150,7 @@
                 type: 2,
                 title: '证书列表',
                 shade: 0.1,
-                area: ['700px', '600px'],
+                area: ['700px', '500px'],
                 content: '/cms/doctorcertificate/main?id=' + obj.data['id']
             });
         }

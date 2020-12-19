@@ -18,6 +18,14 @@
                 </div>
 
                 <div class="layui-form-item">
+                    <label class="layui-form-label">证书标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="title" name="title" th:value="${doctorCertificate.title}"  autocomplete="off" placeholder="请输入证书标题"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
                     <label class="layui-form-label">证书</label>
                     <div class="layui-input-block">
                         <button class="pear-btn pear-btn-primary pear-btn-md" type="button" lay-event="add" id="addFile">
