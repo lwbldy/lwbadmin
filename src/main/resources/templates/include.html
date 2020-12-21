@@ -66,7 +66,7 @@
             <ul class="cf topmenuclass">
                 <li class="first"><a href="index.html">中文</a> <i>/</i> <a href="javascript:;">English</a></li>
                 <li th:classappend="${onIndex == 1} ? 'on' : ''"><a href="index.html">首页</a></li>
-                <li th:classappend="${onIndex == 2} ? 'on' : ''"><a href="doctor.html">医疗和技术委员会</a></li>
+                <li th:classappend="${onIndex == 2} ? 'on' : ''"><a th:href="@{/html/committee}">医疗和技术委员会</a></li>
                 <li th:classappend="${onIndex == 3} ? 'on' : ''"><a th:href="@{/html/doctor}">医生资源</a></li>
                 <li th:classappend="${onIndex == 4} ? 'on' : ''"><a th:href="@{/html/clinic}">寻找诊所</a></li>
                 <li th:classappend="${onIndex == 5} ? 'on' : ''"><a href="">牙病科普</a></li>
