@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pearadmin.modules.cms.mapper.DentalMapper">
+
+    <resultMap id="DentalMap" type="Dental">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="type_id" property="typeId"></result>
+        <result column="pic" property="pic"></result>
+        <result column="synopsis" property="synopsis"></result>
+        <result column="creat_time" property="creatTime"></result>
+        <result column="show_time" property="showTime"></result>
+        <result column="context" property="context"></result>
+    </resultMap>
+
+    <select id="selectList" resultMap="DentalMap">
+        select * from dental
+        <where>
+        <if test="title!=null and title!=''">
+            and title like CONCAT('%',#{title}, '%')
+        </if>
+    
+        <if test="typeId!=null and typeId!=''">
+            and type_id = #{typeId}
+        </if>
+
+        <if test="showTime!=null and showTime!=''">
+            and show_time = #{showTime}
+        </if>
+
+        </where>
+
+        order by id desc
+
+    </select>
+
+    <!-- 根据 Id 查询角色-->
+    <select id="selectById" parameterType="int" resultMap="DentalMap">
+        select * from dental where id = #{id}
+    </select>
+
+
+    <!-- 新增 数据 -->
+    <insert id="insert" parameterType="Dental">
+        insert into dental
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title!=null">
+                title,
+            </if>
+            <if test="typeId!=null">
+                type_id,
+            </if>
+            <if test="pic!=null">
+                pic,
+            </if>
+            <if test="synopsis!=null">
+                synopsis,
+            </if>
+            <if test="creatTime!=null">
+                creat_time,
+            </if>
+            <if test="showTime!=null">
+                show_time,
+            </if>
+            <if test="context!=null">
+                context,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="title!=null">
+                #{title},
+            </if>
+            <if test="typeId!=null">
+                #{typeId},
+            </if>
+            <if test="pic!=null">
+                #{pic},
+            </if>
+            <if test="synopsis!=null">
+                #{synopsis},
+            </if>
+            <if test="creatTime!=null">
+                #{creatTime},
+            </if>
+            <if test="showTime!=null">
+                #{showTime},
+            </if>
+            <if test="context!=null">
+                #{context},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据 Id 修改角色数据 -->
+    <update id="updateById" parameterType="Dental">
+        update dental
+        <set>
+    <if test="title!=null and title!=''">
+        title = #{title},
+    </if>
+    <if test="typeId!=null and typeId!=''">
+        type_id = #{typeId},
+    </if>
+    <if test="pic!=null and pic!=''">
+        pic = #{pic},
+    </if>
+    <if test="synopsis!=null and synopsis!=''">
+        synopsis = #{synopsis},
+    </if>
+    <if test="creatTime!=null and creatTime!=''">
+        creat_time = #{creatTime},
+    </if>
+    <if test="showTime!=null and showTime!=''">
+        show_time = #{showTime},
+    </if>
+    <if test="context!=null and context!=''">
+        context = #{context},
+    </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据 Id 删除 -->
+    <delete id="deleteById" parameterType="int">
+        delete from dental where id = #{id}
+    </delete>
+
+    <!-- 根据 Id 批量删除 -->
+    <delete id="deleteByIds" parameterType="int">
+        delete from dental where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

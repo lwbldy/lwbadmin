@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <th:block th:include="include :: header('列表')"/>
+</head>
+<body class="pear-container">
+<div class="layui-card">
+    <div class="layui-card-body">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" placeholder="" class="layui-input">
+            </div>
+            <label class="layui-form-label">类型id</label>
+            <div class="layui-input-inline">
+                <input type="text" name="typeId" placeholder="" class="layui-input">
+            </div>
+            <label class="layui-form-label">显示时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="showTime" placeholder="" class="layui-input">
+            </div>
+                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="dental-query">
+                    <i class="layui-icon layui-icon-search"></i>
+                    查询
+                </button>
+                <button type="reset" class="pear-btn pear-btn-md">
+                    <i class="layui-icon layui-icon-refresh"></i>
+                    重置
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table id="dental-table" lay-filter="dental-table"></table>
+    </div>
+</div>
+</body>
+
+<script type="text/html" id="dental-toolbar">
+    <button sec:authorize="hasPermission('/cms/dental/add','cms:dental:add')" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+        <i class="layui-icon layui-icon-add-1"></i>
+        新增
+    </button>
+    <button sec:authorize="hasPermission('/cms/dental/remove','cms:dental:remove')" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+        <i class="layui-icon layui-icon-delete"></i>
+        删除
+    </button>
+</script>
+
+<script type="text/html" id="file-img">
+    <img src="/system/file/download/{{d.pic}}" style="width: 300px"/>
+</script>
+
+<script type="text/html" id="dental-bar">
+    <button sec:authorize="hasPermission('/cms/dental/edit','cms:dental:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
+    </button>
+
+    <button sec:authorize="hasPermission('/cms/dental/remove','cms:dental:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
+    </button>
+</script>
+
+
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['table', 'form', 'jquery'], function () {
+        let table = layui.table;
+        let form = layui.form;
+        let $ = layui.jquery;
+
+        let MODULE_PATH = "/cms/dental/";
+
+        let cols = [
+            [
+                {type: 'checkbox'},
+                {field: 'title', title: '标题'},
+                {field: 'typeId', title: '类型id'},
+                {field: 'pic', title: '主图',templet: "#file-img"},
+                {field: 'synopsis', title: '摘要'},
+                {field: 'showTime', title: '显示时间'},
+                {title: '操作', toolbar: '#dental-bar', align: 'center', width: 120}
+            ]
+        ]
+
+        table.render({
+            elem: '#dental-table',
+            url: MODULE_PATH + 'data',
+            page: true,
+            cols: cols,
+            skin: 'line',
+            toolbar: '#dental-toolbar',
+            defaultToolbar: [{
+                layEvent: 'refresh',
+                icon: 'layui-icon-refresh',
+            }, 'filter', 'print', 'exports']
+        });
+
+        table.on('tool(dental-table)', function (obj) {
+            if (obj.event === 'remove') {
+                window.remove(obj);
+            } else if (obj.event === 'edit') {
+                window.edit(obj);
+            } else if (obj.event === 'power') {
+                window.power(obj);
+            }
+        });
+
+        table.on('toolbar(dental-table)', function (obj) {
+            if (obj.event === 'add') {
+                window.add();
+            } else if (obj.event === 'refresh') {
+                window.refresh();
+            } else if (obj.event === 'batchRemove') {
+                window.batchRemove(obj);
+            }
+        });
+
+        form.on('submit(dental-query)', function (data) {
+            table.reload('dental-table', {where: data.field})
+            return false;
+        });
+
+
+        window.add = function () {
+            var w,h;
+            if (w == null || w == '') {
+                w=($(window).width()*0.9);
+            };
+            if (h == null || h == '') {
+                h=($(window).height() - 50);
+            };
+            layer.open({
+                type: 2,
+                area: [w+'px', h +'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                title: '新增',
+                content: MODULE_PATH + 'add'
+            });
+
+        }
+
+
+        window.edit = function (obj) {
+
+            var w,h;
+            if (w == null || w == '') {
+                w=($(window).width()*0.9);
+            };
+            if (h == null || h == '') {
+                h=($(window).height() - 50);
+            };
+            layer.open({
+                type: 2,
+                area: [w+'px', h +'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                title: '修改',
+                content: MODULE_PATH + 'edit?id=' + obj.data['id']
+            });
+
+        }
+
+        window.remove = function (obj) {
+            layer.confirm('确定要删除这些用户', {icon: 3, title: '提示'}, function (index) {
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: MODULE_PATH + "remove/" + obj.data['id'],
+                    dataType: 'json',
+                    type: 'delete',
+                    success: function (result) {
+                        layer.close(loading);
+                        if (result.success) {
+                            layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                                obj.del();
+                            });
+                        } else {
+                            layer.msg(result.msg, {icon: 2, time: 1000});
+                        }
+                    }
+                })
+            });
+        }
+
+        window.batchRemove = function (obj) {
+            let data = table.checkStatus(obj.config.id).data;
+            if (data.length === 0) {
+                layer.msg("未选中数据", {icon: 3, time: 1000});
+                return false;
+            }
+            let ids = "";
+            for (let i = 0; i < data.length; i++) {
+                ids += data[i].id + ",";
+            }
+            ids = ids.substr(0, ids.length - 1);
+            layer.confirm('确定要删除这些用户', {icon: 3, title: '提示'}, function (index) {
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: MODULE_PATH + "batchRemove/" + ids,
+                    dataType: 'json',
+                    type: 'delete',
+                    success: function (result) {
+                        layer.close(loading);
+                        if (result.success) {
+                            layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                                table.reload('dental-table');
+                            });
+                        } else {
+                            layer.msg(result.msg, {icon: 2, time: 1000});
+                        }
+                    }
+                })
+            });
+        }
+
+        window.refresh = function () {
+            table.reload('dental-table');
+        }
+    })
+</script>
+</html>

@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:include="include :: header('新增')"/>
+
 </head>
 <body>
 <form class="layui-form" action="">
@@ -9,74 +10,70 @@
         <div class="main-container">
             <div class="main-container">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">名称</label>
+                    <label class="layui-form-label">标题</label>
                     <div class="layui-input-block">
-                        <input type="text" id="clinicName" name="clinicName"  autocomplete="off" placeholder="请输入名称"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">地区</label>
-                    <div class="layui-input-block">
-                        <select id="region" name="region" lay-verify="required" lay-search>
-                            <option th:each="region,regionStat:${regionList}" th:text="${region.dataLabel}" th:value="${region.dataValue}"></option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">电话</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="telephone" name="telephone"  autocomplete="off" placeholder="请输入电话"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">地址</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="address" name="address"  autocomplete="off" placeholder="请输入地址"
+                        <input type="text" id="title" name="title"  autocomplete="off" placeholder="请输入标题"
                                class="layui-input">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">封面图</label>
+                    <label class="layui-form-label">显示时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="showTime" name="showTime"  autocomplete="off" placeholder="请输入显示时间"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类型id</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="typeId" name="typeId"  autocomplete="off" placeholder="请输入类型id"
+                               class="layui-input">
+                    </div>
+                </div>
+                <!--<div class="layui-form-item">-->
+                    <!--<label class="layui-form-label">主图</label>-->
+                    <!--<div class="layui-input-block">-->
+                        <!--<input type="text" id="pic" name="pic"  autocomplete="off" placeholder="请输入主图"-->
+                               <!--class="layui-input">-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">主图</label>
                     <div class="layui-input-block">
                         <button class="pear-btn pear-btn-primary pear-btn-md" type="button" lay-event="add" id="addFile">
                             <i class="layui-icon layui-icon-add-1"></i>
                             上传
                         </button>
-                        <img id="pic_img" src="/system/file/download/1338309847401103360" width="50px" style="display: none"/>
+                        <img id="pic_img" src="" width="50px" style="display: none"/>
                         <input type="hidden" id="pic" name="pic">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">地图信息</label>
+                    <label class="layui-form-label">摘要</label>
                     <div class="layui-input-block">
-                        <input type="text" id="map" name="map"  autocomplete="off" placeholder="请输入地图信息"
+                        <input type="text" id="synopsis" name="synopsis"  autocomplete="off" placeholder="请输入摘要"
                                class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">营业时间</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="openingHours" name="openingHours"  autocomplete="off" placeholder="请输入营业时间"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">简介</label>
-                    <div class="layui-input-block">
-                        <textarea type="text" id="details" name="details" placeholder="请输入简介" class="layui-textarea"></textarea>
                     </div>
                 </div>
 
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+
+                        <div id="editor"></div>
+                        <textarea id="text1" name="context" style="display: none;"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="bottom">
         <div class="button-container">
-            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="clinic-save">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="dental-save">
                 <i class="layui-icon layui-icon-ok"></i>
                 提交
             </button>
@@ -88,13 +85,17 @@
     </div>
 </form>
 <th:block th:include="include :: footer"/>
+
+<script th:src="@{/static/js/wangEditor.js}" ></script>
+<script th:src="@{/static/js/editor-config.js}" ></script>
+
 <script>
     layui.use(['form', 'jquery','laydate'], function () {
         let form = layui.form;
         let $ = layui.jquery;
         var laydate = layui.laydate;
         laydate.render({
-            elem: '#birthday' //指定元素
+            elem: '#showTime' //指定元素
         });
 
         $("#addFile").on('click', function () {
@@ -107,9 +108,9 @@
             });
         })
 
-        form.on('submit(clinic-save)', function (data) {
+        form.on('submit(dental-save)', function (data) {
             $.ajax({
-                url: '/cms/clinic/save',
+                url: '/cms/dental/save',
                 data: JSON.stringify(data.field),
                 dataType: 'json',
                 contentType: 'application/json',
@@ -118,7 +119,7 @@
                     if (result.success) {
                         layer.msg(result.msg, {icon: 1, time: 1000}, function () {
                             parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-                            parent.layui.table.reload("clinic-table");
+                            parent.layui.table.reload("dental-table");
                         });
                     } else {
                         layer.msg(result.msg, {icon: 2, time: 1000});
@@ -127,7 +128,6 @@
             })
             return false;
         });
-
     })
 
     function perId( id ){
