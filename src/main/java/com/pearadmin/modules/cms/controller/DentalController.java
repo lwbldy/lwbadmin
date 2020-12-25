@@ -11,6 +11,8 @@ import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.ResultTable;
+import com.pearadmin.modules.system.domain.SysDictData;
+import com.pearadmin.modules.system.service.ISysDictDataService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,12 +36,18 @@ public class DentalController extends BaseController {
 
     @Resource
     private IDentalService dentalService;
+    @Resource
+    private ISysDictDataService sysDictDataService;
 
     @GetMapping("main")
     @ApiOperation(value="获取列表视图")
     @PreAuthorize("hasPermission('/cms/dental/main','cms:dental:main')")
-    public ModelAndView main( ){
-        return JumpPage(MODULE_PATH + "main");
+    public ModelAndView main(ModelAndView modelAndView){
+        SysDictData sysDictData = new SysDictData();
+        sysDictData.setTypeCode("ybkp");
+        modelAndView.addObject("typeList",sysDictDataService.list(sysDictData));
+        modelAndView.setViewName(MODULE_PATH + "main");
+        return modelAndView;
     }
 
 
@@ -54,8 +62,12 @@ public class DentalController extends BaseController {
     @GetMapping("add")
     @ApiOperation(value="获取新增视图")
     @PreAuthorize("hasPermission('/cms/dental/add','cms:dental:add')")
-    public ModelAndView add(){
-        return JumpPage(MODULE_PATH + "add");
+    public ModelAndView add(ModelAndView modelAndView){
+        SysDictData sysDictData = new SysDictData();
+        sysDictData.setTypeCode("ybkp");
+        modelAndView.addObject("typeList",sysDictDataService.list(sysDictData));
+        modelAndView.setViewName(MODULE_PATH + "add");
+        return modelAndView;
     }
 
 
@@ -86,6 +98,11 @@ public class DentalController extends BaseController {
     public ModelAndView edit(ModelAndView modelAndView,int id){
         modelAndView.addObject("dental",dentalService.selectById(id));
         modelAndView.setViewName(MODULE_PATH + "edit");
+
+        SysDictData sysDictData = new SysDictData();
+        sysDictData.setTypeCode("ybkp");
+        modelAndView.addObject("typeList",sysDictDataService.list(sysDictData));
+
         return modelAndView;
     }
 

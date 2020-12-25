@@ -33,8 +33,18 @@ public class Dental implements Serializable {
     private LocalDate showTime;
         //详细内容
     private String context;
-    
-        /**
+
+    private String typeName;
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    /**
      * 设置：
      */
     public void setId(Integer id) {

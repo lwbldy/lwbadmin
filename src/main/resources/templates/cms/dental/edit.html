@@ -36,17 +36,17 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">类型id</label>
                     <div class="layui-input-block">
-                        <input type="text" id="typeId" name="typeId" th:value="${dental.typeId}"  autocomplete="off" placeholder="请输入类型id"
-                               class="layui-input">
+
+                        <select id="typeId" name="typeId" lay-verify="required" lay-search>
+                            <option th:each="type,typeStat:${typeList}"
+                                    th:text="${type.dataLabel}"
+                                    th:value="${type.dataValue}"
+                                    th:selected="${type.dataValue eq dental.typeId}"
+                            ></option>
+                        </select>
                     </div>
                 </div>
-                <!--<div class="layui-form-item">-->
-                    <!--<label class="layui-form-label">主图</label>-->
-                    <!--<div class="layui-input-block">-->
-                        <!--<input type="text" id="pic" name="pic" th:value="${dental.pic}"  autocomplete="off" placeholder="请输入主图"-->
-                               <!--class="layui-input">-->
-                    <!--</div>-->
-                <!--</div>-->
+
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">主图</label>

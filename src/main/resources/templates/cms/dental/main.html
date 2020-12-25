@@ -14,12 +14,12 @@
             </div>
             <label class="layui-form-label">类型id</label>
             <div class="layui-input-inline">
-                <input type="text" name="typeId" placeholder="" class="layui-input">
+                <select id="typeId" name="typeId"  lay-verify="required" lay-search>
+                    <option>请选择</option>
+                    <option th:each="type,typeStat:${typeList}" th:text="${type.dataLabel}" th:value="${type.dataValue}"></option>
+                </select>
             </div>
-            <label class="layui-form-label">显示时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="showTime" placeholder="" class="layui-input">
-            </div>
+
                 <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="dental-query">
                     <i class="layui-icon layui-icon-search"></i>
                     查询
@@ -65,18 +65,23 @@
 
 <th:block th:include="include :: footer"/>
 <script>
-    layui.use(['table', 'form', 'jquery'], function () {
+    layui.use(['table', 'form', 'jquery','laydate'], function () {
         let table = layui.table;
         let form = layui.form;
         let $ = layui.jquery;
+        var laydate = layui.laydate;
 
         let MODULE_PATH = "/cms/dental/";
+
+        laydate.render({
+            elem: '#showTime' //指定元素
+        });
 
         let cols = [
             [
                 {type: 'checkbox'},
                 {field: 'title', title: '标题'},
-                {field: 'typeId', title: '类型id'},
+                {field: 'typeName', title: '类型'},
                 {field: 'pic', title: '主图',templet: "#file-img"},
                 {field: 'synopsis', title: '摘要'},
                 {field: 'showTime', title: '显示时间'},

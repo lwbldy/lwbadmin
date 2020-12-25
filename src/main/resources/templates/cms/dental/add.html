@@ -16,7 +16,6 @@
                                class="layui-input">
                     </div>
                 </div>
-
                 <div class="layui-form-item">
                     <label class="layui-form-label">显示时间</label>
                     <div class="layui-input-block">
@@ -24,21 +23,14 @@
                                class="layui-input">
                     </div>
                 </div>
-
                 <div class="layui-form-item">
-                    <label class="layui-form-label">类型id</label>
+                    <label class="layui-form-label">类型</label>
                     <div class="layui-input-block">
-                        <input type="text" id="typeId" name="typeId"  autocomplete="off" placeholder="请输入类型id"
-                               class="layui-input">
+                        <select id="typeId" name="typeId"  lay-verify="required" lay-search>
+                            <option th:each="type,typeStat:${typeList}" th:text="${type.dataLabel}" th:value="${type.dataValue}"></option>
+                        </select>
                     </div>
                 </div>
-                <!--<div class="layui-form-item">-->
-                    <!--<label class="layui-form-label">主图</label>-->
-                    <!--<div class="layui-input-block">-->
-                        <!--<input type="text" id="pic" name="pic"  autocomplete="off" placeholder="请输入主图"-->
-                               <!--class="layui-input">-->
-                    <!--</div>-->
-                <!--</div>-->
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">主图</label>
@@ -52,6 +44,8 @@
                     </div>
                 </div>
 
+
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">摘要</label>
                     <div class="layui-input-block">
@@ -64,10 +58,13 @@
                     <label class="layui-form-label">内容</label>
                     <div class="layui-input-block">
 
-                        <div id="editor"></div>
+                        <div id="editor" style="z-index: 10;"></div>
                         <textarea id="text1" name="context" style="display: none;"></textarea>
                     </div>
                 </div>
+
+
+
             </div>
         </div>
     </div>

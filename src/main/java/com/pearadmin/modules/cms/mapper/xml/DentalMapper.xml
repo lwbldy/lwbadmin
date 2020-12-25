@@ -11,10 +11,12 @@
         <result column="creat_time" property="creatTime"></result>
         <result column="show_time" property="showTime"></result>
         <result column="context" property="context"></result>
+        <result column="type_name" property="typeName"></result>
     </resultMap>
 
     <select id="selectList" resultMap="DentalMap">
-        select * from dental
+        SELECT dental.*,sys_dict_data.`data_label` type_name FROM dental
+        LEFT JOIN sys_dict_data ON dental.`type_id`=sys_dict_data.`data_value`
         <where>
         <if test="title!=null and title!=''">
             and title like CONCAT('%',#{title}, '%')
@@ -36,7 +38,9 @@
 
     <!-- 根据 Id 查询角色-->
     <select id="selectById" parameterType="int" resultMap="DentalMap">
-        select * from dental where id = #{id}
+        SELECT dental.*,sys_dict_data.`data_label` type_name FROM dental
+        LEFT JOIN sys_dict_data ON dental.`type_id`=sys_dict_data.`data_value`
+        where dental.id = #{id}
     </select>
 
 
@@ -110,7 +114,7 @@
     <if test="creatTime!=null and creatTime!=''">
         creat_time = #{creatTime},
     </if>
-    <if test="showTime!=null and showTime!=''">
+    <if test="showTime!=null">
         show_time = #{showTime},
     </if>
     <if test="context!=null and context!=''">

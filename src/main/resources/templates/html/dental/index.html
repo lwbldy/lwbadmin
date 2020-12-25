@@ -4,7 +4,7 @@
 <!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
 <!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
 <!--[if (gt IE 9) | !(IE)]><!-->
-    <html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
 
 <head>
@@ -35,8 +35,8 @@
                     </div>
                     <div class="swiper-container J_getmenu">
                         <ul class="cf swiper-wrapper f-16">
-                            <li th:each="region,regionStat:${regionList}"  class="swiper-slide  swiper-slide-visible" th:classappend="${#strings.trim(param.region) == region.dataValue} ? 'on swiper-slide-active' : ''">
-                                <a th:href="@{/html/clinic(region=${region.dataValue})}" target="_self">
+                            <li th:each="region,regionStat:${typeList}"  class="swiper-slide  swiper-slide-visible" th:classappend="${#strings.trim(param.typeId) == region.dataValue} ? 'on swiper-slide-active' : ''">
+                                <a th:href="@{/html/dental(typeId=${region.dataValue})}" target="_self">
                                     <span>
                                         <i>
                                             <img class="ratio-img" data-ratio="1" onerror="lod(this)" th:src="@{/static/image/1492242929b03079389c00c895.png}">
@@ -61,36 +61,28 @@
 
                 <div class="list-box J_getlist">
                     <ul class="cf putong">
-
-                        <li th:each="clinic,clinciStat:${pageInfo.list}">
+                        <li th:each="dental,dentalStat:${pageInfo.list}">
                             <div class="list">
                                 <div class="content-box">
                                     <div class="img-box">
-                                        <a th:href="@{/html/clinic/detils(id=${clinic.id})}" target="_self">
-                                            <img class="ratio-img" data-ratio="0.7514619883040936"
-                                                 th:src="@{'/html/file/download/'+${clinic.pic}}" onerror="lod(this)" style="height: 302px;">
-                                        </a>
+                                        <a th:href="@{/html/dental/detils(id=${dental.id})}" target="_self">
+                                            <img class="ratio-img" onerror="lod(this)" th:src="@{'/html/file/download/'+${dental.pic}}" style="height: 211px;"></a>
                                     </div>
 
                                     <div class="content">
-                                        <a th:href="@{/html/clinic/detils(id=${clinic.id})}">
-                                            <p class="title f-20 c333" th:text="${clinic.clinicName}"></p>
-                                        </a>
-                                        <p class="text c666 f-14">
-                                            <span class="ellipsis-2" th:text="'地址：'+${clinic.address}">地址：北京朝阳区建国门外大街19号国际大厦A座205室</span>
-                                            <span th:text="'电话：'+${clinic.telephone}">电话：010-6500 6473</span>
-                                        </p>
+                                        <a th:href="@{/html/dental/detils(id=${dental.id})}" target="_self"><p class="title f-16 c333 f-bold ellipsis" th:text="${dental.title}">标题</p></a>
+                                        <p class="text f-14 ellipsis-2" th:text="${dental.synopsis}">简介</p>
                                         <div class="btn-box">
-                                            <a class="f-14 c333" th:href="@{/html/clinic/detils(id=${clinic.id})}">了解详情 &gt;</a>
-                                            <a th:href="@{/html/clinic/detils(id=${clinic.id})}"><img class="ratio-img" data-ratio="0.8378378378378378" onerror="lod(this)" src="/images/clinic_icon08.png" style="height: 31px;"></a>
+                                            <a class="f-14" th:href="@{/html/dental/detils(id=${dental.id})}" target="_self">了解详情 &gt;</a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </li>
+
                     </ul>
                 </div>
+
 
                 <div class="page-box">
                     <div class="page f-20" id="page5">

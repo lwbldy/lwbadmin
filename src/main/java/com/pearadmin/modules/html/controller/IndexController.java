@@ -6,9 +6,11 @@ import com.pearadmin.common.plugins.resource.service.IFileService;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.cms.domain.Clinic;
+import com.pearadmin.modules.cms.domain.Dental;
 import com.pearadmin.modules.cms.domain.DoctorCertificate;
 import com.pearadmin.modules.cms.domain.DoctorResource;
 import com.pearadmin.modules.cms.service.IClinicService;
+import com.pearadmin.modules.cms.service.IDentalService;
 import com.pearadmin.modules.cms.service.IDoctorCertificateService;
 import com.pearadmin.modules.cms.service.IDoctorResourceService;
 import com.pearadmin.modules.system.domain.SysDictData;
@@ -35,7 +37,9 @@ public class IndexController extends BaseController {
     @Resource
     private IDoctorResourceService doctorResourceService;
     @Resource
-    IDoctorCertificateService doctorCertificateService;
+    private IDoctorCertificateService doctorCertificateService;
+    @Resource
+    private IDentalService dentalService;
 
 
     @RequestMapping("/")
@@ -43,6 +47,13 @@ public class IndexController extends BaseController {
         return JumpPage(  "home");
     }
 
+    /**
+     * 寻找诊所
+     * @param modelAndView
+     * @param pageDomain
+     * @param param
+     * @return
+     */
     @GetMapping("html/clinic")
     public ModelAndView Clinic(ModelAndView modelAndView, PageDomain pageDomain, Clinic param){
 
@@ -99,6 +110,12 @@ public class IndexController extends BaseController {
     }
 
 
+    /**
+     * 医生资源详情
+     * @param id
+     * @param modelAndView
+     * @return
+     */
     @GetMapping("html/doctor/detils")
     public ModelAndView doctorDetils(int id,ModelAndView modelAndView){
         modelAndView.addObject("doctor",doctorResourceService.selectById(id));
@@ -112,6 +129,13 @@ public class IndexController extends BaseController {
         return modelAndView;
     }
 
+    /**
+     * 医生和技术委员会列表
+     * @param modelAndView
+     * @param pageDomain
+     * @param param
+     * @return
+     */
     @GetMapping("html/committee")
     public ModelAndView committee(ModelAndView modelAndView, PageDomain pageDomain, DoctorResource param){
         if(pageDomain.getLimit() == null){
@@ -132,9 +156,43 @@ public class IndexController extends BaseController {
         return modelAndView;
     }
 
+    @GetMapping("html/dental")
+    public ModelAndView dental(ModelAndView modelAndView, PageDomain pageDomain, Dental param){
+        if(pageDomain.getPage() == null){
+            pageDomain.setPage(1);
+        }
+        if(pageDomain.getLimit() == null){
+            pageDomain.setLimit(9);
+        }
+        PageInfo<Dental> pageInfo = dentalService.page(param,pageDomain);
+        modelAndView.addObject("pageInfo",pageInfo);
+        SysDictData sysDictData = new SysDictData();
+        sysDictData.setTypeCode("ybkp");
+        modelAndView.addObject("typeList",sysDictDataService.list(sysDictData));
+        modelAndView.addObject("param",param);
+        modelAndView.setViewName("html/dental/index");
+        return modelAndView;
+    }
+
+    /**
+     * 文章详情
+     * @param id
+     * @param modelAndView
+     * @return
+     */
+    @GetMapping("html/dental/detils")
+    public ModelAndView dentalDdetails(int id,ModelAndView modelAndView){
+        Dental dental = dentalService.selectById(id);
+        modelAndView.addObject("dental",dental);
+        modelAndView.setViewName("html/dental/detils");
+        return modelAndView;
+    }
+
+    /**
+     * 图片详情
+     */
     @Resource
     private IFileService fileService;
-
     @GetMapping("html/file/download/{id}")
     public void download(@PathVariable("id") String id){
         fileService.download(id);
