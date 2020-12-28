@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('新增')"/>
+    <th:block th:include="include :: header('修改')"/>
 </head>
 <body>
 <form class="layui-form" action="">
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
-#foreach($column in $columns)
-#if($column.isFormShow == 'true' || !$column.isFormShow)
-                <div class="layui-form-item">
-                    <label class="layui-form-label">${column.comments}</label>
+
+                <div class="layui-form-item layui-hide">
+                    <label class="layui-form-label">编号</label>
                     <div class="layui-input-block">
-                        <input type="text" id="${column.attrname}" name="${column.attrname}" #if($column.isFormShow == 'NO')lay-verify="required"#end autocomplete="off" placeholder="请输入${column.comments}"
+                        <input type="text" th:value="${users.id}" name="id" id="id"
+                               autocomplete="off" placeholder="请输入id" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="userName" name="userName" th:value="${users.userName}"  autocomplete="off" placeholder="请输入用户名"
                                class="layui-input">
                     </div>
                 </div>
-#end
-#end
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="password" name="password" th:value="${users.password}"  autocomplete="off" placeholder="请输入密码"
+                               class="layui-input">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="bottom">
         <div class="button-container">
-            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="${classname}-save">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="users-update">
                 <i class="layui-icon layui-icon-ok"></i>
                 提交
             </button>
@@ -41,22 +53,23 @@
         let form = layui.form;
         let $ = layui.jquery;
         var laydate = layui.laydate;
+        // 日期选择
         laydate.render({
             elem: '#birthday' //指定元素
         });
 
-        form.on('submit(${classname}-save)', function (data) {
+        form.on('submit(users-update)', function (data) {
             $.ajax({
-                url: '/${modelName}/${pathName}/save',
+                url: '/cms/users/update',
                 data: JSON.stringify(data.field),
                 dataType: 'json',
                 contentType: 'application/json',
-                type: 'post',
+                type: 'put',
                 success: function (result) {
                     if (result.success) {
                         layer.msg(result.msg, {icon: 1, time: 1000}, function () {
                             parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-                            parent.layui.table.reload("${classname}-table");
+                            parent.layui.table.reload("users-table");
                         });
                     } else {
                         layer.msg(result.msg, {icon: 2, time: 1000});

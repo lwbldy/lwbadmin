@@ -1,18 +1,18 @@
-package ${package}.mapper;
+package com.pearadmin.modules.cms.mapper;
 
-import ${package}.domain.${className};
+import com.pearadmin.modules.cms.domain.Goods;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface ${className}Mapper {
+public interface GoodsMapper {
 
     /**
      * 按条件查询数据
      * @param param
      * @return
      */
-    List<${className}> selectList(${className} param);
+    List<Goods> selectList(Goods param);
 
 
     /**
@@ -20,7 +20,7 @@ public interface ${className}Mapper {
      * @param param
      * @return 执行结果
      */
-    Integer insert(${className} param);
+    Integer insert(Goods param);
 
 
     /**
@@ -28,7 +28,7 @@ public interface ${className}Mapper {
      * @param id
      * @return
      */
-    ${className} selectById(@Param("${pk.attrname}") ${pk.attrType} ${pk.attrname});
+    Goods selectById(@Param("id") Integer id);
 
 
     /**
@@ -36,7 +36,7 @@ public interface ${className}Mapper {
      * @param param
      * @return
      */
-    Integer updateById(${className} param);
+    Integer updateById(Goods param);
 
 
     /**
@@ -44,7 +44,7 @@ public interface ${className}Mapper {
      * @param id
      * @return
      */
-    Integer deleteById(@Param("${pk.attrname}") ${pk.attrType} ${pk.attrname});
+    Integer deleteById(@Param("id") Integer id);
 
 
     /**

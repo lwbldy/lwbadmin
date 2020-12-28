@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pearadmin.modules.cms.mapper.UsersMapper">
+
+    <resultMap id="UsersMap" type="Users">
+        <id column="id" property="id"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="password" property="password"></result>
+    </resultMap>
+
+    <select id="selectList" resultMap="UsersMap">
+        select * from users
+        <where>
+        <if test="userName!=null and userName!=''">
+            and user_name like CONCAT('%',#{userName}, '%')
+        </if>
+        </where>
+        order by id desc
+    </select>
+
+    <!-- 根据 Id 查询角色-->
+    <select id="selectById" parameterType="int" resultMap="UsersMap">
+        select * from users where id = #{id}
+    </select>
+
+    <!-- 根据 Id 查询角色-->
+    <select id="selectByUserName" parameterType="string" resultMap="UsersMap">
+        select * from users where user_name = #{userName}
+    </select>
+
+
+    <!-- 新增 数据 -->
+    <insert id="insert" parameterType="Users">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName!=null">
+                user_name,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="userName!=null">
+                #{userName},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据 Id 修改角色数据 -->
+    <update id="updateById" parameterType="Users">
+        update users
+        <set>
+    <if test="userName!=null and userName!=''">
+        user_name = #{userName},
+    </if>
+    <if test="password!=null and password!=''">
+        password = #{password},
+    </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据 Id 删除 -->
+    <delete id="deleteById" parameterType="int">
+        delete from users where id = #{id}
+    </delete>
+
+    <!-- 根据 Id 批量删除 -->
+    <delete id="deleteByIds" parameterType="int">
+        delete from users where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

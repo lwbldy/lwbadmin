@@ -520,12 +520,13 @@
 
 .message-box { padding: 2.5em; }
 .message-box .right { width: 47%; margin-left: 6%; }
-.message-box .right > p { margin: 4.6em 0 3.7em; color: #163d7d; }
+.message-box .right > p { /*margin: 4.6em 0 3.7em;*/ color: #163d7d; }
 .message-box .inps-box .select2-container { width: 100% !important; }
 .message-box .inps-box .select2-container--default .select2-selection--single { height: 2.2em; border-color: #bfbfbf; background: none; border-radius: 0; }
 .message-box .inps-box .select2-container--default .select2-selection--single .select2-selection__rendered { height: 2.2em; line-height: 2; }
 .message-box .inps-box .inps { border: 1px solid #bfbfbf; }
 .message-box .inps-box .inps input[type=text], .message-box .inps-box .inps textarea { width: 100%; height: 2.2em; line-height: 2.2em; text-indent: 10px; border: none; background: none; }
+.message-box .inps-box .inps input[type=password], .message-box .inps-box .inps textarea { width: 100%; height: 2.2em; line-height: 2.2em; text-indent: 10px; border: none; background: none; }
 .message-box .inps-box .inps textarea { height: 9em; }
 .message-box .inps-box li { position: relative; padding-right: 1em; }
 .message-box .inps-box li > span.fl { margin-right: 1em; line-height: 2.2em; }

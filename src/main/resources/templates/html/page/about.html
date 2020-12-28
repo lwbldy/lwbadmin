@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 7]><html class="ie ie7 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
+<!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
+<head>
+    <th:block th:include="include :: headhtml('品牌介绍-卫华口腔')"/>
+</head>
+<body class="search-body">
+    <div class="body-box ndata-box">
+        <header class="header">
+            <th:block th:include="include :: headerhtml(6)"/>
+        </header>
+
+        <section class="main-box">
+            <div class="wrap">
+                <div class="postion f-12">您现在的位置：<a href="/">首页</a> &gt;
+                    <a href="/html/about">关于品牌</a> &gt;
+                    <a href="javascript:;">品牌介绍</a>
+                </div>
+
+                <div class="main">
+                    <div class="items about" th:utext="${singlePage.context}"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <th:block th:include="include :: footerhtml"/>
+    </footer>
+
+</body>
+</html>

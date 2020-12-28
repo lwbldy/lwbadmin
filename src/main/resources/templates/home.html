@@ -1,13 +1,245 @@
 <!doctype html>
-<html lang="en">
+<!--[if lt IE 7]><html class="ie ie6 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 7]><html class="ie ie7 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
+<!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,user-scalable=0" name="viewport">
+    <meta name="keywords" content="瑞尔齿科,口腔,正畸,种植,牙套,牙齿矫正,牙齿种植,拔智齿,口呼吸,口腔医院,北京口腔医院,上海口腔医院,全国连锁牙科医院,牙科医院连锁,窝沟封闭,涂氟,口腔保健,口腔预防,高端诊所,看牙好,洗牙">
+    <meta name="description" content="瑞尔齿科,口腔,正畸,种植,牙套,牙齿矫正,牙齿种植,拔智齿,口呼吸,口腔医院,北京口腔医院,上海口腔医院,全国连锁牙科医院,牙科医院连锁,窝沟封闭,涂氟,口腔保健,口腔预防,高端诊所,看牙好,洗牙">
+    <title>首页 - 卫华口腔</title>
+
+    <link href="static/css/common.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/css.css" rel="stylesheet">
+    <script>
+        var ROOT = "";
+    </script>
+    <script>if (false && document.documentMode === 10)
+        document.documentElement.className += ' ie10';</script>
+    <script>if (false && document.documentMode === 11)
+        document.documentElement.className += ' ie11';</script>
+    <!--[if lt IE 9]>
+    <script src="/js/respond.src.js"></script>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="static/js/ratio-img.js"></script>
+    <script src="static/js/placeholder.js"></script>
+    <script src="static/js/public.js"></script>
+    <script src="static/js/select2.full.js"></script>
+    <link href="static/css/select2.min.css" rel="stylesheet">
+    <script src="static/js/jquery-validate.js"></script>
+    <script src="static/js/layer.js"></script>
+
+    <script>
+        $(function () {
+            $(".j-select2").each(function () {
+                $(this).select2();
+            });
+            $("body").addClass("ani")
+        })
+    </script>
 </head>
-<body>
-    首页
+<body class="index-body">
+<div class="index-wrap white">
+    <div class="index-header">
+        <a href="" class="logo"><img src="static/image/logo.jpg" style="width: auto;margin-top: -17px"></a>
+
+        <a href="index1.html" class="member"><img src="static/picture/hy.png"></a>
+
+        <div class="menu-bon">
+            <button class="menu_h"><span>Menu</span></button>
+        </div>
+        <ul class="phone-menu">
+            <li class="first"><a href="">中文</a> <i>/</i> <a href="javascript:;">English</a></li>
+            <li class="on"><a th:href="@{/html/committee}">医疗和技术委员会</a></li>
+            <li><a th:href="@{/html/doctor}">医生资源</a></li>
+            <li><a th:href="@{/html/clinic}">寻找诊所</a></li>
+            <li><a th:href="@{/html/dental}">牙病科普</a></li>
+            <li><a th:href="@{/html/about}">关于品牌</a></li>
+        </ul>
+        <div class="ph-mask"></div>
+    </div>
+
+    <div class="ind-bk ind-bk-1">
+        <div class="item item-1 ">
+            <div class="w ">
+
+                <a class='js-video-box-index' data-title="卫华口腔" href='details_11_2674.html'>                        <div class="in-56"><span>瑞尔生产微笑</span></div>
+                    <div class="in-26">— — 卫华口腔创始人--卢卫华</div>
+                </a>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/1492571489f7765bb1cc4ff168.jpg)"></i>
+        </div>
+    </div>
+    <div class="ind-bk ind-bk-2">
+        <div class="item item-2 hover">
+            <a th:href="@{/html/doctor}" class="a-1"><!-- <em class="e"><img src="/images/jt_01.png" /></em><i></i> --></a>
+            <div class="w" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.5);"><em class="e"><img src="static/picture/jt_01.png"></em>
+                <div class="in-40">医生资源</div>
+                <div class="in-20">Find a Dentist</div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/1492573229c4ae3a52bffcd0df.jpg)"></i>
+        </div>
+        <div class="item item-3 ">
+            <div class="w">
+                <div class="in-26"><em class="in-140">264</em><span>位</span></div>
+                <div class="in-26">医生团队贴心为您服务</div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/index_img04.jpg)"></i>
+        </div>
+    </div>
+    <div class="ind-bk ind-bk-3">
+        <div class="item item-4 hover">
+            <a th:href="@{/html/committee}" class="a-1"></a>
+            <div class="w"><em class="e"><img src="static/picture/jt_01.png"></em>
+                <div class="in-40">医疗和技术委员会</div>
+                <div class="in-20">Senior Dentists</div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/index_img06.jpg)"></i>
+        </div>
+        <div class="item item-5">
+            <div class="w">
+                <div class="in-40">关于品牌</div>
+                <div class="in-20">About Arrail</div>
+                <div class="bon in-16">
+                    <a th:href="@{/html/about}">品牌介绍</a>
+                    <!--<a href="news.html">新闻资讯</a>-->
+                </div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/1492573426cf7d150db5bcc24e.jpg)"></i>
+        </div>
+        <div class="item item-6 hover">
+            <a th:href="@{/html/clinic}" class="a-1"></a>
+            <div class="w c333"><em class="e"><img src="static/picture/jt_03.png"></em>
+                <div class="in-40">寻找诊所</div>
+                <div class="in-26">专业品质 从这里开始</div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/1532767320e9f62bcaac7bb7df.jpg)"></i>
+        </div>
+    </div>
+    <div class="ind-bk ind-bk-4">
+        <div class="item item-7 hover">
+            <a href="/html/login" class="a-1"></a>
+            <div class="w"><em class="e"><img src="static/picture/jt_01.png"></em>
+                <div class="in-40">会员中心</div>
+                <div class="in-20">Member Centre</div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/index_img12.jpg)"></i>
+        </div>
+        <div class="item item-8">
+            <a target="_blank" href="javascript:;" class="a a1">
+                <img src="static/picture/1492573550caee9fe95a8147f9.png" class="ratio-img" data-ratio="0.7677" onerror="lod(this)">
+            </a><a target="_blank" href="javascript:;" class="a a2">
+            <img src="static/picture/1492573486b95f8b629d3efd3f.png" class="ratio-img" data-ratio="0.7677" onerror="lod(this)">
+        </a>                    <i class="bg auto-bg" style="background-image:url(static/image/index_img08.jpg)"></i>
+        </div>
+    </div>
+    <div class="ind-bk ind-bk-5">
+        <div class="item item-9 hover">
+            <a href="campaign.html" class="a-1"></a>
+            <div class="w"><em class="e"><img src="static/picture/jt_01.png"></em>
+                <div class="in-40">消费者活动</div>
+                <div class="in-20">Consumer Activities</div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/1540187088e97c2620b275c76c.jpg)"></i>
+        </div>
+        <div class="item item-10">
+            <div class="w">
+                <div class="in-40">牙病科普</div>
+                <div class="in-20">Diseases Popularization</div>
+                <div class="bon in-16">
+                    <a href="test.html">自测题目</a>
+                    <a href="javascript:;" target="_blank">医生对话</a>
+                </div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/14925732726eb21484a4d53865.jpg)"></i>
+        </div>
+    </div>
+
+    <div class="ind-bk ind-bk-6">
+        <div class="item item-11">
+            <div class="w">
+                <div class="inp-box cf in-16">
+                    <div class="inps inps-1">
+                        <label class="label-radio on"><input name="s_type" value="1" type="radio" checked=""><i></i>找诊所</label>
+                        <label class="label-radio"><input name="s_type" value="2" type="radio"><i></i>找医生</label>
+                    </div>
+                    <div class="inps inps-2">
+                        <select name="w1" class="j-select2">
+                            <option value="7">北京</option><option value="6">上海</option><option value="5">深圳</option><option value="4">厦门</option><option value="3">广州</option><option value="2">杭州</option><option value="1">天津</option>                                </select>
+                    </div>
+                    <div class="inps inps-3 cf">
+                        <input name="keywords" value="" type="text" placeholder="请输入名称关键字">
+                        <input value="查找" type="button" class="subbtn">
+                    </div>
+                </div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/index_img03.jpg)"></i>
+        </div>
+    </div>
+    <div class="ind-bk ind-bk-7">
+        <div class="item item-12">
+            <div class="w">
+                <div class="in-46">400-880-1900</div>
+                <div class="cf">
+                    <div class="in-16"><a href="#" class="w-wx t-weixin-bon" data-img="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170420/1492666791a5cb5de1212fc8c6.png"><img src="static/picture/w_01.png"></a><a href="javascript:;" class="w-wb"><img src="static/picture/w_03.png"></a><a href="logon-httpsmail.arrail-dental.co.html" target="_blank" class="w-yx"><img src="static/picture/e-mail.png"></a><a href="javascript:;" target="_blank" class="ind-leyu"><img src="static/picture/ind_leyu.png"></a></div>
+                    <div class="bon in-16" style="display: block;">
+                        <a href="" class="on">中文</a>
+                        <a href="index2.html">English</a>
+                    </div>
+                </div>
+            </div>
+            <i class="bg auto-bg" style="background-image:url(static/image/index_img10.jpg)"></i>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(".subbtn").click(function(){
+        var type = $('input:radio[name="s_type"]:checked').val();
+        var w1 = $("select[name='w1']").val();
+        var keywords = $("input[name='keywords']").val();
+        if (keywords == "请输入名称关键字") keywords = '';
+        if(type==1){
+            window.location.href="/clinic/clinic.html?w1="+w1+"&keywords="+keywords;
+        }else{
+            window.location.href="/resources/resources.html?w1="+w1+"&keywords="+keywords;
+        }
+    });
+    $(document).ready(function() {
+        var head_search_flag = false;
+        $("input[name='keywords']").focus(function() {
+            head_search_flag = true;
+        });
+        $("input[name='keywords']").blur(function() {
+            head_search_flag = false;
+        });
+        $(window).keydown(function(e) {
+            if(e.keyCode == 13) {
+                if(head_search_flag) {
+                    $(".subbtn").click();
+                }
+            }
+        });
+
+        var in140_num = $("em.in-140").text(),
+            num_item = 0;
+        $("em.in-140").text("0");
+        var setNum = setInterval(function(){
+            num_item += Math.round(in140_num/5);
+            if (num_item > in140_num) {
+                clearInterval(setNum);
+                num_item = in140_num;
+            }
+            $("em.in-140").text(num_item);
+        }, 200);
+    })
+</script>
+
 </body>
 </html>

@@ -65,18 +65,18 @@
         <div class="oh menu f-16">
             <ul class="cf topmenuclass">
                 <li class="first"><a href="index.html">中文</a> <i>/</i> <a href="javascript:;">English</a></li>
-                <li th:classappend="${onIndex == 1} ? 'on' : ''"><a href="index.html">首页</a></li>
+                <li th:classappend="${onIndex == 1} ? 'on' : ''"><a href="/">首页</a></li>
                 <li th:classappend="${onIndex == 2} ? 'on' : ''"><a th:href="@{/html/committee}">医疗和技术委员会</a></li>
                 <li th:classappend="${onIndex == 3} ? 'on' : ''"><a th:href="@{/html/doctor}">医生资源</a></li>
                 <li th:classappend="${onIndex == 4} ? 'on' : ''"><a th:href="@{/html/clinic}">寻找诊所</a></li>
-                <li th:classappend="${onIndex == 5} ? 'on' : ''"><a href="">牙病科普</a></li>
-                <li th:classappend="${onIndex == 6} ? 'on' : ''"><a href="about.html">关于品牌</a></li>
-                <li th:classappend="${onIndex == 7} ? 'on' : ''"><a href="campaign.html">消费者活动</a></li>
+                <li th:classappend="${onIndex == 5} ? 'on' : ''"><a th:href="@{/html/dental}">牙病科普</a></li>
+                <li th:classappend="${onIndex == 6} ? 'on' : ''"><a th:href="@{/html/about}">关于品牌</a></li>
+                <!--<li th:classappend="${onIndex == 7} ? 'on' : ''"><a href="campaign.html">消费者活动</a></li>-->
             </ul>
         </div>
         <div class="lang f-12" style="display:block;"><a href="index.html" class="on">中文</a> <i>/</i> <a
                 href="index2.html">English</a></div>
-        <a href="index1.html" class="member"><img th:src="@{/static/image/hy.png}"></a>
+        <a th:href="@{/html/login}" class="member"><img th:src="@{/static/image/hy.png}"></a>
 
         <div class="menu-bon">
             <button class="menu_h"><span>Menu</span></button>

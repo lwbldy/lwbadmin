@@ -1,8 +1,8 @@
-package ${package}.controller;
+package com.pearadmin.modules.cms.controller;
 
 
-import ${package}.domain.${className};
-import ${package}.service.I${className}Service;
+import com.pearadmin.modules.cms.domain.SinglePage;
+import com.pearadmin.modules.cms.service.ISinglePageService;
 
 
 import com.github.pagehelper.PageInfo;
@@ -20,22 +20,22 @@ import javax.annotation.Resource;
 
 
 @RestController
-@Api(tags = "${comments}")
-@RequestMapping("/${modelName}/${pathName}")
-public class ${className}Controller extends BaseController {
+@Api(tags = "单页")
+@RequestMapping("/cms/singlepage")
+public class SinglePageController extends BaseController {
 
     /**
          * Describe: 基础路径
          * */
-    private static String MODULE_PATH = "${modelName}/${pathName}/";
+    private static String MODULE_PATH = "cms/singlepage/";
 
 
     @Resource
-    private I${className}Service ${classname}Service;
+    private ISinglePageService singlePageService;
 
     @GetMapping("main")
     @ApiOperation(value="获取列表视图")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/main','${modelName}:${pathName}:main')")
+    @PreAuthorize("hasPermission('/cms/singlepage/main','cms:singlepage:main')")
     public ModelAndView main( ){
         return JumpPage(MODULE_PATH + "main");
     }
@@ -43,15 +43,15 @@ public class ${className}Controller extends BaseController {
 
     @GetMapping("data")
     @ApiOperation(value="获取角色列表数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/main','${modelName}:${pathName}:main')")
-    public ResultTable data(PageDomain pageDomain, ${className} param){
-        PageInfo<${className}> pageInfo = ${classname}Service.page(param,pageDomain);
+    @PreAuthorize("hasPermission('/cms/singlepage/main','cms:singlepage:main')")
+    public ResultTable data(PageDomain pageDomain, SinglePage param){
+        PageInfo<SinglePage> pageInfo = singlePageService.page(param,pageDomain);
         return pageTable(pageInfo.getList(),pageInfo.getTotal());
     }
 
     @GetMapping("add")
     @ApiOperation(value="获取新增视图")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/add','${modelName}:${pathName}:add')")
+    @PreAuthorize("hasPermission('/cms/singlepage/add','cms:singlepage:add')")
     public ModelAndView add(){
         return JumpPage(MODULE_PATH + "add");
     }
@@ -64,9 +64,9 @@ public class ${className}Controller extends BaseController {
      * */
     @PostMapping("save")
     @ApiOperation(value="保存数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/add','${modelName}:${pathName}:add')")
-    public Result save(@RequestBody ${className} ${classname}){
-        int result = ${classname}Service.insert(${classname});
+    @PreAuthorize("hasPermission('/cms/singlepage/add','cms:singlepage:add')")
+    public Result save(@RequestBody SinglePage singlePage){
+        int result = singlePageService.insert(singlePage);
         return decide(result);
     }
 
@@ -77,9 +77,9 @@ public class ${className}Controller extends BaseController {
      * */
     @GetMapping("edit")
     @ApiOperation(value="获取修改视图")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/edit','${modelName}:${pathName}:edit')")
+    @PreAuthorize("hasPermission('/cms/singlepage/edit','cms:singlepage:edit')")
     public ModelAndView edit(ModelAndView modelAndView,int id){
-        modelAndView.addObject("${classname}",${classname}Service.selectById(id));
+        modelAndView.addObject("singlePage",singlePageService.selectById(id));
         modelAndView.setViewName(MODULE_PATH + "edit");
         return modelAndView;
     }
@@ -91,9 +91,9 @@ public class ${className}Controller extends BaseController {
      * */
     @PutMapping("update")
     @ApiOperation(value="修改数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/edit','${modelName}:${pathName}:edit')")
-    public Result update(@RequestBody ${className} ${classname}){
-        int result = ${classname}Service.updateById(${classname});
+    @PreAuthorize("hasPermission('/cms/singlepage/edit','cms:singlepage:edit')")
+    public Result update(@RequestBody SinglePage singlePage){
+        int result = singlePageService.updateById(singlePage);
         return decide(result);
     }
 
@@ -104,9 +104,9 @@ public class ${className}Controller extends BaseController {
      * */
     @DeleteMapping("remove/{id}")
     @ApiOperation(value="删除数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')")
+    @PreAuthorize("hasPermission('/cms/singlepage/remove','cms:singlepage:remove')")
     public Result remove(@PathVariable int id){
-        int result  = ${classname}Service.deleteById(id);
+        int result  = singlePageService.deleteById(id);
         return decide(result);
     }
 
@@ -117,9 +117,9 @@ public class ${className}Controller extends BaseController {
      * */
     @DeleteMapping("batchRemove/{ids}")
     @ApiOperation(value="批量删除数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')")
+    @PreAuthorize("hasPermission('/cms/singlepage/remove','cms:singlepage:remove')")
     public Result batchRemove(@PathVariable String ids){
-        int result = ${classname}Service.deleteByIds(StringUtils.StringToIntArr(ids.split(",")).toArray());
+        int result = singlePageService.deleteByIds(StringUtils.StringToIntArr(ids.split(",")).toArray());
         return decide(1);
     }
 

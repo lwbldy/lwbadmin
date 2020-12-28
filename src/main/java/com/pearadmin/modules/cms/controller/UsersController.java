@@ -1,8 +1,8 @@
-package ${package}.controller;
+package com.pearadmin.modules.cms.controller;
 
 
-import ${package}.domain.${className};
-import ${package}.service.I${className}Service;
+import com.pearadmin.modules.cms.domain.Users;
+import com.pearadmin.modules.cms.service.IUsersService;
 
 
 import com.github.pagehelper.PageInfo;
@@ -20,38 +20,38 @@ import javax.annotation.Resource;
 
 
 @RestController
-@Api(tags = "${comments}")
-@RequestMapping("/${modelName}/${pathName}")
-public class ${className}Controller extends BaseController {
+@Api(tags = "用户")
+@RequestMapping("/cms/users")
+public class UsersController extends BaseController {
 
     /**
-     * Describe: 基础路径
-     * */
-    private static String MODULE_PATH = "${modelName}/${pathName}/";
+         * Describe: 基础路径
+         * */
+    private static String MODULE_PATH = "cms/users/";
 
 
     @Resource
-    private I${className}Service ${classname}Service;
+    private IUsersService usersService;
 
     @GetMapping("main")
     @ApiOperation(value="获取列表视图")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/main','${modelName}:${pathName}:main')")
+    @PreAuthorize("hasPermission('/cms/users/main','cms:users:main')")
     public ModelAndView main( ){
         return JumpPage(MODULE_PATH + "main");
     }
 
 
     @GetMapping("data")
-    @ApiOperation(value="获取列表数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/main','${modelName}:${pathName}:main')")
-    public ResultTable data(PageDomain pageDomain, ${className} param){
-        PageInfo<${className}> pageInfo = ${classname}Service.page(param,pageDomain);
+    @ApiOperation(value="获取角色列表数据")
+    @PreAuthorize("hasPermission('/cms/users/main','cms:users:main')")
+    public ResultTable data(PageDomain pageDomain, Users param){
+        PageInfo<Users> pageInfo = usersService.page(param,pageDomain);
         return pageTable(pageInfo.getList(),pageInfo.getTotal());
     }
 
     @GetMapping("add")
     @ApiOperation(value="获取新增视图")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/add','${modelName}:${pathName}:add')")
+    @PreAuthorize("hasPermission('/cms/users/add','cms:users:add')")
     public ModelAndView add(){
         return JumpPage(MODULE_PATH + "add");
     }
@@ -64,9 +64,9 @@ public class ${className}Controller extends BaseController {
      * */
     @PostMapping("save")
     @ApiOperation(value="保存数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/add','${modelName}:${pathName}:add')")
-    public Result save(@RequestBody ${className} ${classname}){
-        int result = ${classname}Service.insert(${classname});
+    @PreAuthorize("hasPermission('/cms/users/add','cms:users:add')")
+    public Result save(@RequestBody Users users){
+        int result = usersService.insert(users);
         return decide(result);
     }
 
@@ -77,9 +77,9 @@ public class ${className}Controller extends BaseController {
      * */
     @GetMapping("edit")
     @ApiOperation(value="获取修改视图")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/edit','${modelName}:${pathName}:edit')")
+    @PreAuthorize("hasPermission('/cms/users/edit','cms:users:edit')")
     public ModelAndView edit(ModelAndView modelAndView,int id){
-        modelAndView.addObject("${classname}",${classname}Service.selectById(id));
+        modelAndView.addObject("users",usersService.selectById(id));
         modelAndView.setViewName(MODULE_PATH + "edit");
         return modelAndView;
     }
@@ -91,9 +91,9 @@ public class ${className}Controller extends BaseController {
      * */
     @PutMapping("update")
     @ApiOperation(value="修改数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/edit','${modelName}:${pathName}:edit')")
-    public Result update(@RequestBody ${className} ${classname}){
-        int result = ${classname}Service.updateById(${classname});
+    @PreAuthorize("hasPermission('/cms/users/edit','cms:users:edit')")
+    public Result update(@RequestBody Users users){
+        int result = usersService.updateById(users);
         return decide(result);
     }
 
@@ -104,9 +104,9 @@ public class ${className}Controller extends BaseController {
      * */
     @DeleteMapping("remove/{id}")
     @ApiOperation(value="删除数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')")
+    @PreAuthorize("hasPermission('/cms/users/remove','cms:users:remove')")
     public Result remove(@PathVariable int id){
-        int result  = ${classname}Service.deleteById(id);
+        int result  = usersService.deleteById(id);
         return decide(result);
     }
 
@@ -117,9 +117,9 @@ public class ${className}Controller extends BaseController {
      * */
     @DeleteMapping("batchRemove/{ids}")
     @ApiOperation(value="批量删除数据")
-    @PreAuthorize("hasPermission('/${modelName}/${pathName}/remove','${modelName}:${pathName}:remove')")
+    @PreAuthorize("hasPermission('/cms/users/remove','cms:users:remove')")
     public Result batchRemove(@PathVariable String ids){
-        int result = ${classname}Service.deleteByIds(StringUtils.StringToIntArr(ids.split(",")).toArray());
+        int result = usersService.deleteByIds(StringUtils.StringToIntArr(ids.split(",")).toArray());
         return decide(1);
     }
 

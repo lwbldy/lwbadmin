@@ -1,40 +1,40 @@
-package ${package}.service;
+package com.pearadmin.modules.cms.service;
 
-import ${package}.domain.${className};
+import com.pearadmin.modules.cms.domain.Goods;
 import java.util.List;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.github.pagehelper.PageInfo;
 
 /**
- * ${comments} service
- * @author ${author}
- * @email ${email}
- * @date ${datetime}
+ * 积分兑换 service
+ * @author lwb
+ * @email lwbldy@163.com
+ * @date 2020-12-27 10:47:46
  */
-public interface I${className}Service {
+public interface IGoodsService {
 
     /**
      * 按条件查询数据
-     * @param ${classname}
+     * @param goods
      * @return
      */
-    List<${className}> selectList(${className} ${classname});
+    List<Goods> selectList(Goods goods);
 
 
     /**
      * 分页查询
-     * @param ${classname}
+     * @param goods
      * @param pageDomain
      * @return
      */
-    PageInfo<${className}> page(${className} ${classname}, PageDomain pageDomain);
+    PageInfo<Goods> page(Goods goods, PageDomain pageDomain);
 
     /**
      * 添加数据
-     * @param ${classname}
+     * @param goods
      * @return 执行结果
      */
-    Integer insert(${className} ${classname});
+    Integer insert(Goods goods);
 
 
     /**
@@ -42,15 +42,15 @@ public interface I${className}Service {
      * @param id
      * @return
      */
-    ${className} selectById(${pk.attrType} ${pk.attrname});
+    Goods selectById(Integer id);
 
 
     /**
      * 根据 id 更新数据
-     * @param ${classname}
+     * @param goods
      * @return
      */
-    Integer updateById(${className} ${classname});
+    Integer updateById(Goods goods);
 
 
     /**
@@ -58,7 +58,7 @@ public interface I${className}Service {
      * @param id
      * @return
      */
-    Integer deleteById(${pk.attrType} ${pk.attrname});
+    Integer deleteById(Integer id);
 
 
     /**

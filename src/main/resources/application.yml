@@ -37,7 +37,8 @@ pear:
       - /static/**
       - /
   resource:
-    file_path: D:/home/upload
+#    file_path: D:/home/upload
+    file_path: /opt/upload/
 # Page Helper
 pagehelper:
   # 方 言

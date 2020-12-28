@@ -5,25 +5,18 @@ import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.plugins.resource.service.IFileService;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
-import com.pearadmin.modules.cms.domain.Clinic;
-import com.pearadmin.modules.cms.domain.Dental;
-import com.pearadmin.modules.cms.domain.DoctorCertificate;
-import com.pearadmin.modules.cms.domain.DoctorResource;
-import com.pearadmin.modules.cms.service.IClinicService;
-import com.pearadmin.modules.cms.service.IDentalService;
-import com.pearadmin.modules.cms.service.IDoctorCertificateService;
-import com.pearadmin.modules.cms.service.IDoctorResourceService;
+import com.pearadmin.common.web.domain.response.Result;
+import com.pearadmin.modules.cms.domain.*;
+import com.pearadmin.modules.cms.service.*;
 import com.pearadmin.modules.system.domain.SysDictData;
 import com.pearadmin.modules.system.service.ISysDictDataService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -40,6 +33,12 @@ public class IndexController extends BaseController {
     private IDoctorCertificateService doctorCertificateService;
     @Resource
     private IDentalService dentalService;
+    @Resource
+    private ISinglePageService singlePageService;
+    @Resource
+    private IUsersService usersService;
+    @Resource
+    private IGoodsService goodsService;
 
 
     @RequestMapping("/")
@@ -55,7 +54,7 @@ public class IndexController extends BaseController {
      * @return
      */
     @GetMapping("html/clinic")
-    public ModelAndView Clinic(ModelAndView modelAndView, PageDomain pageDomain, Clinic param){
+    public ModelAndView clinic(ModelAndView modelAndView, PageDomain pageDomain, Clinic param){
 
         if(pageDomain.getPage() == null){
             pageDomain.setPage(1);
@@ -78,6 +77,33 @@ public class IndexController extends BaseController {
 
         return modelAndView;
     }
+
+
+    /**
+     * 医生资源详情
+     * @param id
+     * @param modelAndView
+     * @return
+     */
+    @GetMapping("html/clinic/details")
+    public ModelAndView clinicDetils(int id,ModelAndView modelAndView){
+
+        Clinic clinic = clinicService.selectById(id);
+
+        modelAndView.addObject("clinic",clinic);
+
+        DoctorResource doctorResource = new DoctorResource();
+        doctorResource.setClinic(clinic.getId());
+
+        List<DoctorResource> doctorList = doctorResourceService.selectList(doctorResource);
+        modelAndView.addObject("doctorList",doctorList);
+
+        modelAndView.setViewName("html/clinic/details");
+        return modelAndView;
+    }
+
+
+
 
     /**
      * 获取医生资源
@@ -116,7 +142,7 @@ public class IndexController extends BaseController {
      * @param modelAndView
      * @return
      */
-    @GetMapping("html/doctor/detils")
+    @GetMapping("html/doctor/details")
     public ModelAndView doctorDetils(int id,ModelAndView modelAndView){
         modelAndView.addObject("doctor",doctorResourceService.selectById(id));
 
@@ -180,13 +206,99 @@ public class IndexController extends BaseController {
      * @param modelAndView
      * @return
      */
-    @GetMapping("html/dental/detils")
+    @GetMapping("html/dental/details")
     public ModelAndView dentalDdetails(int id,ModelAndView modelAndView){
         Dental dental = dentalService.selectById(id);
         modelAndView.addObject("dental",dental);
         modelAndView.setViewName("html/dental/detils");
         return modelAndView;
     }
+
+    /**
+     * 关于我们
+     * @return
+     */
+    @GetMapping("html/about")
+    public ModelAndView about(ModelAndView modelAndView){
+        modelAndView.addObject("singlePage",singlePageService.selectByURL("about"));
+        modelAndView.setViewName("html/page/about");
+        return modelAndView;
+    }
+
+    @GetMapping("html/page/{url}")
+    public ModelAndView pageDetils(@PathVariable("url") String url,ModelAndView modelAndView){
+
+        modelAndView.addObject("singlePage",singlePageService.selectByURL(url));
+
+        modelAndView.setViewName("html/page/detils");
+        return modelAndView;
+    }
+
+
+    @GetMapping("html/login")
+    public ModelAndView login(ModelAndView modelAndView){
+        modelAndView.setViewName("html/user/login");
+        return modelAndView;
+    }
+
+
+    @PostMapping("html/login")
+    public Result login(Users users, HttpSession session){
+        Users users1 = usersService.selectByUserName(users.getUserName());
+
+        if(users1 == null){
+            return failure("用户不存在");
+        }
+
+        if(!users1.getPassword().trim().equals(users.getPassword().trim())){
+            return failure("密码错误");
+        }
+
+        session.setAttribute("users",users);
+
+        return success("登录成功");
+    }
+
+
+    @GetMapping("html/goods")
+    public ModelAndView goods(ModelAndView modelAndView, PageDomain pageDomain, Goods param,HttpSession session){
+
+        Users users = (Users)session.getAttribute("users");
+        if(users == null){
+            modelAndView.setViewName("redirect:/html/login");
+            return modelAndView;
+        }
+
+        if(pageDomain.getPage() == null){
+            pageDomain.setPage(1);
+        }
+        if(pageDomain.getLimit() == null){
+            pageDomain.setLimit(9);
+        }
+        PageInfo<Goods> pageInfo = goodsService.page(param,pageDomain);
+        modelAndView.addObject("pageInfo",pageInfo);
+        modelAndView.addObject("param",param);
+
+        modelAndView.setViewName("html/goods/index");
+        return modelAndView;
+    }
+
+    @GetMapping("html/goods/details")
+    public ModelAndView Ddetails(int id,ModelAndView modelAndView,HttpSession session){
+
+        Users users = (Users)session.getAttribute("users");
+        if(users == null){
+            modelAndView.setViewName("redirect:/html/login");
+            return modelAndView;
+        }
+
+        modelAndView.addObject("goods",goodsService.selectById(id));
+
+        modelAndView.setViewName("html/goods/details");
+        return modelAndView;
+    }
+
+
 
     /**
      * 图片详情

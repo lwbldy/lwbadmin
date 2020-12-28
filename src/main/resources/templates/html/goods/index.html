@@ -8,47 +8,20 @@
 <!--<![endif]-->
 
 <head>
-    <th:block th:include="include :: headhtml('寻找诊所')"/>
+    <th:block th:include="include :: headhtml('积分礼品兑换')"/>
 </head>
 
 <body>
-<div class="body-box clinic-box dental-box">
+<div class="body-box clinic-box campaign-box">
 
     <header class="header">
-        <th:block th:include="include :: headerhtml(4)"/>
+        <th:block th:include="include :: headerhtml(10)"/>
     </header>
 
     <section class="main-box">
         <div class="wrap">
             <div class="postion f-12">您现在的位置：
-                <a href="index.html">首页</a> > <a href="">寻找诊所</a> >
-                <a href="javascript:;" class="J_getcur"></a>
-            </div>
-
-            <div class="top-nav">
-                <div class="list-box">
-                    <div class="btn-box">
-                        <a class="back auto-bg over"
-                           style="background-image: url(/static/image/dental_icon_left.png);" href="#"></a>
-                        <a class="next auto-bg" style="background-image: url(/static/image/dental_icon_right.png);"
-                           href="#"></a>
-                    </div>
-                    <div class="swiper-container J_getmenu">
-                        <ul class="cf swiper-wrapper f-16">
-                            <li th:each="region,regionStat:${typeList}"  class="swiper-slide  swiper-slide-visible" th:classappend="${#strings.trim(param.typeId) == region.dataValue} ? 'on swiper-slide-active' : ''">
-                                <a th:href="@{/html/dental(typeId=${region.dataValue})}" target="_self">
-                                    <span>
-                                        <i>
-                                            <img class="ratio-img" data-ratio="1" onerror="lod(this)" th:src="@{/static/image/1492242929b03079389c00c895.png}">
-                                            <img class="ratio-img" data-ratio="1" onerror="lod(this)" th:src="@{/static/image/1492242929346b460f4dd29b8b.png}" style="height: 20px;">
-                                        </i>
-                                        <label th:text="${region.dataLabel}"></label>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <a href="/">首页</a> > <a href="">礼品兑换</a>
             </div>
 
             <div class="main">
@@ -60,26 +33,31 @@
                 <div class="line-dashed"></div>
 
                 <div class="list-box J_getlist">
-                    <ul class="cf putong">
-                        <li th:each="dental,dentalStat:${pageInfo.list}">
+                    <ul class="cf">
+                        <li th:each="goods,goodsStat:${pageInfo.list}">
                             <div class="list">
                                 <div class="content-box">
                                     <div class="img-box">
-                                        <a th:href="@{/html/dental/details(id=${dental.id})}" target="_self">
-                                            <img class="ratio-img" onerror="lod(this)" th:src="@{'/html/file/download/'+${dental.pic}}" style="height: 211px;"></a>
+                                        <i th:classappend="${goods.status == 0?'done':''}"></i>
+                                        <a th:href="@{/html/goods/details(id=${goods.id})}">
+                                            <img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" th:src="@{'/html/file/download/'+${goods.pic}}" style="height: 224px;"></a>
                                     </div>
 
                                     <div class="content">
-                                        <a th:href="@{/html/dental/details(id=${dental.id})}" target="_self"><p class="title f-16 c333 f-bold ellipsis" th:text="${dental.title}">标题</p></a>
-                                        <p class="text f-14 ellipsis-2" th:text="${dental.synopsis}">简介</p>
+                                        <a th:href="@{/html/goods/details(id=${goods.id})}">
+                                            <p class="title f-16 c333 f-bold ellipsis" th:text="${goods.title}">标题</p></a>
+
+                                        <p class="cf f-14 c666">
+                                            <span class="fl">简介：</span>
+                                            <em class="oh ellipsis-2" th:text="${goods.synopsis}">简介</em>
+                                        </p>
                                         <div class="btn-box">
-                                            <a class="f-14" th:href="@{/html/dental/details(id=${dental.id})}" target="_self">了解详情 &gt;</a>
+                                            <a class="f-14" th:href="@{/html/goods/details(id=${goods.id})}">了解详情 &gt;</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-
                     </ul>
                 </div>
 
@@ -119,8 +97,7 @@
 
 
 <script>
-    imgratio();
-    getMuen();
+
 
     function tz(){
         var val = document.getElementById("tz").value;

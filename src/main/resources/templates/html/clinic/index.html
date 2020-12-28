@@ -66,14 +66,14 @@
                             <div class="list">
                                 <div class="content-box">
                                     <div class="img-box">
-                                        <a th:href="@{/html/clinic/detils(id=${clinic.id})}" target="_self">
+                                        <a th:href="@{/html/clinic/details(id=${clinic.id})}" target="_self">
                                             <img class="ratio-img" data-ratio="0.7514619883040936"
                                                  th:src="@{'/html/file/download/'+${clinic.pic}}" onerror="lod(this)" style="height: 302px;">
                                         </a>
                                     </div>
 
                                     <div class="content">
-                                        <a th:href="@{/html/clinic/detils(id=${clinic.id})}">
+                                        <a th:href="@{/html/clinic/details(id=${clinic.id})}">
                                             <p class="title f-20 c333" th:text="${clinic.clinicName}"></p>
                                         </a>
                                         <p class="text c666 f-14">
@@ -81,7 +81,7 @@
                                             <span th:text="'电话：'+${clinic.telephone}">电话：010-6500 6473</span>
                                         </p>
                                         <div class="btn-box">
-                                            <a class="f-14 c333" th:href="@{/html/clinic/detils(id=${clinic.id})}">了解详情 &gt;</a>
+                                            <a class="f-14 c333" th:href="@{/html/clinic/details(id=${clinic.id})}">了解详情 &gt;</a>
                                             <a th:href="@{/html/clinic/detils(id=${clinic.id})}"><img class="ratio-img" data-ratio="0.8378378378378378" onerror="lod(this)" src="/images/clinic_icon08.png" style="height: 31px;"></a>
                                         </div>
                                     </div>

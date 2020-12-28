@@ -77,7 +77,7 @@
                 and p1.username like CONCAT('%',#{username}, '%')
             </if>
             <if test="clinic!=null and clinic!=''">
-                and p2.clinic=#{clinic}
+                and p1.clinic=#{clinic}
             </if>
             <if test="region!=null and region!=''">
                 and p2.region=#{region}

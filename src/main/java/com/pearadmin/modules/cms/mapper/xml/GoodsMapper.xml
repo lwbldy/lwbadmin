@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pearadmin.modules.cms.mapper.GoodsMapper">
+
+    <resultMap id="GoodsMap" type="Goods">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="pic" property="pic"></result>
+        <result column="synopsis" property="synopsis"></result>
+        <result column="status" property="status"></result>
+        <result column="context" property="context"></result>
+    </resultMap>
+
+    <select id="selectList" resultMap="GoodsMap">
+        select * from goods
+        <where>
+        <if test="title!=null and title!=''">
+            and title like CONCAT('%',#{title}, '%')
+        </if>
+    
+        </where>
+
+        order by id desc
+
+    </select>
+
+    <!-- 根据 Id 查询角色-->
+    <select id="selectById" parameterType="int" resultMap="GoodsMap">
+        select * from goods where id = #{id}
+    </select>
+
+
+    <!-- 新增 数据 -->
+    <insert id="insert" parameterType="Goods">
+        insert into goods
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title!=null">
+                title,
+            </if>
+            <if test="pic!=null">
+                pic,
+            </if>
+            <if test="synopsis!=null">
+                synopsis,
+            </if>
+            <if test="status!=null">
+                status,
+            </if>
+            <if test="context!=null">
+                context,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="title!=null">
+                #{title},
+            </if>
+            <if test="pic!=null">
+                #{pic},
+            </if>
+            <if test="synopsis!=null">
+                #{synopsis},
+            </if>
+            <if test="status!=null">
+                #{status},
+            </if>
+            <if test="context!=null">
+                #{context},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 根据 Id 修改角色数据 -->
+    <update id="updateById" parameterType="Goods">
+        update goods
+        <set>
+    <if test="title!=null and title!=''">
+        title = #{title},
+    </if>
+    <if test="pic!=null and pic!=''">
+        pic = #{pic},
+    </if>
+    <if test="synopsis!=null and synopsis!=''">
+        synopsis = #{synopsis},
+    </if>
+    <if test="status!=null">
+        status = #{status},
+    </if>
+    <if test="context!=null and context!=''">
+        context = #{context},
+    </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据 Id 删除 -->
+    <delete id="deleteById" parameterType="int">
+        delete from goods where id = #{id}
+    </delete>
+
+    <!-- 根据 Id 批量删除 -->
+    <delete id="deleteByIds" parameterType="int">
+        delete from goods where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -45,7 +45,7 @@
                             <div class="row cf">
                                 <div class="fl left">
                                     <div class="img-box">
-                                        <a th:href="@{/html/doctor/detils(id=${doctor.id})}" target="_self">
+                                        <a th:href="@{/html/doctor/details(id=${doctor.id})}" target="_self">
                                             <img th:src="@{'/html/file/download/'+${doctor.pic}}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 283px;">
                                             <p class="f-24" th:text="${doctor.username}"></p>
                                         </a>
@@ -64,7 +64,7 @@
                                         </p>
                                         <p><span>擅长：<em th:text="${doctor.good}"></em></span></p>
                                         <p><span>&nbsp;</span></p>
-                                        <a th:href="@{/html/doctor/detils(id=${doctor.id})}" target="_self" class="btn-01 f-14">了解详情 &gt;</a>
+                                        <a th:href="@{/html/doctor/details(id=${doctor.id})}" target="_self" class="btn-01 f-14">了解详情 &gt;</a>
                                         <a target="_self" class="btn-02 f-14" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&amp;f=10072488&amp;g=10069735" style="">在线预约</a>
                                     </div>
                                     <div class="line"></div>

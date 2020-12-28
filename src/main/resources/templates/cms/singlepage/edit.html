@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('新增')"/>
-
+    <th:block th:include="include :: header('修改')"/>
 </head>
 <body>
 <form class="layui-form" action="">
     <div class="mainBox">
         <div class="main-container">
             <div class="main-container">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">标题</label>
+
+                <div class="layui-form-item layui-hide">
+                    <label class="layui-form-label">编号</label>
                     <div class="layui-input-block">
-                        <input type="text" id="title" name="title"  autocomplete="off" placeholder="请输入标题"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">显示时间</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="showTime" name="showTime"  autocomplete="off" placeholder="请输入显示时间"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">类型</label>
-                    <div class="layui-input-block">
-                        <select id="typeId" name="typeId"  lay-verify="required" lay-search>
-                            <option th:each="type,typeStat:${typeList}" th:text="${type.dataLabel}" th:value="${type.dataValue}"></option>
-                        </select>
+                        <input type="text" th:value="${singlePage.id}"  name="id" id="id"
+                               autocomplete="off" placeholder="请输入id" class="layui-input">
                     </div>
                 </div>
 
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="title" name="title" lay-verify="required" th:value="${singlePage.title}"  autocomplete="off" placeholder="请输入标题"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">url</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="url" lay-verify="required" name="url" th:value="${singlePage.url}"  autocomplete="off" placeholder="请输入url"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">简介</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="synopsis" name="synopsis" th:value="${singlePage.synopsis}"  autocomplete="off" placeholder="请输入简介"
+                               class="layui-input">
+                    </div>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">主图</label>
                     <div class="layui-input-block">
@@ -39,34 +45,31 @@
                             <i class="layui-icon layui-icon-add-1"></i>
                             上传
                         </button>
-                        <img id="pic_img" src="" width="50px" style="display: none"/>
-                        <input type="hidden" id="pic" name="pic">
+                        <img id="pic_img" th:src="'/system/file/download/'+${singlePage.pic}" src="/system/file/download/1338309847401103360" width="50px"/>
+                        <input type="hidden" id="pic" name="pic" th:value="${singlePage.pic}">
                     </div>
                 </div>
-
-
                 <div class="layui-form-item">
-                    <label class="layui-form-label">摘要</label>
+                    <label class="layui-form-label">显示时间</label>
                     <div class="layui-input-block">
-                        <input type="text" id="synopsis" name="synopsis"  autocomplete="off" placeholder="请输入摘要"
+                        <input type="text" id="showTime" name="showTime" th:value="${singlePage.showTime}"  autocomplete="off" placeholder="请输入显示时间"
                                class="layui-input">
                     </div>
                 </div>
-
                 <div class="layui-form-item">
                     <label class="layui-form-label">内容</label>
                     <div class="layui-input-block">
-                        <div id="editor" style="z-index: 10;"></div>
-                        <textarea id="text1" name="context" style="display: none;"></textarea>
+
+                        <div id="editor" th:utext="${singlePage.context}"></div>
+                        <textarea id="text1" name="context" style="display: none;" th:utext="${singlePage.context}"></textarea>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
     <div class="bottom">
         <div class="button-container">
-            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="dental-save">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="singlePage-update">
                 <i class="layui-icon layui-icon-ok"></i>
                 提交
             </button>
@@ -82,11 +85,13 @@
 <script th:src="@{/static/js/wangEditor.js}" ></script>
 <script th:src="@{/static/js/editor-config.js}" ></script>
 
+
 <script>
     layui.use(['form', 'jquery','laydate'], function () {
         let form = layui.form;
         let $ = layui.jquery;
         var laydate = layui.laydate;
+
         laydate.render({
             elem: '#showTime' //指定元素
         });
@@ -101,18 +106,18 @@
             });
         })
 
-        form.on('submit(dental-save)', function (data) {
+        form.on('submit(singlePage-update)', function (data) {
             $.ajax({
-                url: '/cms/dental/save',
+                url: '/cms/singlepage/update',
                 data: JSON.stringify(data.field),
                 dataType: 'json',
                 contentType: 'application/json',
-                type: 'post',
+                type: 'put',
                 success: function (result) {
                     if (result.success) {
                         layer.msg(result.msg, {icon: 1, time: 1000}, function () {
                             parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-                            parent.layui.table.reload("dental-table");
+                            parent.layui.table.reload("singlePage-table");
                         });
                     } else {
                         layer.msg(result.msg, {icon: 2, time: 1000});
@@ -123,12 +128,12 @@
         });
     })
 
+
     function perId( id ){
         document.getElementById("pic_img").src = "/system/file/download/"+id;
         document.getElementById("pic_img").style.display="inline-block"
         document.getElementById("pic").value=id;
     }
-
 </script>
 
 </body>
