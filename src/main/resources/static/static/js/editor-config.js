@@ -4,8 +4,8 @@ var E = window.wangEditor;
 // 或者
 var editor = new E(document.getElementById('editor'));
 //后台上传接口
-editor.config.uploadImgServer = '/file/editUpload';
-
+editor.config.uploadImgServer = '/system/file/uploadByEdit';
+editor.config.uploadImgMaxLength = 1
 const $text1 = document.getElementById('text1')
 
 editor.config.onchange = function (html) {

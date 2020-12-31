@@ -1,7 +1,7 @@
 # Tomcat
 server:
   # 端 口
-  port: 8089
+  port: 80
 
 # Spring 配置
 spring:
@@ -37,8 +37,11 @@ pear:
       - /static/**
       - /
   resource:
-#    file_path: D:/home/upload
-    file_path: /opt/upload/
+    file_path: D:/home/upload
+#    file_path: /opt/upload/
+web:
+  local:
+    url: http://localhost:8089/
 # Page Helper
 pagehelper:
   # 方 言

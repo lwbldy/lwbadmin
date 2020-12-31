@@ -71,10 +71,25 @@ public class IndexController extends BaseController {
         sysDictData.setTypeCode("region");
         modelAndView.addObject("regionList",sysDictDataService.list(sysDictData));
 
+
+        String mark = "";
+        for(int i = 0;i<pageInfo.getList().size();i++){
+            Clinic cl = pageInfo.getList().get(i);
+            mark = mark + cl.getMap()+","+ cl.getClinicName();
+            if(i!=pageInfo.getList().size()-1){
+                mark+="|";
+            }
+        }
+        try{
+            mark = java.net.URLEncoder.encode(mark, "UTF-8");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        String mapURL = "https://uri.amap.com/marker?markers="+mark+"&src=mypage&callnative=0";
+        System.out.println("----->>"+mapURL);
+        modelAndView.addObject("mapURL",mapURL);
         modelAndView.addObject("param",param);
-
         modelAndView.setViewName("html/clinic/index");
-
         return modelAndView;
     }
 
@@ -94,6 +109,18 @@ public class IndexController extends BaseController {
 
         DoctorResource doctorResource = new DoctorResource();
         doctorResource.setClinic(clinic.getId());
+
+        String name = "";
+
+        try{
+            name = java.net.URLEncoder.encode(clinic.getClinicName(), "UTF-8");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        String mapURL = "https://uri.amap.com/marker?position="+clinic.getMap()+"&name="+name+"&src=mypage&coordinate=gaode&callnative=0";
+
+        modelAndView.addObject("mapURL",mapURL);
 
         List<DoctorResource> doctorList = doctorResourceService.selectList(doctorResource);
         modelAndView.addObject("doctorList",doctorList);

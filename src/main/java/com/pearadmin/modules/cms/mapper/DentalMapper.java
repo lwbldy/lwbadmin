@@ -14,6 +14,13 @@ public interface DentalMapper {
      */
     List<Dental> selectList(Dental param);
 
+    /**
+     * 查询单页
+     * @param param
+     * @return
+     */
+    List<Dental> selectList2(Dental param);
+
 
     /**
      * 添加数据
@@ -29,6 +36,8 @@ public interface DentalMapper {
      * @return
      */
     Dental selectById(@Param("id") Integer id);
+
+    Dental selectByURL(@Param("url") String url);
 
 
     /**

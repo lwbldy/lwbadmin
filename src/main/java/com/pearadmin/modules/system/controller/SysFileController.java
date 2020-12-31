@@ -9,12 +9,17 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.ResultTable;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Describe: 文 件 控 制 器
@@ -29,6 +34,10 @@ public class SysFileController extends BaseController {
      * 系 统 文 件
      * */
     private String MODULE_PATH = "system/file/";
+
+    @Value("${web.local.url}")
+    private String weburl;
+
 
     /**
      * 移 除 服 务
@@ -84,6 +93,23 @@ public class SysFileController extends BaseController {
         }else{
             return Result.failure("上传失败");
         }
+    }
+
+    @PostMapping("uploadByEdit")
+    public Map uploadFile(@RequestParam("file") MultipartFile file){
+        String result = fileService.upload(file);
+        Map<String,Object> map = new HashMap<String,Object>();
+        if(Strings.isNotBlank(result)){
+            map.put("errno",0);
+
+            List<String> list = new ArrayList<String>();
+            list.add(this.weburl+"html/file/download/"+result);
+
+            map.put("data",list);
+        }else{
+            map.put("errno",1);
+        }
+        return map;
     }
 
     /**

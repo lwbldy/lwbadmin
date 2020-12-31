@@ -5,14 +5,14 @@
 <!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
 <!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
 <head>
-    <th:block th:include="include :: headhtml('文章详情')"/>
+    <th:block th:include="include :: headhtml('寻找诊所')"/>
 </head>
 
 <body class="search-body">
 <div class="body-box cdeta-box">
 
     <header class="header">
-        <th:block th:include="include :: headerhtml(5)"/>
+        <th:block th:include="include :: headerhtml(4)"/>
     </header>
 
     <section class="main-box">
@@ -27,13 +27,13 @@
             <div class="main">
 
                 <div class="top">
-                    <p class="f-24">国际大厦诊所-总部</p>
+                    <p class="f-24" th:text="${clinic.clinicName}">卫华总部</p>
                     <div class="content-box cf">
                         <div class="img-box fl swiper-pic ratio-img oh" data-ratio="0.4822546972860125" style="height: 341px;">
                             <div class="swiper-container">
                                 <ul class="swiper-wrapper">
                                     <li class="swiper-slide">
-                                        <img class="ratio-img" data-ratio="0.4822546972860125" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20191111/1573466271112946dd146a7529.png" alt="" style="height: 341px;">
+                                        <img class="ratio-img"  onerror="lod(this)" th:src="@{'/html/file/download/'+${clinic.pic}}" alt="" style="height: 341px;">
                                     </li>
                                     <!--<li class="swiper-slide"><img class="ratio-img" data-ratio="0.4822546972860125" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20191111/1573466271071fcc34129357f5.png" alt="" style="height: 341px;"></li>-->
                                     <!--<li class="swiper-slide"><img class="ratio-img" data-ratio="0.4822546972860125" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20191111/15734662724f1cfaafb820ccd7.png" alt="" style="height: 341px;"></li>-->
@@ -48,18 +48,23 @@
                         </div>
                         <div class="text-box oh">
                             <div class="text">
-                                <p class="f-16" style="font-size: 14px;">国际大厦医院成立于1999年4月，是瑞尔集团旗下的第一家诊所。位于北京使馆区中心地带，毗邻CBD商圈。诊所也是瑞尔北京区的管理培训中心，规模之大、设施之全，有优秀的医疗团队，全心全意用专业赢得顾客信任！</p>
+                                <p class="f-16" style="font-size: 14px;" th:text="${clinic.details}"></p>
                                 <ul class="f-16" style="margin-top: 20px;font-size: 14px; ">
-                                    <li class="cf"><em class="fl">电　　话：</em><span class="f-28 oh">010-6500 6473</span></li>
-                                    <li class="cf"><em class="fl">地　　址：</em><span class="oh">北京朝阳区建国门外大街19号国际大厦A座205室</span></li>
-                                    <li class="cf"><em class="fl">营业时间：</em><span class="oh">9:30-18:00</span></li>
+                                    <li class="cf"><em class="fl">电　　话：</em><span class="f-28 oh" th:text="${clinic.telephone}">电话</span></li>
+                                    <li class="cf"><em class="fl">地　　址：</em><span class="oh" th:text="${clinic.address}">位置</span></li>
+                                    <li class="cf"><em class="fl">营业时间：</em><span class="oh" th:text="${clinic.openingHours}">9:30-18:00</span></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="icon-box">
                         <ul class="cf f-14">
-                            <li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170531/14962210403dfb867ab90f9149.png" alt="" style="height: 24px;"></i>免费提供饮品和点心</div></li><li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170531/14962210659c5490543196cb3f.png" alt="" style="height: 24px;"></i>免费WIFI</div></li><li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170531/1496222416e2f193e736c0f60f.png" alt="" style="height: 24px;"></i>浏览室</div></li><li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170531/1496221241cf2a212e4818f4d2.png" alt="" style="height: 24px;"></i>儿童区</div></li><li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170531/1496221253fba37b367abc3f8c.png" alt="" style="height: 24px;"></i>温馨的就诊环境</div></li>                                </ul>
+                            <li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="/static/image/14962210403dfb867ab90f9149.png" alt="" style="height: 24px;"></i>免费提供饮品和点心</div></li>
+                            <li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="/static/image/14962210659c5490543196cb3f.png" alt="" style="height: 24px;"></i>免费WIFI</div></li>
+                            <li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="/static/image/1496222416e2f193e736c0f60f.png" alt="" style="height: 24px;"></i>浏览室</div></li>
+                            <li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="/static/image/1496221241cf2a212e4818f4d2.png" alt="" style="height: 24px;"></i>儿童区</div></li>
+                            <li><div class="icon"><i><img class="ratio-img" data-ratio="1" onerror="lod(this)" src="/static/image/1496221253fba37b367abc3f8c.png" alt="" style="height: 24px;"></i>温馨的就诊环境</div></li>
+                        </ul>
                     </div>
                 </div>
 
@@ -68,58 +73,22 @@
                 <div class="yis-box J_getlist min-scorll-x">
                     <!-- <div class="list-box"> -->
                     <ul class="cf">
-                        <li>
+                        <li th:each="doctor,doctorStat:${doctorList}">
                             <div class="content-box">
                                 <div class="img-box">
-                                    <a href="/content/details_4_1758.html" target="_self">
-                                        <img src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170512/149457163132ecc534ba99425d.jpg" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 229px;">
+                                    <a th:href="@{/html/doctor/details(id=${doctor.id})}" target="_self">
+                                        <img th:src="@{'/html/file/download/'+${doctor.pic}}" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 229px;">
                                         <div class="img-text">
-                                            <p class="f-24">王伟</p>
+                                            <p class="f-24" th:text="${doctor.username}">王伟</p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="text-box">
                                     <ul class="f-14">
-                                        <li class="ellipsis"><i><img src="/static/image/yi_15.jpg" data-ratio="1" class="ratio-img" onerror="lod(this)" alt="" style="height: 24px;"></i>区域正畸技术总监</li>
-                                        <li class="ellipsis"><i><img src="/static/image/yi_19.jpg" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 24px;"></i>硕士</li>
-                                        <li class="ellipsis"><i><img src="/static/image/yi_27.jpg" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 24px;"></i>天津医科大学</li>
+                                        <li class="ellipsis"><i><img src="/static/image/yi_15.jpg" data-ratio="1" class="ratio-img" onerror="lod(this)" alt="" style="height: 24px;"></i><em th:text="${doctor.job}">职位</em></li>
+                                        <li class="ellipsis"><i><img src="/static/image/yi_19.jpg" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 24px;"></i><em th:text="${doctor.degree}">学士</em></li>
+                                        <li class="ellipsis"><i><img src="/static/image/yi_27.jpg" class="ratio-img" data-ratio="1" onerror="lod(this)" alt="" style="height: 24px;"></i><em th:text="${doctor.school}">北京大学口腔医学院</em></li>
                                     </ul>
-                                </div>
-                                <div class="doctor-score cf" style="display:none;">
-
-                                    <div class="doctor-score-left fl white">
-                                        <i class="icon-bg"></i>
-                                        <span class="f-18 f-b zongfen">161</span>
-                                        <p class="f-14">总评分</p>
-                                    </div>
-
-                                    <div class="doctor-score-right oh">
-                                        <ul class="cf">
-
-                                            <li data-id="1758" data-fenlei="zhuanye">
-                                                <div class="doctor-score-con f-14 c666">
-                                                    <img src="/static/image/icon_score_1.png" alt="">
-                                                    <img src="/static/image/icon_score_1_h.png" alt="">
-                                                    <p>专业</p>
-                                                </div>
-                                            </li>
-
-                                            <li data-id="1758" data-fenlei="goutong">
-                                                <div class="doctor-score-con f-14 c666">
-                                                    <img src="/static/image/icon_score_2.png" alt="">
-                                                    <img src="/static/image/icon_score_2_h.png" alt="">
-                                                    <p>沟通</p>
-                                                </div>
-                                            </li>
-                                            <li data-id="1758" data-fenlei="service">
-                                                <div class="doctor-score-con f-14 c666">
-                                                    <img src="/static/image/icon_score_3.png" alt="">
-                                                    <img src="/static/image/icon_score_3_h.png" alt="">
-                                                    <p>服务</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -127,7 +96,6 @@
                 </div>
 
                 <div class="line"></div>
-
 
                 <div class="ditu-box">
                     <div class="title-box cf">
@@ -138,7 +106,7 @@
                         <div id="allmap" class="ratio-img" data-ratio="0.42573402" style="width:100%;height:550px;overflow:hidden;display:none;"></div>
                         <div style="postion:ralative;">
                             <a onclick="fh()" id="fh" style="margin-top: -10px; margin-bottom: 10px; cursor: pointer;">&gt;返回主图&lt;</a>
-                            <iframe class="ratio-img" id="allmaps" style="width: 100%; height: 550px; overflow: hidden;" src="http://uri.amap.com/marker?position=116.44143,39.90907&amp;name=国际大厦诊所-总部&amp;src=mypage&amp;coordinate=gaode&amp;callnative=1"></iframe>
+                            <iframe class="ratio-img" id="allmaps" style="width: 100%; height: 550px; overflow: hidden;" th:src="${mapURL}"></iframe>
                         </div>
                     </div>
                 </div>
