@@ -60,6 +60,13 @@ public interface IDentalService {
      */
     Integer deleteById(Integer id);
 
+    /**
+     * 根据 id 更新点击次数
+     * @param id
+     * @return
+     */
+    Integer updateHits(Integer id);
+
 
     /**
      * 根据 id 批量删除

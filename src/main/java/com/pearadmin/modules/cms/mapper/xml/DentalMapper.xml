@@ -12,6 +12,7 @@
         <result column="show_time" property="showTime"></result>
         <result column="context" property="context"></result>
         <result column="type_name" property="typeName"></result>
+        <result column="hits" property="hits"></result>
     </resultMap>
 
     <select id="selectList" resultMap="DentalMap">
@@ -128,6 +129,10 @@
     <delete id="deleteById" parameterType="int">
         delete from dental where id = #{id}
     </delete>
+    
+    <update id="updateHits" parameterType="int">
+        UPDATE dental SET hits=hits + 1 WHERE id = #{id}
+    </update>
 
     <!-- 根据 Id 批量删除 -->
     <delete id="deleteByIds" parameterType="int">

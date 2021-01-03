@@ -36,6 +36,12 @@ public class Dental implements Serializable {
 
     private String typeName;
 
+    /**
+     * 点击次数
+     */
+    private Integer hits;
+
+
     public String getTypeName() {
         return typeName;
     }
@@ -137,4 +143,12 @@ public class Dental implements Serializable {
     public String getContext() {
         return context;
     }
+
+    public Integer getHits() {
+        return hits;
     }
+
+    public void setHits(Integer hits) {
+        this.hits = hits;
+    }
+}

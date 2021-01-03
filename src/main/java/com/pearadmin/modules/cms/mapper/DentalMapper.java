@@ -14,6 +14,8 @@ public interface DentalMapper {
      */
     List<Dental> selectList(Dental param);
 
+
+
     /**
      * 查询单页
      * @param param
@@ -37,6 +39,11 @@ public interface DentalMapper {
      */
     Dental selectById(@Param("id") Integer id);
 
+    /**
+     * 根据url查询
+     * @param url
+     * @return
+     */
     Dental selectByURL(@Param("url") String url);
 
 
@@ -46,6 +53,13 @@ public interface DentalMapper {
      * @return
      */
     Integer updateById(Dental param);
+
+    /**
+     * 根据id更新点击次数
+     * @param id
+     * @return
+     */
+    Integer updateHits(@Param("id") Integer id);
 
 
     /**

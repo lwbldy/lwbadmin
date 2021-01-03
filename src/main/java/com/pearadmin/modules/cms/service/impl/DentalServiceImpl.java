@@ -53,6 +53,11 @@ public class DentalServiceImpl implements IDentalService {
     }
 
     @Override
+    public Integer updateHits(Integer id) {
+        return dentalMapper.updateHits(id);
+    }
+
+    @Override
     public Integer deleteByIds(Object[] ids) {
         return dentalMapper.deleteByIds(ids);
     }

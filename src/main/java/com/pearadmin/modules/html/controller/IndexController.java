@@ -242,6 +242,17 @@ public class IndexController extends BaseController {
     }
 
     /**
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("html/dental/update/hits")
+    public Result updateDentalHits(int id){
+        dentalService.updateHits(id);
+        return success("sucess");
+    }
+
+    /**
      * 关于我们
      * @return
      */
@@ -324,6 +335,14 @@ public class IndexController extends BaseController {
         modelAndView.setViewName("html/goods/details");
         return modelAndView;
     }
+
+    @GetMapping("html/mv")
+    public ModelAndView mv(ModelAndView modelAndView){
+        modelAndView.setViewName("html/mv/index");
+        return modelAndView;
+    }
+
+
 
 
 

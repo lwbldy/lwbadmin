@@ -37,12 +37,12 @@
                 <div class="middle-content f-14">
                     <div class="edit_con_original" th:utext="${dental.context}"></div>
 
-                    <div class="bottom-btn f-14 c666">
-                        <ul>
-                            <li><a href="/content/details_11_527.html">上一篇：洗牙常见误区（一）</a></li>
-                            <li><a href="/content/details_11_523.html">下一篇：洗牙常见误区（二）</a></li>
-                        </ul>
-                    </div>
+                    <!--<div class="bottom-btn f-14 c666">-->
+                        <!--<ul>-->
+                            <!--<li><a href="/content/details_11_527.html">上一篇：洗牙常见误区（一）</a></li>-->
+                            <!--<li><a href="/content/details_11_523.html">下一篇：洗牙常见误区（二）</a></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -54,7 +54,12 @@
 </div>
 
 <script>
-
+    var dentalId = [[${dental.id}]];
+    $(function () {
+        $.get("/html/dental/update/hits?id="+dentalId,function(data,status){
+            console.log(data)
+        })
+    })
 </script>
 
 </body>
