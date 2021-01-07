@@ -190,9 +190,42 @@ public class SysUserServiceImpl implements ISysUserService {
      * */
     @Override
     public List<SysMenu> getUserMenu(String username) {
-        List<SysMenu> menus = sysPowerMapper.selectMenuByUsername(username);
-        buildMenu(menus,username);
-        return menus;
+//        List<SysMenu> menus = sysPowerMapper.selectMenuByUsername(username);
+//        buildMenu(menus,username);
+        List<SysMenu> menus = sysPowerMapper.selectMenuAllByUsername(username);
+
+        List<SysMenu> menuList = new ArrayList<SysMenu>();
+        for(SysMenu sysMenu : menus){
+            if(sysMenu.getParentId().trim().equals("0")){
+                menuList.add(sysMenu);
+            }
+        }
+
+        //为所有一菜单设置子菜单
+        for (SysMenu menu : menuList) {
+            menu.setChildren(getChild(menu.getId(),menus));
+        }
+
+        return menuList;
+    }
+
+    public List<SysMenu> getChild(String id,List<SysMenu> rootMenu){
+        List<SysMenu> childList = new ArrayList<SysMenu>();
+        //循环所有菜单
+        for(SysMenu menu:rootMenu){
+            //如果是和父id相同
+            if(menu.getParentId().trim().equals(id)){
+                childList.add(menu);
+            }
+        }
+        //再循环一遍 子菜单，如果有值，则继续循环下去。如果没有值返回空
+        for(SysMenu menu : childList){
+            getChild(menu.getId(),rootMenu);
+        }
+        if(childList.size() == 0){
+            return null;
+        }
+        return childList;
     }
 
     /**

@@ -52,4 +52,9 @@ public class SysMenu {
      * 用于参数传递
      * */
     private String username;
+
+    /**
+     * 用于参数传递
+     * */
+    private String parentId;
 }
