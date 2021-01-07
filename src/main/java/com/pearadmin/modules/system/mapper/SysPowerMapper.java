@@ -46,6 +46,13 @@ public interface SysPowerMapper {
     List<SysMenu> selectMenuByUsername(String username);
 
     /**
+     * 查询全部用户菜单
+     * @param username
+     * @return
+     */
+    List<SysMenu> selectMenuAllByUsername(String username);
+
+    /**
      * Describe: 根据 ParentId 查询子菜单
      * Param: parentId
      * Return: ResuMenu
