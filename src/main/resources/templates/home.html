@@ -47,7 +47,8 @@
 <body class="index-body">
 <div class="index-wrap white">
     <div class="index-header">
-        <a href="" class="logo"><img src="static/image/logo.jpg" style="width: auto;margin-top: -17px"></a>
+        <!--<a href="" class="logo"><img src="static/image/logo.jpg" style="width: auto;margin-top: -17px"></a>-->
+        <a href="" class="logo"><img src="/static/image/index_logo.png"></a>
 
         <a href="index1.html" class="member"><img src="static/picture/hy.png"></a>
 
@@ -88,7 +89,7 @@
         </div>
         <div class="item item-3 ">
             <div class="w">
-                <div class="in-26"><em class="in-140">264</em><span>位</span></div>
+                <div class="in-26"><em class="in-140" th:value="${doctorCount}" th:text="${doctorCount}">264</em><span>位</span></div>
                 <div class="in-26">医生团队贴心为您服务</div>
             </div>
             <i class="bg auto-bg" style="background-image:url(static/image/index_img04.jpg)"></i>
@@ -104,11 +105,11 @@
             <i class="bg auto-bg" style="background-image:url(static/image/index_img06.jpg)"></i>
         </div>
         <div class="item item-5">
-            <div class="w">
+            <div class="w" style="color: #000;">
                 <div class="in-40">关于品牌</div>
-                <div class="in-20">About Arrail</div>
+                <div class="in-20">About weihua</div>
                 <div class="bon in-16">
-                    <a th:href="@{/html/about}">品牌介绍</a>
+                    <a th:href="@{/html/about}" style="color: #000;">品牌介绍</a>
                     <!--<a href="news.html">新闻资讯</a>-->
                 </div>
             </div>
@@ -132,29 +133,33 @@
             </div>
             <i class="bg auto-bg" style="background-image:url(static/image/index_img12.jpg)"></i>
         </div>
-        <div class="item item-8">
-            <a target="_blank" href="javascript:;" class="a a1">
-                <img src="static/picture/1492573550caee9fe95a8147f9.png" class="ratio-img" data-ratio="0.7677" onerror="lod(this)">
-            </a><a target="_blank" href="javascript:;" class="a a2">
-            <img src="static/picture/1492573486b95f8b629d3efd3f.png" class="ratio-img" data-ratio="0.7677" onerror="lod(this)">
-        </a>                    <i class="bg auto-bg" style="background-image:url(static/image/index_img08.jpg)"></i>
+        <div class="item item-8" style="text-align: center;color: #000;font-weight: bold;font-size: 20px;">
+            <a target="_blank" href="javascript:;" class="a a1" >
+                <img src="/static/image/lj.png" class="ratio-img" data-ratio="0.7677" onerror="lod(this)">
+                添加客服
+            </a>
+            <a target="_blank" href="javascript:;" class="a a2">
+                <img src="/static/image/gzh.jpg" class="ratio-img" data-ratio="0.7677" onerror="lod(this)">
+                微信公众号
+            </a>
+            <i class="bg auto-bg" style="background-image:url(static/image/index_img08.jpg)"></i>
         </div>
     </div>
     <div class="ind-bk ind-bk-5">
         <div class="item item-9 hover">
-            <a href="campaign.html" class="a-1"></a>
+            <a href="/html/campign" class="a-1"></a>
             <div class="w"><em class="e"><img src="static/picture/jt_01.png"></em>
                 <div class="in-40">消费者活动</div>
                 <div class="in-20">Consumer Activities</div>
             </div>
-            <i class="bg auto-bg" style="background-image:url(static/image/1540187088e97c2620b275c76c.jpg)"></i>
+            <i class="bg auto-bg" style="background-image:url(static/image/tellme.jpg)"></i>
         </div>
         <div class="item item-10">
             <div class="w">
                 <div class="in-40">牙病科普</div>
                 <div class="in-20">Diseases Popularization</div>
                 <div class="bon in-16">
-                    <a href="test.html">自测题目</a>
+                    <a href="/html/page/test">自测题目</a>
                     <a href="javascript:;" target="_blank">医生对话</a>
                 </div>
             </div>
@@ -172,7 +177,8 @@
                     </div>
                     <div class="inps inps-2">
                         <select name="w1" class="j-select2">
-                            <option value="7">北京</option><option value="6">上海</option><option value="5">深圳</option><option value="4">厦门</option><option value="3">广州</option><option value="2">杭州</option><option value="1">天津</option>                                </select>
+                            <option th:each="region,regionStat:${regionList}" th:text="${region.dataLabel}" th:value="${region.dataValue}">江西</option>
+                        </select>
                     </div>
                     <div class="inps inps-3 cf">
                         <input name="keywords" value="" type="text" placeholder="请输入名称关键字">
@@ -188,7 +194,13 @@
             <div class="w">
                 <div class="in-46">400-880-1900</div>
                 <div class="cf">
-                    <div class="in-16"><a href="#" class="w-wx t-weixin-bon" data-img="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170420/1492666791a5cb5de1212fc8c6.png"><img src="static/picture/w_01.png"></a><a href="javascript:;" class="w-wb"><img src="static/picture/w_03.png"></a><a href="logon-httpsmail.arrail-dental.co.html" target="_blank" class="w-yx"><img src="static/picture/e-mail.png"></a><a href="javascript:;" target="_blank" class="ind-leyu"><img src="static/picture/ind_leyu.png"></a></div>
+                    <div class="in-16">
+                        <a href="#" class="w-wx t-weixin-bon">
+                        <img src="static/picture/w_01.png"></a>
+                        <a href="javascript:;" class="w-wb"><img src="static/picture/w_03.png"></a>
+                        <a href="" target="_blank" class="w-yx"><img src="static/picture/e-mail.png"></a>
+                        <a href="javascript:;" target="_blank" class="ind-leyu"><img src="static/picture/ind_leyu.png"></a>
+                    </div>
                     <div class="bon in-16" style="display: block;">
                         <a href="" class="on">中文</a>
                         <a href="index2.html">English</a>
@@ -207,9 +219,9 @@
         var keywords = $("input[name='keywords']").val();
         if (keywords == "请输入名称关键字") keywords = '';
         if(type==1){
-            window.location.href="/clinic/clinic.html?w1="+w1+"&keywords="+keywords;
+            window.location.href="/html/clinic?region="+w1+"&username="+keywords;
         }else{
-            window.location.href="/resources/resources.html?w1="+w1+"&keywords="+keywords;
+            window.location.href="/html/doctor?region="+w1+"&username="+keywords;
         }
     });
     $(document).ready(function() {
@@ -228,17 +240,17 @@
             }
         });
 
-        var in140_num = $("em.in-140").text(),
-            num_item = 0;
-        $("em.in-140").text("0");
-        var setNum = setInterval(function(){
-            num_item += Math.round(in140_num/5);
-            if (num_item > in140_num) {
-                clearInterval(setNum);
-                num_item = in140_num;
-            }
-            $("em.in-140").text(num_item);
-        }, 200);
+        // var in140_num = $("em.in-140").text(),
+        //     num_item = 0;
+        // $("em.in-140").text("0");
+        // var setNum = setInterval(function(){
+        //     num_item += Math.round(in140_num/5);
+        //     if (num_item > in140_num) {
+        //         clearInterval(setNum);
+        //         num_item = in140_num;
+        //     }
+        //     $("em.in-140").text(num_item);
+        // }, 200);
     })
 </script>
 

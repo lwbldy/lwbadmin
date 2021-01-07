@@ -29,6 +29,12 @@
                 <div class="search-box">
                     <div class="search">
                         <div class="inps-box cf">
+                            <div class="inps inps-1">
+                                <select class="j-select2" id="seldq">
+                                    <option class="f-14" value="">选择地区</option>
+                                    <option th:each="region,regionStat:${regionList}" th:text="${region.dataLabel}" th:value="${region.dataValue}" th:selected="${#strings.trim(param.region) == region.dataValue}"></option>
+                                </select>
+                            </div>
                             <div class="inps inps-4">
                                 <input type="text" name="username" id="username" placeholder="请输入医生姓名" th:value="${param.username}">
                             </div>
@@ -121,8 +127,18 @@
 
     function search(){
         var username = document.getElementById("username").value;
-        var url = "/html/doctor?username="+username;
-        window.location.href=url;
+        var region = document.getElementById("seldq").value;
+        console.log(seldq +"---------"+username);
+        if(username.trim().length == 0 && region.trim().length == 0){
+            window.location.href="/html/doctor";
+        }else if(username.trim().length == 0 && region.trim().length != 0){
+            window.location.href="/html/doctor?region="+region;
+        }else if(username.trim().length != 0 && region.trim().length == 0){
+            window.location.href="/html/doctor?username="+username;
+        }else{
+            window.location.href="/html/doctor?username="+username+"&region="+region;
+        }
+
     }
 
 </script>

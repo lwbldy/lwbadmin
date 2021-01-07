@@ -1,53 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:include="include :: header('列表')"/>
 </head>
 <body class="pear-container">
 <div class="layui-card">
-<!--    <div class="layui-card-body">-->
-<!--        <form class="layui-form" action="">-->
-<!--            <div class="layui-form-item">-->
-<!--                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="clinic-query">-->
-<!--                    <i class="layui-icon layui-icon-search"></i>-->
-<!--                    查询-->
-<!--                </button>-->
-<!--                <button type="reset" class="pear-btn pear-btn-md">-->
-<!--                    <i class="layui-icon layui-icon-refresh"></i>-->
-<!--                    重置-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
+    <div class="layui-card-body">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-inline">
+                <input type="text" name="title" placeholder="" class="layui-input">
+            </div>
+                <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="campaign-query">
+                    <i class="layui-icon layui-icon-search"></i>
+                    查询
+                </button>
+                <button type="reset" class="pear-btn pear-btn-md">
+                    <i class="layui-icon layui-icon-refresh"></i>
+                    重置
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 <div class="layui-card">
     <div class="layui-card-body">
-        <table id="clinic-table" lay-filter="clinic-table"></table>
+        <table id="campaign-table" lay-filter="campaign-table"></table>
     </div>
 </div>
 </body>
 
-<script type="text/html" id="clinic-toolbar">
-    <button sec:authorize="hasPermission('/cms/clinic/add','cms:clinic:add')" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+<script type="text/html" id="campaign-toolbar">
+    <button sec:authorize="hasPermission('/cms/campaign/add','cms:campaign:add')" class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
         新增
     </button>
-    <button sec:authorize="hasPermission('/cms/clinic/remove','cms:clinic:remove')" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+    <button sec:authorize="hasPermission('/cms/campaign/remove','cms:campaign:remove')" class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
         删除
     </button>
 </script>
-
-<script type="text/html" id="clinic-bar">
-    <button sec:authorize="hasPermission('/cms/clinic/edit','cms:clinic:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
-    </button>
-
-    <button sec:authorize="hasPermission('/cms/clinic/remove','cms:clinic:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
-    </button>
-</script>
 <script type="text/html" id="file-img">
-    <img src="/system/file/download/{{d.pic}}"/>
+    <img src="/system/file/download/{{d.pic}}" style="width: 300px"/>
+</script>
+<script type="text/html" id="campaign-bar">
+    <button sec:authorize="hasPermission('/cms/campaign/edit','cms:campaign:edit')" class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
+    </button>
+
+    <button sec:authorize="hasPermission('/cms/campaign/remove','cms:campaign:remove')" class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
+    </button>
 </script>
 
 
@@ -57,35 +59,43 @@
         let table = layui.table;
         let form = layui.form;
         let $ = layui.jquery;
-        let MODULE_PATH = "/cms/clinic/";
+
+        let MODULE_PATH = "/cms/campaign/";
+
         let cols = [
             [
                 {type: 'checkbox'},
-                {field: 'id', title: ''},
-                {field: 'clinicName', title: '名称'},
+                {field: 'title', title: '标题'},
                 {field: 'pic', title: '主图',templet: "#file-img"},
-                {field: 'telephone', title: '电话'},
-                {field: 'address', title: '地址'},
+                {field: 'status', title: '状态',templet: function(d){
+                        if(d.status == 0){
+                            return '<span style="color: #FF0000;">已结束</span>';
+                        }else{
+                            return '<span style="color: #00ff00;">进行中</span>';
+                        }
+                    }},
+                {field: 'synopsis', title: '简介'},
                 {field: 'sort', title: '排序'},
-                {field: 'region', title: '地区'},
-                {title: '操作', toolbar: '#clinic-bar', align: 'center', width: 120}
+                {field: 'visitTime', title: '活动时间'},
+                {field: 'visitAddress', title: '活动地址'},
+                {title: '操作', toolbar: '#campaign-bar', align: 'center', width: 120}
             ]
         ]
 
         table.render({
-            elem: '#clinic-table',
+            elem: '#campaign-table',
             url: MODULE_PATH + 'data',
             page: true,
             cols: cols,
             skin: 'line',
-            toolbar: '#clinic-toolbar',
+            toolbar: '#campaign-toolbar',
             defaultToolbar: [{
                 layEvent: 'refresh',
                 icon: 'layui-icon-refresh',
             }, 'filter', 'print', 'exports']
         });
 
-        table.on('tool(clinic-table)', function (obj) {
+        table.on('tool(campaign-table)', function (obj) {
             if (obj.event === 'remove') {
                 window.remove(obj);
             } else if (obj.event === 'edit') {
@@ -95,7 +105,7 @@
             }
         });
 
-        table.on('toolbar(clinic-table)', function (obj) {
+        table.on('toolbar(campaign-table)', function (obj) {
             if (obj.event === 'add') {
                 window.add();
             } else if (obj.event === 'refresh') {
@@ -105,8 +115,8 @@
             }
         });
 
-        form.on('submit(clinic-query)', function (data) {
-            table.reload('clinic-table', {where: data.field})
+        form.on('submit(campaign-query)', function (data) {
+            table.reload('campaign-table', {where: data.field})
             return false;
         });
 
@@ -153,7 +163,7 @@
         }
 
         window.remove = function (obj) {
-            layer.confirm('确定要删除这些用户', {icon: 3, title: '提示'}, function (index) {
+            layer.confirm('确定要删除这些数据？', {icon: 3, title: '提示'}, function (index) {
                 layer.close(index);
                 let loading = layer.load();
                 $.ajax({
@@ -196,7 +206,7 @@
                         layer.close(loading);
                         if (result.success) {
                             layer.msg(result.msg, {icon: 1, time: 1000}, function () {
-                                table.reload('clinic-table');
+                                table.reload('campaign-table');
                             });
                         } else {
                             layer.msg(result.msg, {icon: 2, time: 1000});
@@ -206,8 +216,9 @@
             });
         }
 
-
+        window.refresh = function () {
+            table.reload('campaign-table');
+        }
     })
-
 </script>
 </html>

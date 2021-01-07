@@ -53,7 +53,7 @@
                                     <em class="oh ellipsis-2 h-em" style="height: auto;white-space: pre-wrap;" th:utext="${doctor.outher}">
                                     </em></p>
                             </div>
-                            <a target="_blank" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&f=10072488&g=10069735" class="btn-01 f-36">预约</a>
+                            <a target="_blank" href="#" class="btn-01 f-36">预约</a>
 
                         </div>
 
@@ -62,14 +62,14 @@
                                 <li>
                                     <div class="btn-box">
                                         <!--微博的变化-->
-                                        <a class="btn-02" href="http://weibo.com/arrail" target="_blank">微博</a>
+                                        <a class="btn-02" href="#" target="_blank">微博</a>
                                     </div>
                                 </li>
 
                                 <li>
                                     <div class="btn-box">
                                         <!--微信的变化-->
-                                        <a class="btn-03 t-weixin-bon" data-img="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170420/1492666791a5cb5de1212fc8c6.png" href="javascript:;">微信</a>
+                                        <a class="btn-03 t-weixin-bon"  href="javascript:;">微信</a>
                                     </div>
                                 </li>
 
@@ -77,7 +77,7 @@
                                     <div class="btn-box">
 
                                         <!--在线预约的变化-->
-                                        <a class="btn-04" href="http://chat.looyuoms.com/chat/chat/p.do?c=20002298&f=10072488&g=10069735" target="_blank">咨询</a>
+                                        <a class="btn-04" href="" target="_blank">咨询</a>
                                     </div>
                                 </li>
                             </ul>
@@ -110,28 +110,7 @@
                             </a>
                         </div>
                     </div>
-                    <!--<div class="line-box"></div>-->
-                    <!--<div class="video-box items min-scorll-x">-->
-                        <!--<div class="title">-->
-                            <!--<p class="f-24 c333">相关视频</p>-->
-                            <!--<p class="f-14 more"><a href="javascript:;" class="morelistBtn" data-id="3">更多 ></a></p>-->
-                        <!--</div>-->
-                        <!--<div class="list-box">-->
-                            <!--<ul class="cf">-->
-                                <!--<li>-->
-                                    <!--<a href="/content/details_19_2528.html" class="js-video-list" data-title="【资深医生研讨会】根管预备：理论指导下的实践">-->
-                                        <!--<div class="list">-->
-                                            <!--<div class="img-box">-->
-                                                <!--<img class="ratio-img" data-ratio="0.75" onerror="lod(this)" src="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170629/1498700143c67d8171258998a5.jpg" alt="">-->
-                                                <!--<div class="img-bg"></div>-->
-                                                <!--<div class="play"></div>-->
-                                            <!--</div>-->
-                                            <!--<p class="f-16 c333 ellipsis">【资深医生研讨会】根管预备：理论指导下的实践</p>-->
-                                        <!--</div></a>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-                    <!--</div>-->
+
 
                 </div>
                 <div class="htmllist" style="display: none;">
@@ -141,7 +120,8 @@
                                 <li><a style="display: block;" href="javascript:;" class="htmllistBtn">
                                     <div class="list">
                                         <div class="text">
-                                            全部信息                                                    </div>
+                                            全部信息
+                                        </div>
                                         <div class="icon">
                                             <div class="line"></div>
                                             <div class="sj"></div>
@@ -215,16 +195,7 @@
 
     </section>
     <footer class="footer">
-        <div class="wrap cf">
-            <div class="fl">
-                <div class="a"><a href="https://mail.arrail-dental.com/owa/auth/logon.aspx?url=https://mail.arrail-dental.com/owa/&reason=0" target="_blank">企业邮箱</a><i></i><a href="/dentistry/about.html">品牌介绍</a><i></i><a href="/other/contact.html">联系瑞尔</a></div>
-                <p><span>北京瑞尔圣彬医疗科技有限公司  版权所有</span>   <span>京ICP备17024434号-3</span>  <span>京卫计网审【2014】第0214号</span></p>
-            </div>
-            <div class="oh">
-                <a href="javascript:;" class="a-wx t-weixin-bon" data-img="http://arrail-dental.chinacloudsites.cn/Public/Upload/image/20170420/1492666791a5cb5de1212fc8c6.png"></a>
-                <a href="http://weibo.com/arrail" target="_blank" class="a-wb"></a>
-            </div>
-        </div>
+        <th:block th:include="include :: footerhtml"/>
     </footer>
 </div>
 

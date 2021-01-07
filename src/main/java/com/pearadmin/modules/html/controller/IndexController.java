@@ -39,11 +39,18 @@ public class IndexController extends BaseController {
     private IUsersService usersService;
     @Resource
     private IGoodsService goodsService;
+    @Resource
+    private ICampaignService campaignService;
 
 
     @RequestMapping("/")
-    public ModelAndView index(){
-        return JumpPage(  "home");
+    public ModelAndView index(ModelAndView modelAndView){
+        modelAndView.addObject("doctorCount",doctorResourceService.selectAllCount());
+        SysDictData sysDictData = new SysDictData();
+        sysDictData.setTypeCode("region");
+        modelAndView.addObject("regionList",sysDictDataService.list(sysDictData));
+        modelAndView.setViewName("home");
+        return modelAndView;
     }
 
     /**
@@ -86,7 +93,6 @@ public class IndexController extends BaseController {
             e.printStackTrace();
         }
         String mapURL = "https://uri.amap.com/marker?markers="+mark+"&src=mypage&callnative=0";
-        System.out.println("----->>"+mapURL);
         modelAndView.addObject("mapURL",mapURL);
         modelAndView.addObject("param",param);
         modelAndView.setViewName("html/clinic/index");
@@ -117,13 +123,12 @@ public class IndexController extends BaseController {
         }catch(Exception e){
             e.printStackTrace();
         }
-
         String mapURL = "https://uri.amap.com/marker?position="+clinic.getMap()+"&name="+name+"&src=mypage&coordinate=gaode&callnative=0";
-
         modelAndView.addObject("mapURL",mapURL);
-
         List<DoctorResource> doctorList = doctorResourceService.selectList(doctorResource);
         modelAndView.addObject("doctorList",doctorList);
+
+
 
         modelAndView.setViewName("html/clinic/details");
         return modelAndView;
@@ -152,9 +157,9 @@ public class IndexController extends BaseController {
         PageInfo<DoctorResource> pageInfo = doctorResourceService.page(param,pageDomain);
         modelAndView.addObject("pageInfo",pageInfo);
 
-//        SysDictData sysDictData = new SysDictData();
-//        sysDictData.setTypeCode("region");
-//        modelAndView.addObject("regionList",sysDictDataService.list(sysDictData));
+        SysDictData sysDictData = new SysDictData();
+        sysDictData.setTypeCode("region");
+        modelAndView.addObject("regionList",sysDictDataService.list(sysDictData));
 
 
         modelAndView.addObject("param",param);
@@ -298,6 +303,30 @@ public class IndexController extends BaseController {
     }
 
 
+    @GetMapping("html/campign")
+    public ModelAndView campign(ModelAndView modelAndView, PageDomain pageDomain, Campaign param,HttpSession session){
+        if(pageDomain.getPage() == null){
+            pageDomain.setPage(1);
+        }
+        if(pageDomain.getLimit() == null){
+            pageDomain.setLimit(9);
+        }
+        PageInfo<Campaign> pageInfo = campaignService.page(param,pageDomain);
+        modelAndView.addObject("pageInfo",pageInfo);
+        modelAndView.addObject("param",param);
+
+        modelAndView.setViewName("html/campign/index");
+        return modelAndView;
+    }
+
+    @GetMapping("html/campign/details")
+    public ModelAndView campign(int id,ModelAndView modelAndView,HttpSession session){
+        modelAndView.addObject("campign",campaignService.selectById(id));
+        modelAndView.setViewName("html/campign/details");
+        return modelAndView;
+    }
+
+
     @GetMapping("html/goods")
     public ModelAndView goods(ModelAndView modelAndView, PageDomain pageDomain, Goods param,HttpSession session){
 
@@ -335,6 +364,7 @@ public class IndexController extends BaseController {
         modelAndView.setViewName("html/goods/details");
         return modelAndView;
     }
+
 
     @GetMapping("html/mv")
     public ModelAndView mv(ModelAndView modelAndView){

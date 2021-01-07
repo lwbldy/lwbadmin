@@ -35,6 +35,7 @@ public class Dental implements Serializable {
     private String context;
 
     private String typeName;
+    private Integer sort;
 
     /**
      * 点击次数
@@ -150,5 +151,13 @@ public class Dental implements Serializable {
 
     public void setHits(Integer hits) {
         this.hits = hits;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

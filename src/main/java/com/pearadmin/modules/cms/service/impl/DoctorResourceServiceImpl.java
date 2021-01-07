@@ -69,4 +69,9 @@ public class DoctorResourceServiceImpl implements IDoctorResourceService {
         return doctorResourceMapper.deleteByIds(ids);
     }
 
+    @Override
+    public int selectAllCount() {
+        return doctorResourceMapper.selectAllCount();
+    }
+
 }

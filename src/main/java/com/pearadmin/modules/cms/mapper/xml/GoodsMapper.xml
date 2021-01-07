@@ -9,6 +9,7 @@
         <result column="synopsis" property="synopsis"></result>
         <result column="status" property="status"></result>
         <result column="context" property="context"></result>
+        <result column="sort" property="sort"></result>
     </resultMap>
 
     <select id="selectList" resultMap="GoodsMap">
@@ -20,7 +21,7 @@
     
         </where>
 
-        order by id desc
+        order by sort desc,id desc
 
     </select>
 
@@ -49,6 +50,9 @@
             <if test="context!=null">
                 context,
             </if>
+            <if test="sort!=null">
+                sort,
+            </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="title!=null">
@@ -66,6 +70,9 @@
             <if test="context!=null">
                 #{context},
             </if>
+            <if test="sort!=null">
+                #{sort},
+            </if>
         </trim>
     </insert>
 
@@ -73,21 +80,24 @@
     <update id="updateById" parameterType="Goods">
         update goods
         <set>
-    <if test="title!=null and title!=''">
-        title = #{title},
-    </if>
-    <if test="pic!=null and pic!=''">
-        pic = #{pic},
-    </if>
-    <if test="synopsis!=null and synopsis!=''">
-        synopsis = #{synopsis},
-    </if>
-    <if test="status!=null">
-        status = #{status},
-    </if>
-    <if test="context!=null and context!=''">
-        context = #{context},
-    </if>
+            <if test="title!=null and title!=''">
+            title = #{title},
+        </if>
+            <if test="pic!=null and pic!=''">
+                pic = #{pic},
+            </if>
+            <if test="synopsis!=null and synopsis!=''">
+                synopsis = #{synopsis},
+            </if>
+            <if test="status!=null">
+                status = #{status},
+            </if>
+            <if test="context!=null and context!=''">
+                context = #{context},
+            </if>
+            <if test="sort!=null and sort!=''">
+                sort = #{sort},
+            </if>
         </set>
         where id = #{id}
     </update>

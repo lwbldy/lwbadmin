@@ -20,6 +20,7 @@
         <result column="order" property="order"></result>
         <result column="clinic_name" property="clinicName"></result>
         <result column="region" property="region"></result>
+        <result column="sort" property="sort"></result>
     </resultMap>
 
 
@@ -41,6 +42,7 @@
         <result column="order" property="order"></result>
         <result column="clinic_name" property="clinicName"></result>
         <result column="region" property="region"></result>
+        <result column="sort" property="sort"></result>
         <collection property="doctorCertificateList"
                     javaType="ArrayList"
                     ofType="com.pearadmin.modules.cms.domain.DoctorCertificate"
@@ -65,7 +67,7 @@
                 and p2.region=#{region}
             </if>
         </where>
-        order by `order` desc,id desc
+        order by `sort` desc,id desc
     </select>
 
 
@@ -83,7 +85,7 @@
                 and p2.region=#{region}
             </if>
         </where>
-        order by `order` desc,id desc
+        order by `sort` desc,id desc
     </select>
 
     <!-- 根据 Id 查询角色-->
@@ -137,6 +139,9 @@
             <if test="createTime!=null">
                 create_time,
             </if>
+            <if test="sort!=null">
+                sort,
+            </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="username!=null">
@@ -178,6 +183,9 @@
             <if test="createTime!=null">
                 #{createTime},
             </if>
+            <if test="sort!=null">
+                #{sort},
+            </if>
         </trim>
     </insert>
 
@@ -185,45 +193,48 @@
     <update id="updateById" parameterType="DoctorResource">
         update doctor_resource
         <set>
-    <if test="username!=null and username!=''">
-        username = #{username},
-    </if>
-    <if test="job!=null and job!=''">
-        job = #{job},
-    </if>
-    <if test="degree!=null and degree!=''">
-        degree = #{degree},
-    </if>
-    <if test="school!=null and school!=''">
-        school = #{school},
-    </if>
-    <if test="clinic!=null and clinic!=''">
-        clinic = #{clinic},
-    </if>
-    <if test="visitTime!=null and visitTime!=''">
-        visit_time = #{visitTime},
-    </if>
-    <if test="pic!=null and pic!=''">
-        pic = #{pic},
-    </if>
-    <if test="good!=null and good!=''">
-        good = #{good},
-    </if>
-    <if test="age!=null and age!=''">
-        age = #{age},
-    </if>
-    <if test="seniority!=null and seniority!=''">
-        seniority = #{seniority},
-    </if>
-    <if test="clinicSeniority!=null and clinicSeniority!=''">
-        clinic_seniority = #{clinicSeniority},
-    </if>
-    <if test="outher!=null and outher!=''">
-        outher = #{outher},
-    </if>
-    <if test="createTime!=null and createTime!=''">
-        create_time = #{createTime},
-    </if>
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="job!=null and job!=''">
+                job = #{job},
+            </if>
+            <if test="degree!=null and degree!=''">
+                degree = #{degree},
+            </if>
+            <if test="school!=null and school!=''">
+                school = #{school},
+            </if>
+            <if test="clinic!=null and clinic!=''">
+                clinic = #{clinic},
+            </if>
+            <if test="visitTime!=null and visitTime!=''">
+                visit_time = #{visitTime},
+            </if>
+            <if test="pic!=null and pic!=''">
+                pic = #{pic},
+            </if>
+            <if test="good!=null and good!=''">
+                good = #{good},
+            </if>
+            <if test="age!=null and age!=''">
+                age = #{age},
+            </if>
+            <if test="seniority!=null and seniority!=''">
+                seniority = #{seniority},
+            </if>
+            <if test="clinicSeniority!=null and clinicSeniority!=''">
+                clinic_seniority = #{clinicSeniority},
+            </if>
+            <if test="outher!=null and outher!=''">
+                outher = #{outher},
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                create_time = #{createTime},
+            </if>
+            <if test="sort!=null and sort!=''">
+                sort = #{sort},
+            </if>
         </set>
         where id = #{id}
     </update>
@@ -240,5 +251,9 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="selectAllCount" resultType="int">
+        select count(*) from doctor_resource
+    </select>
 
 </mapper>

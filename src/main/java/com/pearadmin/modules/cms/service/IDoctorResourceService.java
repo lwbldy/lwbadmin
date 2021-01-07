@@ -82,4 +82,10 @@ public interface IDoctorResourceService {
      */
     Integer deleteByIds(Object[] ids);
 
+    /**
+     * 查询医生总数
+     * @return
+     */
+    int selectAllCount();
+
 }

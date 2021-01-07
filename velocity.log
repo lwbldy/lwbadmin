@@ -1,166 +1,159 @@
-2020-12-09 15:56:33,920 - Log4JLogChute initialized using file 'velocity.log'
-2020-12-09 15:56:33,921 - Initializing Velocity, Calling init()...
-2020-12-09 15:56:33,921 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2020-12-09 15:56:33,921 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2020-12-09 15:56:33,921 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2020-12-09 15:56:33,921 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/Priority).  Falling back to next log system...
-2020-12-09 15:56:33,921 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2020-12-09 15:56:33,921 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2020-12-09 15:56:33,925 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:33,936 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2020-12-09 15:56:33,938 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2020-12-09 15:56:33,940 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2020-12-09 15:56:33,940 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2020-12-09 15:56:33,941 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2020-12-09 15:56:33,942 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2020-12-09 15:56:33,942 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2020-12-09 15:56:33,944 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2020-12-09 15:56:33,944 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2020-12-09 15:56:33,945 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2020-12-09 15:56:33,958 - Created '20' parsers.
-2020-12-09 15:56:33,960 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2020-12-09 15:56:33,963 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2020-12-09 15:56:33,963 - Velocimacro : Default library not found.
-2020-12-09 15:56:33,963 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2020-12-09 15:56:33,963 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2020-12-09 15:56:33,963 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2020-12-09 15:56:33,963 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2020-12-09 15:56:33,980 - ResourceManager : found vm/Entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:33,997 - ResourceManager : found vm/Mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,008 - ResourceManager : found vm/Mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,010 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-09 15:56:34,010 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-09 15:56:34,010 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-09 15:56:34,010 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-09 15:56:34,010 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-09 15:56:34,010 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-09 15:56:34,014 - ResourceManager : found vm/Service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,017 - ResourceManager : found vm/ServiceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,025 - ResourceManager : found vm/Controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,028 - ResourceManager : found vm/main.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,029 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-09 15:56:34,029 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-09 15:56:34,029 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-09 15:56:34,029 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-09 15:56:34,029 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-09 15:56:34,029 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-09 15:56:34,029 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-09 15:56:34,029 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-09 15:56:34,029 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-09 15:56:34,029 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-09 15:56:34,029 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-09 15:56:34,029 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-09 15:56:34,030 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-09 15:56:34,032 - ResourceManager : found vm/edit.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,032 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-09 15:56:34,032 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-09 15:56:34,033 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-09 15:56:34,034 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-09 15:56:34,034 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-09 15:56:34,034 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-09 15:56:34,034 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-09 15:56:34,036 - ResourceManager : found vm/add.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-09 15:56:34,036 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-09 15:56:34,037 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-09 15:56:34,037 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-09 15:56:34,037 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-09 15:56:34,037 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-09 15:56:34,038 - ResourceManager : found vm/menu.sql.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:33,987 - Log4JLogChute initialized using file 'velocity.log'
-2020-12-10 10:45:33,988 - Initializing Velocity, Calling init()...
-2020-12-10 10:45:33,988 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2020-12-10 10:45:33,988 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2020-12-10 10:45:33,988 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2020-12-10 10:45:33,988 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/Priority).  Falling back to next log system...
-2020-12-10 10:45:33,988 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2020-12-10 10:45:33,988 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2020-12-10 10:45:33,994 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,004 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2020-12-10 10:45:34,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2020-12-10 10:45:34,008 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2020-12-10 10:45:34,008 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2020-12-10 10:45:34,010 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2020-12-10 10:45:34,011 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2020-12-10 10:45:34,012 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2020-12-10 10:45:34,013 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2020-12-10 10:45:34,014 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2020-12-10 10:45:34,014 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2020-12-10 10:45:34,026 - Created '20' parsers.
-2020-12-10 10:45:34,029 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2020-12-10 10:45:34,032 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2020-12-10 10:45:34,032 - Velocimacro : Default library not found.
-2020-12-10 10:45:34,032 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2020-12-10 10:45:34,032 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2020-12-10 10:45:34,032 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2020-12-10 10:45:34,032 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2020-12-10 10:45:34,048 - ResourceManager : found vm/Entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,064 - ResourceManager : found vm/Mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,074 - ResourceManager : found vm/Mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,078 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
-2020-12-10 10:45:34,081 - ResourceManager : found vm/Service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,084 - ResourceManager : found vm/ServiceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,086 - ResourceManager : found vm/Controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,090 - ResourceManager : found vm/main.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,090 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
-2020-12-10 10:45:34,091 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-10 10:45:34,091 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-10 10:45:34,091 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-10 10:45:34,091 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-10 10:45:34,091 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
-2020-12-10 10:45:34,094 - ResourceManager : found vm/edit.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,094 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-10 10:45:34,094 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-10 10:45:34,094 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-10 10:45:34,095 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-10 10:45:34,095 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-10 10:45:34,095 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-10 10:45:34,096 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-10 10:45:34,097 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-10 10:45:34,097 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-10 10:45:34,097 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-10 10:45:34,097 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
-2020-12-10 10:45:34,097 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
-2020-12-10 10:45:34,099 - ResourceManager : found vm/add.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-10 10:45:34,099 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-10 10:45:34,100 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-10 10:45:34,100 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-10 10:45:34,100 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
-2020-12-10 10:45:34,100 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
-2020-12-10 10:45:34,107 - ResourceManager : found vm/menu.sql.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-26 14:43:54,631 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2020-12-26 14:43:54,631 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2020-12-26 14:43:54,631 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2020-12-26 14:43:54,633 - ResourceManager : found vm/menu.sql.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,513 - Log4JLogChute initialized using file 'velocity.log'
+2020-12-27 10:47:46,513 - Initializing Velocity, Calling init()...
+2020-12-27 10:47:46,513 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2020-12-27 10:47:46,514 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2020-12-27 10:47:46,514 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2020-12-27 10:47:46,514 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/Priority).  Falling back to next log system...
+2020-12-27 10:47:46,514 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2020-12-27 10:47:46,514 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2020-12-27 10:47:46,517 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,524 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2020-12-27 10:47:46,526 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2020-12-27 10:47:46,527 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2020-12-27 10:47:46,527 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2020-12-27 10:47:46,528 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2020-12-27 10:47:46,528 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2020-12-27 10:47:46,529 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2020-12-27 10:47:46,530 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2020-12-27 10:47:46,530 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2020-12-27 10:47:46,531 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2020-12-27 10:47:46,540 - Created '20' parsers.
+2020-12-27 10:47:46,541 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2020-12-27 10:47:46,543 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2020-12-27 10:47:46,543 - Velocimacro : Default library not found.
+2020-12-27 10:47:46,543 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2020-12-27 10:47:46,543 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2020-12-27 10:47:46,543 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2020-12-27 10:47:46,543 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2020-12-27 10:47:46,554 - ResourceManager : found vm/Entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,564 - ResourceManager : found vm/Mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,570 - ResourceManager : found vm/Mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,571 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2020-12-27 10:47:46,572 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2020-12-27 10:47:46,572 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2020-12-27 10:47:46,572 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2020-12-27 10:47:46,572 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2020-12-27 10:47:46,573 - ResourceManager : found vm/Service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,574 - ResourceManager : found vm/ServiceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,576 - ResourceManager : found vm/Controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,582 - ResourceManager : found vm/main.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,583 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2020-12-27 10:47:46,583 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2020-12-27 10:47:46,583 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2020-12-27 10:47:46,583 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2020-12-27 10:47:46,583 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2020-12-27 10:47:46,583 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2020-12-27 10:47:46,583 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2020-12-27 10:47:46,583 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2020-12-27 10:47:46,588 - ResourceManager : found vm/edit.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,588 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2020-12-27 10:47:46,588 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2020-12-27 10:47:46,588 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2020-12-27 10:47:46,588 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2020-12-27 10:47:46,588 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2020-12-27 10:47:46,588 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2020-12-27 10:47:46,588 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2020-12-27 10:47:46,589 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2020-12-27 10:47:46,589 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2020-12-27 10:47:46,589 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2020-12-27 10:47:46,594 - ResourceManager : found vm/add.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2020-12-27 10:47:46,594 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2020-12-27 10:47:46,595 - ResourceManager : found vm/menu.sql.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,177 - Log4JLogChute initialized using file 'velocity.log'
+2021-01-05 11:09:51,180 - Initializing Velocity, Calling init()...
+2021-01-05 11:09:51,180 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2021-01-05 11:09:51,180 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2021-01-05 11:09:51,180 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2021-01-05 11:09:51,180 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/Priority).  Falling back to next log system...
+2021-01-05 11:09:51,180 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2021-01-05 11:09:51,180 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2021-01-05 11:09:51,182 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,186 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2021-01-05 11:09:51,188 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2021-01-05 11:09:51,189 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2021-01-05 11:09:51,189 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2021-01-05 11:09:51,189 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2021-01-05 11:09:51,190 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2021-01-05 11:09:51,190 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2021-01-05 11:09:51,191 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2021-01-05 11:09:51,191 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2021-01-05 11:09:51,192 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2021-01-05 11:09:51,198 - Created '20' parsers.
+2021-01-05 11:09:51,199 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2021-01-05 11:09:51,201 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2021-01-05 11:09:51,201 - Velocimacro : Default library not found.
+2021-01-05 11:09:51,201 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2021-01-05 11:09:51,201 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2021-01-05 11:09:51,201 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2021-01-05 11:09:51,201 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2021-01-05 11:09:51,212 - ResourceManager : found vm/Entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,222 - ResourceManager : found vm/Mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,227 - ResourceManager : found vm/Mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,228 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2021-01-05 11:09:51,229 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2021-01-05 11:09:51,229 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2021-01-05 11:09:51,229 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2021-01-05 11:09:51,229 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2021-01-05 11:09:51,229 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2021-01-05 11:09:51,229 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/Mapper.xml.vm[line 17, column 53]
+2021-01-05 11:09:51,230 - ResourceManager : found vm/Service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,235 - ResourceManager : found vm/ServiceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,236 - ResourceManager : found vm/Controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,241 - ResourceManager : found vm/main.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,241 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2021-01-05 11:09:51,241 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2021-01-05 11:09:51,241 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2021-01-05 11:09:51,241 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2021-01-05 11:09:51,241 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2021-01-05 11:09:51,241 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2021-01-05 11:09:51,241 - Left side ($column.isQuery) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 12, column 23]
+2021-01-05 11:09:51,242 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2021-01-05 11:09:51,242 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2021-01-05 11:09:51,242 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2021-01-05 11:09:51,242 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2021-01-05 11:09:51,242 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2021-01-05 11:09:51,242 - Left side ($column.isMenuShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/main.html.vm[line 70, column 55]
+2021-01-05 11:09:51,247 - ResourceManager : found vm/edit.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2021-01-05 11:09:51,247 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2021-01-05 11:09:51,248 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2021-01-05 11:09:51,248 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2021-01-05 11:09:51,248 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2021-01-05 11:09:51,248 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 21, column 26]
+2021-01-05 11:09:51,248 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/edit.html.vm[line 25, column 165]
+2021-01-05 11:09:51,253 - ResourceManager : found vm/add.html.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 12, column 26]
+2021-01-05 11:09:51,253 - Left side ($column.isFormShow) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. vm/add.html.vm[line 16, column 119]
+2021-01-05 11:09:51,258 - ResourceManager : found vm/menu.sql.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader

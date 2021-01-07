@@ -33,6 +33,7 @@ public class Clinic implements Serializable {
     private String region;
     // 主图
     private String pic;
+    private Integer sort;
     
         /**
      * 设置：
@@ -137,5 +138,12 @@ public class Clinic implements Serializable {
 
     public void setPic(String pic) {
         this.pic = pic;
+    }
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

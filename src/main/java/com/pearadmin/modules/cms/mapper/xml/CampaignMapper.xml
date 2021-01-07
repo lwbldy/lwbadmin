@@ -1,60 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pearadmin.modules.cms.mapper.DentalMapper">
+<mapper namespace="com.pearadmin.modules.cms.mapper.CampaignMapper">
 
-    <resultMap id="DentalMap" type="Dental">
+    <resultMap id="CampaignMap" type="Campaign">
         <id column="id" property="id"></id>
         <result column="title" property="title"></result>
-        <result column="type_id" property="typeId"></result>
         <result column="pic" property="pic"></result>
         <result column="synopsis" property="synopsis"></result>
-        <result column="creat_time" property="creatTime"></result>
-        <result column="show_time" property="showTime"></result>
+        <result column="visit_time" property="visitTime"></result>
+        <result column="visit_address" property="visitAddress"></result>
+        <result column="status" property="status"></result>
         <result column="context" property="context"></result>
-        <result column="type_name" property="typeName"></result>
-        <result column="hits" property="hits"></result>
         <result column="sort" property="sort"></result>
     </resultMap>
 
-    <select id="selectList" resultMap="DentalMap">
-        SELECT dental.*,sys_dict_data.`data_label` type_name FROM dental
-        LEFT JOIN sys_dict_data ON dental.`type_id`=sys_dict_data.`data_value`
+    <select id="selectList" resultMap="CampaignMap">
+        select * from campaign
         <where>
         <if test="title!=null and title!=''">
             and title like CONCAT('%',#{title}, '%')
         </if>
     
-        <if test="typeId!=null and typeId!=''">
-            and type_id = #{typeId}
-        </if>
-
-        <if test="showTime!=null and showTime!=''">
-            and show_time = #{showTime}
-        </if>
-
         </where>
 
-        order by sort desc,id desc
+        order by sort desc, id desc
 
     </select>
 
     <!-- 根据 Id 查询角色-->
-    <select id="selectById" parameterType="int" resultMap="DentalMap">
-        SELECT dental.*,sys_dict_data.`data_label` type_name FROM dental
-        LEFT JOIN sys_dict_data ON dental.`type_id`=sys_dict_data.`data_value`
-        where dental.id = #{id}
+    <select id="selectById" parameterType="int" resultMap="CampaignMap">
+        select * from campaign where id = #{id}
     </select>
 
 
     <!-- 新增 数据 -->
-    <insert id="insert" parameterType="Dental">
-        insert into dental
+    <insert id="insert" parameterType="Campaign">
+        insert into campaign
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="title!=null">
                 title,
-            </if>
-            <if test="typeId!=null">
-                type_id,
             </if>
             <if test="pic!=null">
                 pic,
@@ -62,11 +46,14 @@
             <if test="synopsis!=null">
                 synopsis,
             </if>
-            <if test="creatTime!=null">
-                creat_time,
+            <if test="visitTime!=null">
+                visit_time,
             </if>
-            <if test="showTime!=null">
-                show_time,
+            <if test="visitAddress!=null">
+                visit_address,
+            </if>
+            <if test="status!=null">
+                status,
             </if>
             <if test="context!=null">
                 context,
@@ -79,20 +66,20 @@
             <if test="title!=null">
                 #{title},
             </if>
-            <if test="typeId!=null">
-                #{typeId},
-            </if>
             <if test="pic!=null">
                 #{pic},
             </if>
             <if test="synopsis!=null">
                 #{synopsis},
             </if>
-            <if test="creatTime!=null">
-                #{creatTime},
+            <if test="visitTime!=null">
+                #{visitTime},
             </if>
-            <if test="showTime!=null">
-                #{showTime},
+            <if test="visitAddress!=null">
+                #{visitAddress},
+            </if>
+            <if test="status!=null">
+                #{status},
             </if>
             <if test="context!=null">
                 #{context},
@@ -104,14 +91,11 @@
     </insert>
 
     <!-- 根据 Id 修改角色数据 -->
-    <update id="updateById" parameterType="Dental">
-        update dental
+    <update id="updateById" parameterType="Campaign">
+        update campaign
         <set>
             <if test="title!=null and title!=''">
                 title = #{title},
-            </if>
-            <if test="typeId!=null and typeId!=''">
-                type_id = #{typeId},
             </if>
             <if test="pic!=null and pic!=''">
                 pic = #{pic},
@@ -119,11 +103,14 @@
             <if test="synopsis!=null and synopsis!=''">
                 synopsis = #{synopsis},
             </if>
-            <if test="creatTime!=null and creatTime!=''">
-                creat_time = #{creatTime},
+            <if test="visitTime!=null and visitTime!=''">
+                visit_time = #{visitTime},
             </if>
-            <if test="showTime!=null">
-                show_time = #{showTime},
+            <if test="visitAddress!=null and visitAddress!=''">
+                visit_address = #{visitAddress},
+            </if>
+            <if test="status!=null and status!=''">
+                status = #{status},
             </if>
             <if test="context!=null and context!=''">
                 context = #{context},
@@ -137,16 +124,12 @@
 
     <!-- 根据 Id 删除 -->
     <delete id="deleteById" parameterType="int">
-        delete from dental where id = #{id}
+        delete from campaign where id = #{id}
     </delete>
-    
-    <update id="updateHits" parameterType="int">
-        UPDATE dental SET hits=hits + 1 WHERE id = #{id}
-    </update>
 
     <!-- 根据 Id 批量删除 -->
     <delete id="deleteByIds" parameterType="int">
-        delete from dental where id in
+        delete from campaign where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

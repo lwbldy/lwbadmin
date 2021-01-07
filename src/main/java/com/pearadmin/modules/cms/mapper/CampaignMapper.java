@@ -1,25 +1,18 @@
 package com.pearadmin.modules.cms.mapper;
 
-import com.pearadmin.modules.cms.domain.DoctorResource;
+import com.pearadmin.modules.cms.domain.Campaign;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface DoctorResourceMapper {
+public interface CampaignMapper {
 
     /**
      * 按条件查询数据
      * @param param
      * @return
      */
-    List<DoctorResource> selectList(DoctorResource param);
-
-    /**
-     * 按条件查询数据
-     * @param param
-     * @return
-     */
-    List<DoctorResource> selectList2(DoctorResource param);
+    List<Campaign> selectList(Campaign param);
 
 
     /**
@@ -27,7 +20,7 @@ public interface DoctorResourceMapper {
      * @param param
      * @return 执行结果
      */
-    Integer insert(DoctorResource param);
+    Integer insert(Campaign param);
 
 
     /**
@@ -35,7 +28,7 @@ public interface DoctorResourceMapper {
      * @param id
      * @return
      */
-    DoctorResource selectById(@Param("id") Integer id);
+    Campaign selectById(@Param("id") Integer id);
 
 
     /**
@@ -43,7 +36,7 @@ public interface DoctorResourceMapper {
      * @param param
      * @return
      */
-    Integer updateById(DoctorResource param);
+    Integer updateById(Campaign param);
 
 
     /**
@@ -60,6 +53,4 @@ public interface DoctorResourceMapper {
      * @return
      */
     Integer deleteByIds(Object[] ids);
-
-    int selectAllCount();
 }

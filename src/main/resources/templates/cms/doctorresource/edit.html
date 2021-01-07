@@ -101,6 +101,12 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">排序</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="sort" name="sort" th:value="${doctorResource.sort}" autocomplete="off" placeholder="请输入排序" value="10"class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">更多</label>
                     <div class="layui-input-block">
                         <textarea id="outher" name="outher" placeholder="请输入更多" class="layui-textarea" th:utext="${doctorResource.outher}"></textarea>

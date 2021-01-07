@@ -6,13 +6,13 @@ import java.time.LocalDate;
 
 
 /**
- * 积分兑换
+ * 活动宣传
  *
  * @author lwb
  * @email lwbldy@163.com
- * @date 2020-12-27 10:47:46
+ * @date 2021-01-05 11:09:51
  */
-public class Goods implements Serializable {
+public class Campaign implements Serializable {
     private static final long serialVersionUID = 1L;
 
         //
@@ -23,10 +23,15 @@ public class Goods implements Serializable {
     private String pic;
         //简介
     private String synopsis;
+        //活动时间
+    private String visitTime;
+        //活动地址
+    private String visitAddress;
         //状态
     private Integer status;
         //详细内容
     private String context;
+    // 排序
     private Integer sort;
     
         /**
@@ -76,6 +81,30 @@ public class Goods implements Serializable {
      */
     public String getSynopsis() {
         return synopsis;
+    }
+        /**
+     * 设置：活动时间
+     */
+    public void setVisitTime(String visitTime) {
+        this.visitTime = visitTime;
+    }
+    /**
+     * 获取：活动时间
+     */
+    public String getVisitTime() {
+        return visitTime;
+    }
+        /**
+     * 设置：活动地址
+     */
+    public void setVisitAddress(String visitAddress) {
+        this.visitAddress = visitAddress;
+    }
+    /**
+     * 获取：活动地址
+     */
+    public String getVisitAddress() {
+        return visitAddress;
     }
         /**
      * 设置：状态

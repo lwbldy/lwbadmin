@@ -9,58 +9,41 @@
         <div class="main-container">
             <div class="main-container">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">名称</label>
+                    <label class="layui-form-label">标题</label>
                     <div class="layui-input-block">
-                        <input type="text" id="clinicName" name="clinicName"  autocomplete="off" placeholder="请输入名称"
+                        <input type="text" id="title" name="title"  autocomplete="off" placeholder="请输入标题"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">地区</label>
-                    <div class="layui-input-block">
-                        <select id="region" name="region" lay-verify="required" lay-search>
-                            <option th:each="region,regionStat:${regionList}" th:text="${region.dataLabel}" th:value="${region.dataValue}"></option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">电话</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="telephone" name="telephone"  autocomplete="off" placeholder="请输入电话"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">地址</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="address" name="address"  autocomplete="off" placeholder="请输入地址"
-                               class="layui-input">
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">封面图</label>
+                    <label class="layui-form-label">主图</label>
                     <div class="layui-input-block">
                         <button class="pear-btn pear-btn-primary pear-btn-md" type="button" lay-event="add" id="addFile">
                             <i class="layui-icon layui-icon-add-1"></i>
                             上传
                         </button>
-                        <img id="pic_img" src="/system/file/download/1338309847401103360" width="50px" style="display: none"/>
+                        <img id="pic_img" src="" width="50px" style="display: none"/>
                         <input type="hidden" id="pic" name="pic">
                     </div>
                 </div>
-
                 <div class="layui-form-item">
-                    <label class="layui-form-label">地图信息</label>
+                    <label class="layui-form-label">简介</label>
                     <div class="layui-input-block">
-                        <input type="text" id="map" name="map"  autocomplete="off" placeholder="请输入地图信息"
+                        <input type="text" id="synopsis" name="synopsis"  autocomplete="off" placeholder="请输入简介"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">营业时间</label>
+                    <label class="layui-form-label">活动时间</label>
                     <div class="layui-input-block">
-                        <input type="text" id="openingHours" name="openingHours"  autocomplete="off" placeholder="请输入营业时间"
+                        <input type="text" id="visitTime" name="visitTime"  autocomplete="off" placeholder="请输入活动时间"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">活动地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="visitAddress" name="visitAddress"  autocomplete="off" placeholder="请输入活动地址"
                                class="layui-input">
                     </div>
                 </div>
@@ -71,18 +54,27 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">简介</label>
+                    <label class="layui-form-label">状态</label>
                     <div class="layui-input-block">
-                        <textarea type="text" id="details" name="details" placeholder="请输入简介" class="layui-textarea"></textarea>
+
+                        <input type="radio" name="status" value="1" title="进行中" checked>
+                        <input type="radio" name="status" value="0" title="已结束" >
+
                     </div>
                 </div>
-
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <div id="editor" style="z-index: 10;"></div>
+                        <textarea id="text1" name="context" style="display: none;"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="bottom">
         <div class="button-container">
-            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="clinic-save">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="campaign-save">
                 <i class="layui-icon layui-icon-ok"></i>
                 提交
             </button>
@@ -94,6 +86,10 @@
     </div>
 </form>
 <th:block th:include="include :: footer"/>
+
+<script th:src="@{/static/js/wangEditor.js}" ></script>
+<script th:src="@{/static/js/editor-config.js}" ></script>
+
 <script>
     layui.use(['form', 'jquery','laydate'], function () {
         let form = layui.form;
@@ -113,9 +109,9 @@
             });
         })
 
-        form.on('submit(clinic-save)', function (data) {
+        form.on('submit(campaign-save)', function (data) {
             $.ajax({
-                url: '/cms/clinic/save',
+                url: '/cms/campaign/save',
                 data: JSON.stringify(data.field),
                 dataType: 'json',
                 contentType: 'application/json',
@@ -124,7 +120,7 @@
                     if (result.success) {
                         layer.msg(result.msg, {icon: 1, time: 1000}, function () {
                             parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
-                            parent.layui.table.reload("clinic-table");
+                            parent.layui.table.reload("campaign-table");
                         });
                     } else {
                         layer.msg(result.msg, {icon: 2, time: 1000});
@@ -133,15 +129,14 @@
             })
             return false;
         });
-
     })
 
     function perId( id ){
+        console.log("----->>"+id)
         document.getElementById("pic_img").src = "/system/file/download/"+id;
         document.getElementById("pic_img").style.display="inline-block"
         document.getElementById("pic").value=id;
     }
-
 </script>
 
 </body>

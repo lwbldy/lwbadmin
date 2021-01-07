@@ -5,7 +5,7 @@
 <!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
 <!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
 <head>
-    <th:block th:include="include :: headhtml('积分礼品兑换详情')"/>
+    <th:block th:include="include :: headhtml('活动宣传')"/>
 </head>
 
 <body class="search-body">
@@ -27,16 +27,25 @@
             <div class="main">
 
                 <div class="top-title">
-                    <p class="title f-22 c333" th:text="${goods.title}">标题</p>
+                    <p class="title f-22 c333" th:text="${campign.title}">标题</p>
                     <div class="content-box">
+                        <ul class="cf">
+                            <li>
+                                <p class="f-16"><span>活动时间：</span><em th:text="${campign.visitTime}"></em></p>
+                            </li>
+                            <li>
+                                <p class="f-16"><span>活动地点：</span><em th:text="${campign.visitAddress}"></em></p>
+                            </li>
+                        </ul>
+
                         <div class="f-16 cf">
                             <p class="fl">活动简介：</p>
-                            <p class="oh" th:text="${goods.synopsis}">简介</p>
+                            <p class="oh" th:text="${campign.synopsis}">瑞尔齿科20周年感恩回馈&amp;年货节囤货进行时，上天猫享更多护齿福利~</p>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="list-box" th:utext="${goods.context}"></div>
+                <div class="list-box" th:utext="${campign.context}"></div>
             </div>
         </div>
 

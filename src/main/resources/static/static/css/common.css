@@ -78,8 +78,7 @@ a { text-decoration: none; color:#474747; }
 .auto-img img { position: relative; }
 .auto-bg { background-repeat:no-repeat; overflow:hidden; position:relative; background-position:center;
 background-size:cover; 
--ms-behavior: url(http://www.arrail-dental.com/css/backgroundsize.min.htc);
-behavior: url(http://www.arrail-dental.com/css/backgroundsize.min.htc);}
+}
 .ratio-img{ width:100%; height:auto;  display:block; }
 .ratio-img-bg { background: url('../image/error.png') no-repeat center; }
 
@@ -368,8 +367,7 @@ body .bon-orange img { vertical-align:middle; position:relative; top:-2px;}
 .page a { display:inline-block; min-width:2em; text-align:center; min-height:28px; vertical-align:top; font-size:16px; margin:0 5px; border:1px solid #ddd; border-radius:2px; }
 .page a:hover,
 .page a.laypage_curr { color:#00aced;}
-/* .page a.laypage_prev {  background:url(http://www.arrail-dental.com/images/pagel.png) center no-repeat #fff; width:2em; }
-.page a.laypage_next {  background:url(http://www.arrail-dental.com/images/pager.png) center no-repeat #fff; width:2em; } */
+
 .page a.laypage_last,
 .page a.laypage_first { display:none; }
 .page span { min-width:1.6em; text-align:center; font-size:16px; margin:0 5px;}

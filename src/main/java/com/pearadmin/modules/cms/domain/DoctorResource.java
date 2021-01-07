@@ -49,6 +49,7 @@ public class DoctorResource implements Serializable {
     private String clinicName;
     // 位置
     private String region;
+    private Integer sort;
 
     //医生证书
     private List<DoctorCertificate> doctorCertificateList;
@@ -253,5 +254,13 @@ public class DoctorResource implements Serializable {
 
     public void setDoctorCertificateList(List<DoctorCertificate> doctorCertificateList) {
         this.doctorCertificateList = doctorCertificateList;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

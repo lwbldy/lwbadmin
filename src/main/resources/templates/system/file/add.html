@@ -84,7 +84,9 @@
                     let tr = demoListView.find('tr#upload-' + index)
                         , tds = tr.children();
                     tds.eq(2).html('&nbsp;<button class="layui-btn layui-btn-xs">完成</button>'); //清空操作
-                    window.parent.perId(res.data)
+
+                    window.parent.perId(res.data);
+
                     return delete this.files[index];
                 }
                 this.error(index, upload);

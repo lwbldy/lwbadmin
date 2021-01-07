@@ -12,6 +12,7 @@
         <result column="details" property="details"></result>
         <result column="region" property="region"></result>
         <result column="pic" property="pic"></result>
+        <result column="sort" property="sort"></result>
     </resultMap>
 
     <select id="selectList" resultMap="ClinicMap">
@@ -20,7 +21,7 @@
             <if test="clinicName!=null and clinicName!=''">clinic_name=#{clinicName},</if>
             <if test="region!=null and region!=''">region=#{region}</if>
         </where>
-        order by id desc
+        order by sort desc,id desc
     </select>
 
     <!-- 根据 Id 查询角色-->
@@ -57,6 +58,9 @@
             <if test="pic!=null">
                 pic,
             </if>
+            <if test="sort!=null">
+                sort,
+            </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="clinicName!=null">
@@ -83,6 +87,9 @@
             <if test="pic!=null">
                 #{pic},
             </if>
+            <if test="sort!=null">
+                #{sort},
+            </if>
         </trim>
     </insert>
 
@@ -90,29 +97,32 @@
     <update id="updateById" parameterType="Clinic">
         update clinic
         <set>
-    <if test="clinicName!=null and clinicName!=''">
-        clinic_name = #{clinicName},
-    </if>
-    <if test="telephone!=null and telephone!=''">
-        telephone = #{telephone},
-    </if>
-    <if test="address!=null and address!=''">
-        address = #{address},
-    </if>
-    <if test="map!=null and map!=''">
-        map = #{map},
-    </if>
-    <if test="openingHours!=null and openingHours!=''">
-        opening_hours = #{openingHours},
-    </if>
-    <if test="details!=null and details!=''">
-        details = #{details},
-    </if>
-    <if test="region!=null and region!=''">
-        region = #{region},
-    </if>
+            <if test="clinicName!=null and clinicName!=''">
+                clinic_name = #{clinicName},
+            </if>
+            <if test="telephone!=null and telephone!=''">
+                telephone = #{telephone},
+            </if>
+            <if test="address!=null and address!=''">
+                address = #{address},
+            </if>
+            <if test="map!=null and map!=''">
+                map = #{map},
+            </if>
+            <if test="openingHours!=null and openingHours!=''">
+                opening_hours = #{openingHours},
+            </if>
+            <if test="details!=null and details!=''">
+                details = #{details},
+            </if>
+            <if test="region!=null and region!=''">
+                region = #{region},
+            </if>
             <if test="pic!=null and pic!=''">
                 pic = #{pic},
+            </if>
+            <if test="sort!=null and sort!=''">
+                sort = #{sort},
             </if>
         </set>
         where id = #{id}

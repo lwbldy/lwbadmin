@@ -124,8 +124,8 @@ Pagination Styles
 	
 }
 .device { position:relative; }
-.device .arrow-left { background: url(http://www.arrail-dental.com/js/swiper2/img/arrows.png) no-repeat left top; position: absolute; left: 10px; top: 50%; margin-top: -15px; width: 17px; height: 30px; }
-.device .arrow-right { background: url(http://www.arrail-dental.com/js/swiper2/img/arrows.png) no-repeat left bottom; position: absolute; right: 10px; top: 50%; margin-top: -15px; width: 17px; height: 30px; }
+.device .arrow-left { background:  no-repeat left top; position: absolute; left: 10px; top: 50%; margin-top: -15px; width: 17px; height: 30px; }
+.device .arrow-right { background:  no-repeat left bottom; position: absolute; right: 10px; top: 50%; margin-top: -15px; width: 17px; height: 30px; }
 .swiper-container {  }
 .content-slide { padding: 20px; color: #fff; }
 /* .title { font-size: 25px; margin-bottom: 10px; } */

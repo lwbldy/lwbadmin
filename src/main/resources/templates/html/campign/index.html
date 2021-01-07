@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 7]><html class="ie ie7 lt8 lt9 lt10"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lt9 lt10"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
+<!--[if (gt IE 9) | !(IE)]><!-->
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+
+<head>
+    <th:block th:include="include :: headhtml('活动宣传')"/>
+</head>
+
+<body>
+<div class="body-box clinic-box campaign-box">
+
+    <header class="header">
+        <th:block th:include="include :: headerhtml(10)"/>
+    </header>
+
+    <section class="main-box">
+        <div class="wrap">
+            <div class="postion f-12">您现在的位置：
+                <a href="/">首页</a> > <a href="">活动宣传</a>
+            </div>
+
+            <div class="main">
+
+                <div class="top-box cf J_getinfo">
+
+                </div>
+
+                <div class="line-dashed"></div>
+
+                <div class="list-box J_getlist">
+                    <ul class="cf">
+                        <li th:each="campign,campignStat:${pageInfo.list}">
+                            <div class="list">
+                                <div class="content-box">
+                                    <div class="img-box">
+                                        <i th:classappend="${campign.status == 0?'done':''}"></i>
+                                        <a th:href="@{/html/campign/details(id=${campign.id})}">
+                                            <img class="ratio-img" data-ratio="0.7514619883040936" onerror="lod(this)" th:src="@{'/html/file/download/'+${campign.pic}}" style="height: 224px;"></a>
+                                    </div>
+
+                                    <div class="content">
+                                        <a th:href="@{/html/campign/details(id=${campign.id})}">
+                                            <p class="title f-16 c333 f-bold ellipsis" th:text="${campign.title}">标题</p>
+                                        </a>
+                                        <p class="cf f-14 c666">
+                                            <span class="fl">活动时间：</span>
+                                            <em class="oh ellipsis c-o" th:text="${campign.visitTime}">1月13日00:00 -1月17日23:59:59</em>
+                                        </p>
+                                        <p class="cf f-14 c666">
+                                            <span class="fl">活动地点：</span>
+                                            <em class="oh ellipsis-2" th:text="${campign.visitAddress}"></em>
+                                        </p>
+
+                                        <div class="btn-box">
+                                            <a class="f-14" th:href="@{/html/campign/details(id=${campign.id})}">了解详情 &gt;</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="page-box">
+                    <div class="page f-20" id="page5">
+                        <div class="laypage_main laypageskin_default">
+                            <a
+                                    th:if="${!pageInfo.isFirstPage}"
+                                    th:href="@{/html/clinic(page=${pageInfo.prePage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_prev" > </a>
+                            <a
+                                    th:if="${!pageInfo.isLastPage}"
+                                    th:href="@{/html/clinic(page=${pageInfo.nextPage},limit=${pageInfo.pageSize},region=${param.region})}" class="laypage_next" > </a>
+                            <span class="laypage_total"><label>到第</label>
+                                <input type="number"
+                                       min="1"
+                                       id="tz"
+                                       th:value="${pageInfo.pageNum}"
+                                       class="laypage_skip">
+                                <label>页</label>
+                                <button type="button" class="laypage_btn" onclick="tz()">确定</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <th:block th:include="include :: footerhtml"/>
+    </footer>
+
+</div>
+
+
+
+<script>
+
+
+    function tz(){
+        var val = document.getElementById("tz").value;
+        var url = "/html/clinic?region=[[${param.region}]]&page="+val;
+        window.location.href=url;
+    }
+
+</script>
+
+</body>
+
+</html>
