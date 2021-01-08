@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         "com.pearadmin.common.plugins.resource.mapper",
         "com.pearadmin.common.plugins.generator.mapper",
 })
-/*一些注释提交*/
 public class RunMain {
 
     public static void main(String[] args) {
