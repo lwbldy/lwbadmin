@@ -5,7 +5,7 @@
 <!--[if IE 9]><html class="ie ie9 lt10"><![endif]-->
 <!--[if (gt IE 9) | !(IE)]><!--><html xmlns:th="http://www.thymeleaf.org"><!--<![endif]-->
 <head>
-    <th:block th:include="include :: headhtml('卫华口腔')"/>
+    <th:block th:include="include :: headhtml(${singlePage.title}+'-卫华口腔')"/>
 </head>
 <body class="search-body">
 <div class="body-box ndata-box">
